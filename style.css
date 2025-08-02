@@ -26,6 +26,26 @@ body {
   flex-direction: column;
 }
 
+#matrix-rain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
+  opacity: 0.6;
+}
+
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  background: transparent;
+}
+
 header.header {
   width: 100vw;
   position: fixed;
@@ -75,6 +95,8 @@ header nav a:hover {
   flex-direction: column;
   align-items: center;
   animation: about-fadein 1.1s both;
+  z-index: 2;
+  position: relative;
 }
 @keyframes about-fadein { from { opacity: 0; } to { opacity: 1; } }
 
@@ -134,13 +156,134 @@ header nav a:hover {
   box-shadow: 0 0 14px #00ff9965;
 }
 
+/* ===== Terminal fake ===== */
+.terminal-section {
+  width: 100%;
+  margin: 0 auto 0 auto;
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+#terminal {
+  background: #051912dd;
+  border: 2px solid #00ff9940;
+  border-radius: 11px;
+  box-shadow: 0 0 17px #00ff9940 inset, 0 0 4px #00ff99a0;
+  color: #00ff99;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.07em;
+  width: 99vw;
+  max-width: 540px;
+  min-height: 150px;
+  padding: 13px 16px 11px 11px;
+  outline: none;
+  margin: 0 auto;
+  white-space: pre-line;
+  overflow-y: auto;
+  transition: box-shadow 0.16s;
+}
+#terminal:focus {
+  box-shadow: 0 0 23px #00ff99b0, 0 0 14px #00ff99aa;
+}
+.terminal-input-line { display: flex; align-items: center; margin-bottom: 2px; }
+.terminal-prompt { color: #baffea; margin-right: 4px;}
+.terminal-cmd { color: #fff; }
+.terminal-output { color: #60ffc6; margin-left: 17px; }
+.terminal-error { color: #ff4444; margin-left: 17px; }
+.terminal-help { color: #7fdfbd; margin-left: 17px; }
+
+/* ==== Skills/Barras ==== */
+.skills-section {
+  margin-top: 28px;
+  z-index: 2;
+  position: relative;
+}
+.skills-bars {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.skill-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1em;
+  color: #fff;
+}
+.skill-bar span {
+  min-width: 110px;
+  text-align: right;
+  color: var(--neon-green);
+  text-shadow: 0 0 5px #00ff99;
+}
+.skill-bar .bar {
+  background: #19322d;
+  border-radius: 12px;
+  height: 16px;
+  flex: 1;
+  overflow: hidden;
+  box-shadow: 0 0 9px #00ff9955 inset;
+  border: 1.4px solid #00ff9929;
+}
+.skill-bar .bar div {
+  background: linear-gradient(90deg, #00ff99 80%, #021b15 100%);
+  height: 100%;
+  border-radius: 13px 0 0 13px;
+  box-shadow: 0 0 12px #00ff9955;
+  animation: skillbar-grow 1.2s cubic-bezier(0.16,0.8,0.32,1.2);
+}
+@keyframes skillbar-grow { from { width: 0; } to { } }
+
+/* ==== Badges/Conquistas ==== */
+.badges-section {
+  margin-top: 32px;
+  z-index: 2;
+  position: relative;
+}
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin-top: 13px;
+}
+.badge {
+  padding: 9px 18px;
+  border-radius: 13px;
+  background: #072b21;
+  color: #00ff99;
+  font-size: 1.1em;
+  font-weight: 500;
+  box-shadow: 0 0 18px #00ff9922;
+  border: 1.3px solid #00ff99aa;
+  display: flex;
+  align-items: center;
+  transition: background 0.16s, box-shadow 0.15s;
+}
+.neon-badge {
+  background: linear-gradient(90deg, #021b15 80%, #00ff9920 100%);
+  text-shadow: 0 0 6px #00ff99bb;
+}
+.badge:hover {
+  background: #00ff9922;
+  box-shadow: 0 0 23px #00ff99bb;
+  color: #fff;
+}
+
+/* ==== Projetos ==== */
 main {
   flex: 1;
   width: 100vw;
   max-width: 960px;
   margin: 0 auto 48px auto;
   padding: 10px 14px 40px 14px;
-  z-index: 1;
+  z-index: 2;
+  position: relative;
 }
 
 .repos-container {
@@ -150,6 +293,26 @@ main {
   justify-content: center;
   align-items: stretch;
   min-height: 160px;
+}
+
+#ranking-projetos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  justify-content: center;
+  margin-bottom: 11px;
+}
+
+.ranking-badge {
+  padding: 7px 14px;
+  background: #021b15;
+  color: #ffe74f;
+  border-radius: 11px;
+  font-weight: bold;
+  box-shadow: 0 0 12px #ffe74f99, 0 0 4px #00ff9949;
+  border: 1.2px solid #ffe74f77;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 1em;
 }
 
 .loader {
@@ -182,8 +345,13 @@ main {
   position: relative;
   overflow: hidden;
   animation: card-fadein 0.88s cubic-bezier(0.47,0.13,0.56,1.22);
+  opacity: 0;
 }
 @keyframes card-fadein { from { opacity: 0; transform: translateY(28px) scale(0.95);} to { opacity: 1; transform: none;} }
+.repo-card.visible {
+  opacity: 1;
+  transition: opacity 0.33s, transform 0.21s;
+}
 .repo-card:hover {
   transform: scale(1.03) rotateY(-3deg);
   box-shadow: 0 0 44px #00ff998a, 0 0 7px #00ff9933;
@@ -234,6 +402,88 @@ main {
   color: #fff;
 }
 
+/* ==== Contato Hacker ==== */
+.contact-section {
+  margin: 0 auto 60px auto;
+  max-width: 430px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+.contact-terminal {
+  background: #062015;
+  border-radius: 13px;
+  box-shadow: 0 0 18px #00ff9945;
+  border: 1.7px solid #00ff99bb;
+  padding: 20px 15px 16px 15px;
+  margin-bottom: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  margin-top: 11px;
+}
+.terminal-title {
+  color: #baffea;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.04em;
+  margin-bottom: 4px;
+}
+.blink { animation: blink-caret 0.8s step-end infinite;}
+.contact-terminal input,
+.contact-terminal textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.07em;
+  padding: 7px 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  background: #01160f;
+  color: #00ff99;
+  box-shadow: 0 0 7px #00ff9945 inset;
+  border: 1.1px solid #00ff99bb;
+  transition: box-shadow 0.17s;
+}
+.contact-terminal input:focus, .contact-terminal textarea:focus {
+  box-shadow: 0 0 14px #00ff99aa;
+}
+.contact-terminal textarea {
+  min-height: 64px;
+  resize: vertical;
+}
+.contact-terminal button {
+  background: linear-gradient(90deg,#00ff99 80%,#021b15 100%);
+  color: #222;
+  font-weight: bold;
+  font-size: 1.07em;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 0;
+  cursor: pointer;
+  box-shadow: 0 0 11px #00ff9977;
+  transition: background 0.14s, color 0.16s;
+}
+.contact-terminal button:hover {
+  background: #00ff99;
+  color: #031812;
+}
+#contact-status {
+  font-size: 0.96em;
+  margin-top: 7px;
+  color: #7fdfbd;
+  min-height: 16px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 9px;
+}
+
+/* ==== Footer ==== */
 footer {
   margin: 0 auto 0 auto;
   padding: 19px 0 11px 0;
@@ -260,3 +510,4 @@ footer {
   .logo-3d { font-size: 1.3em; }
   .about { margin-top: 83px;}
 }
+
