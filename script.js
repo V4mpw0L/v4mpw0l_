@@ -1,7 +1,38 @@
-// Portfólio hacker 3D - Repos GitHub em cards animados (by V4mpw0l)
-const GITHUB_USER = 'v4mpw0l'; // Troque para o seu username se precisar
+// --- Configurações ---
+const GITHUB_USER = 'v4mpw0l'; // Altere aqui para seu user
 
-// 3D Neon background effect
+// ======= Matrix Rain =======
+const matrix = document.getElementById('matrix-rain');
+const mtxCtx = matrix.getContext('2d');
+let matrixChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+=-{}[]'.split('');
+let columns, drops;
+function resizeMatrix() {
+  matrix.width = window.innerWidth;
+  matrix.height = window.innerHeight;
+  columns = Math.floor(window.innerWidth / 18);
+  drops = Array(columns).fill(1);
+}
+function drawMatrix() {
+  mtxCtx.fillStyle = 'rgba(11,24,20,0.14)';
+  mtxCtx.fillRect(0,0,matrix.width,matrix.height);
+  mtxCtx.font = '16px Share Tech Mono, monospace';
+  for(let i=0;i<columns;i++){
+    const text = matrixChars[Math.floor(Math.random()*matrixChars.length)];
+    mtxCtx.fillStyle = '#00ff99';
+    mtxCtx.shadowColor = "#00ff99";
+    mtxCtx.shadowBlur = 13;
+    mtxCtx.fillText(text, i*18, drops[i]*18);
+    mtxCtx.shadowBlur = 0;
+    if(drops[i]*18 > matrix.height && Math.random() > 0.975) drops[i]=0;
+    drops[i]++;
+  }
+  setTimeout(drawMatrix, 52);
+}
+resizeMatrix();
+window.addEventListener('resize', resizeMatrix);
+drawMatrix();
+
+// ======= Neon Particles Bg =======
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 function resizeCanvas() {
@@ -28,17 +59,97 @@ function drawBg() {
 }
 drawBg();
 
-// Repositórios em cards
+// ======= Terminal Fake Interativo =======
+const terminal = document.getElementById('terminal');
+let terminalHistory = [];
+const commands = {
+  help: "Comandos: <span class='terminal-cmd'>help</span>, <span class='terminal-cmd'>about</span>, <span class='terminal-cmd'>skills</span>, <span class='terminal-cmd'>contact</span>, <span class='terminal-cmd'>projects</span>, <span class='terminal-cmd'>clear</span>",
+  about: "Eu sou V4mpw0l, hacker, dev full stack, entusiasta de segurança e automação.",
+  skills: "JavaScript, Node.js, Flutter, Cybersecurity, Linux, SQL/Postgres, GameDev, Automation",
+  contact: "Contato: <a href='mailto:seuemail@email.com' target='_blank'>Email</a> | <a href='https://t.me/seuuser' target='_blank'>Telegram</a> | <a href='https://linkedin.com/in/seuuser' target='_blank'>LinkedIn</a>",
+  projects: "Veja meus projetos na seção <span class='terminal-cmd'>Projetos em Destaque</span> abaixo ou <a href='https://github.com/v4mpw0l' target='_blank'>no GitHub</a>.",
+  clear: "__CLEAR__"
+};
+function printTerminalLine(text, type='output') {
+  const div = document.createElement('div');
+  div.className = type === 'error' ? 'terminal-error' :
+                  type === 'help' ? 'terminal-help' : 'terminal-output';
+  div.innerHTML = text;
+  terminal.appendChild(div);
+  terminal.scrollTop = terminal.scrollHeight;
+}
+function printPrompt(cmd='') {
+  const line = document.createElement('div');
+  line.className = 'terminal-input-line';
+  line.innerHTML = `<span class="terminal-prompt">v4mpw0l@portfolio:~$</span>
+    <span class="terminal-cmd" contenteditable="true" spellcheck="false"></span>`;
+  terminal.appendChild(line);
+  const input = line.querySelector('.terminal-cmd');
+  input.focus();
+  input.innerText = cmd || '';
+  // Move cursor to end
+  document.execCommand('selectAll', false, null);
+  document.getSelection().collapseToEnd();
+
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+      e.preventDefault();
+      const value = input.innerText.trim();
+      terminalHistory.push(value);
+      handleCommand(value);
+      line.remove();
+      printPrompt();
+    } else if(e.key === 'ArrowUp') {
+      e.preventDefault();
+      if(terminalHistory.length) {
+        input.innerText = terminalHistory[terminalHistory.length-1];
+        document.execCommand('selectAll', false, null);
+        document.getSelection().collapseToEnd();
+      }
+    }
+  });
+}
+function handleCommand(cmd) {
+  if(!cmd) return;
+  if(commands[cmd]) {
+    if(commands[cmd]==='__CLEAR__') {
+      terminal.innerHTML = '';
+      return;
+    }
+    printTerminalLine(commands[cmd], 'help');
+  } else {
+    printTerminalLine(`Comando não reconhecido: <span class='terminal-cmd'>${cmd}</span>`, 'error');
+  }
+}
+function showTerminalWelcome() {
+  printTerminalLine("Bem-vindo ao terminal hacker do <b>V4mpw0l</b>! Digite <span class='terminal-cmd'>help</span> para ver comandos.");
+  printPrompt();
+}
+terminal.setAttribute('tabindex', '0');
+showTerminalWelcome();
+
+// ==== Skills: barras já animadas no CSS ====
+
+// ======= Projetos do GitHub + Ranking =======
 async function carregarRepos() {
   const container = document.getElementById('repos-container');
+  const rankingDiv = document.getElementById('ranking-projetos');
   try {
     const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
     if (!res.ok) throw new Error('Erro ao buscar repositórios');
     const data = await res.json();
     container.innerHTML = '';
+    rankingDiv.innerHTML = '';
     // Filtra forks e repositórios ocultos
     const projetos = data.filter(repo => !repo.fork && !repo.private);
-    projetos.forEach(repo => {
+    // Top 3 por estrelas
+    const top3 = [...projetos].sort((a,b)=>b.stargazers_count-a.stargazers_count).slice(0,3);
+    top3.forEach((repo, i) => {
+      rankingDiv.innerHTML += `<span class="ranking-badge">#${i+1} ⭐ ${repo.name} (${repo.stargazers_count})</span>`;
+    });
+
+    // Exibe todos em cards, animando ao scroll
+    projetos.forEach((repo, idx) => {
       const el = document.createElement('div');
       el.className = 'repo-card';
       el.innerHTML = `
@@ -58,6 +169,19 @@ async function carregarRepos() {
       `;
       container.appendChild(el);
     });
+
+    // Animar cards ao aparecer no scroll
+    const cards = Array.from(document.querySelectorAll('.repo-card'));
+    const animOnScroll = () => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if(rect.top < window.innerHeight-50) {
+          card.classList.add('visible');
+        }
+      });
+    };
+    animOnScroll();
+    window.addEventListener('scroll', animOnScroll);
     if(projetos.length == 0) {
       container.innerHTML = "<p style='color:#00ff99;font-size:1.16em'>Nenhum projeto público encontrado!</p>";
     }
