@@ -3,97 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>V4mpw0l | Portfolio</title>
-  <meta name="theme-color" content="#0a0f1a"/>
-  <meta name="description" content="Portfólio hacker, projetos e contato de V4mpw0l">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <title>V4mpw0l | Portfolio Vampiro</title>
+  <meta name="theme-color" content="#12090f"/>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="https://avatars.githubusercontent.com/u/10349223?v=4"/>
 </head>
 <body>
-  <div class="bg-gradient"></div>
+  <!-- Matrix Rain -->
+  <canvas id="matrix-bg"></canvas>
+
+  <!-- Header -->
   <header>
     <div class="header-inner">
-      <div class="logo">V4mpw0l<span class="logo-blink">|</span></div>
+      <div class="logo">🧛‍♂️ V4mpw0l<span class="logo-blink">_</span></div>
       <nav>
-        <a href="#sobre">Sobre</a>
         <a href="#projetos">Projetos</a>
         <a href="#skills">Skills</a>
         <a href="#trajetoria">Trajetória</a>
         <a href="#contato">Contato</a>
-        <a href="https://github.com/v4mpw0l" target="_blank" class="gh"><svg viewBox="0 0 24 24"><path d="M12 .5C5.4.5 0 5.8 0 12.3c0 5.2 3.4 9.6 8.2 11.1.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.5-1.4-1.8-1.4-1.8-1.2-.8.1-.8.1-.8 1.3.1 2 .8 2.2 1.2 1.1 1.9 2.8 1.4 3.5 1.1.1-.8.4-1.4.7-1.7-2.7-.3-5.5-1.3-5.5-6 0-1.3.4-2.4 1.2-3.2-.1-.3-.5-1.7.1-3.5 0 0 1-.3 3.3 1.3.9-.2 1.9-.3 2.8-.3.9 0 1.9.1 2.8.3 2.3-1.6 3.3-1.3 3.3-1.3.6 1.8.2 3.2.1 3.5.7.8 1.2 1.9 1.2 3.2 0 4.7-2.8 5.7-5.6 6 .4.4.8 1.1.8 2.3v3.3c0 .4.2.8.8.6C20.6 21.9 24 17.5 24 12.3 24 5.8 18.6.5 12 .5z" fill="#97f2fc"/></svg></a>
+        <a href="https://github.com/v4mpw0l" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </header>
 
+  <!-- Apresentação -->
   <main>
-    <section id="sobre" class="card glass center">
+    <section class="card aboutbox">
       <div class="avatarbox">
-        <img src="https://avatars.githubusercontent.com/u/10349223?v=4" alt="Avatar" class="avatar-glow">
+        <img class="avatar-glow" src="https://avatars.githubusercontent.com/u/10349223?v=4" alt="Avatar V4mpw0l">
       </div>
-      <div class="aboutbox">
-        <h1>V4mpw0l<span class="cyber-pulse">_</span></h1>
-        <p class="sub">Full Stack | Cybersecurity | Automação | GameDev</p>
-        <p>Transformando ideias em código — e código em impacto.  
-        <span class="about-emoji">👾</span></p>
-      </div>
+      <h1>Olá, eu sou <span class="cyber-pulse">V4mpw0l</span> <span class="about-emoji">🧛‍♂️</span></h1>
+      <p class="sub">Full Stack Dev | Cybersecurity | Automação | GameDev</p>
+      <p>Bem-vindo ao meu portfólio <b>vampiro hacker</b>! <span class="about-emoji">👾🩸</span></p>
     </section>
 
-    <section id="terminal" class="card glass">
-      <div class="term-title"><span class="term-dot"></span> Terminal </div>
-      <div id="terminalbox">
-        <div class="term-line">v4mpw0l@portfolio:~$ <span class="cursor">|</span></div>
+    <!-- Terminal Fake Interativo -->
+    <section class="card termcard">
+      <div class="term-title">
+        <span class="term-dot"></span>
+        <span>Terminal Vampiro</span>
       </div>
+      <div id="terminalbox" tabindex="0"></div>
     </section>
 
-    <section id="skills" class="card glass">
+    <!-- Skills -->
+    <section id="skills" class="card">
       <h2>Skills</h2>
       <div class="skills-barlist">
         <div class="skill-row"><span>JavaScript</span><div class="skillbar"><div style="width:92%"></div></div></div>
-        <div class="skill-row"><span>Node.js</span><div class="skillbar"><div style="width:87%"></div></div></div>
-        <div class="skill-row"><span>Flutter</span><div class="skillbar"><div style="width:81%"></div></div></div>
-        <div class="skill-row"><span>Cybersecurity</span><div class="skillbar"><div style="width:94%"></div></div></div>
-        <div class="skill-row"><span>GameDev</span><div class="skillbar"><div style="width:77%"></div></div></div>
-        <div class="skill-row"><span>Automation</span><div class="skillbar"><div style="width:85%"></div></div></div>
-        <div class="skill-row"><span>Linux</span><div class="skillbar"><div style="width:88%"></div></div></div>
+        <div class="skill-row"><span>Node.js</span><div class="skillbar"><div style="width:89%"></div></div></div>
+        <div class="skill-row"><span>Flutter</span><div class="skillbar"><div style="width:84%"></div></div></div>
+        <div class="skill-row"><span>Cybersecurity</span><div class="skillbar"><div style="width:95%"></div></div></div>
+        <div class="skill-row"><span>GameDev</span><div class="skillbar"><div style="width:80%"></div></div></div>
+        <div class="skill-row"><span>Automation</span><div class="skillbar"><div style="width:87%"></div></div></div>
+        <div class="skill-row"><span>Linux</span><div class="skillbar"><div style="width:91%"></div></div></div>
+        <div class="skill-row"><span>SQL/Postgres</span><div class="skillbar"><div style="width:78%"></div></div></div>
       </div>
     </section>
 
-    <section id="projetos" class="card glass">
-      <h2>Projetos</h2>
+    <!-- Trajetória / Timeline -->
+    <section id="trajetoria" class="card">
+      <h2>Trajetória</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-content"><b>2024</b> Portfólio Vampiro Hacker criado.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-content"><b>2022-2024</b> Dev Full Stack, GameDev e Cybersecurity.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-content"><b>2021</b> Primeiros projetos open source no GitHub.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="tl-content"><b>2018-2020</b> Início em automação, hacking e programação.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="card">
+      <h2>Projetos em Destaque</h2>
       <div id="projetos-cards"></div>
     </section>
 
-    <section id="trajetoria" class="card glass">
-      <h2>Minha Trajetória</h2>
-      <div class="timeline">
-        <div class="tl-item"><span class="tl-dot"></span><div class="tl-content"><b>2017</b><div>Primeiro Hello World em JS</div></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><div class="tl-content"><b>2019</b><div>Primeiro CTF vencido</div></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><div class="tl-content"><b>2021</b><div>Full Stack Master</div></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><div class="tl-content"><b>2024</b><div>Criação do hacker0S</div></div></div>
-      </div>
-    </section>
-
-    <section id="contato" class="card glass">
+    <!-- Contato -->
+    <section id="contato" class="card">
       <h2>Contato</h2>
       <form id="contact-form" action="https://formsubmit.co/tiagonzk@gmail.com" method="POST" autocomplete="off" spellcheck="false">
-        <input type="text" name="name" placeholder="Seu Nome" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" placeholder="Mensagem" required></textarea>
+        <input type="text" id="nome" name="name" placeholder="Seu Nome" required />
+        <input type="email" id="email" name="email" placeholder="Email" required />
+        <textarea id="mensagem" name="message" placeholder="Mensagem" required></textarea>
         <input type="hidden" name="_autoresponse" value="Recebido! Já já te respondo.">
+        <input type="hidden" name="_template" value="table">
         <button type="submit">Enviar</button>
       </form>
       <div class="contact-links">
-        <a href="mailto:tiagonzk@gmail.com">Email</a>
-        <a href="https://t.me/seuuser" target="_blank">Telegram</a>
-        <a href="https://linkedin.com/in/seuuser" target="_blank">LinkedIn</a>
+        <a href="mailto:tiagonzk@gmail.com" target="_blank">Email</a>
+        <a href="https://t.me/v4mpw0l" target="_blank">Telegram</a>
+        <a href="https://linkedin.com/in/v4mpw0l" target="_blank">LinkedIn</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <span>&copy; 2025 V4m<span class="neon-green">poL</span></span>
+    <span>&copy; 2025 V4mpw0l. <span class="neon-green">Stay vampire. 🩸</span></span>
   </footer>
+
+  <div class="bg-gradient"></div>
   <script src="script.js"></script>
 </body>
 </html>
