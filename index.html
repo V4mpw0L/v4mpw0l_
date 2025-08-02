@@ -9,7 +9,9 @@
   <link rel="icon" href="https://avatars.githubusercontent.com/u/10349223?v=4"/>
 </head>
 <body>
-  <!-- Hacker 3D Background -->
+  <!-- Matrix Rain -->
+  <canvas id="matrix-rain"></canvas>
+  <!-- 3D Neon Particles -->
   <canvas id="bg-canvas"></canvas>
 
   <!-- Header -->
@@ -17,6 +19,9 @@
     <div class="logo-3d">🧛‍♂️ V4mpw0l</div>
     <nav>
       <a href="#projetos">Projetos</a>
+      <a href="#skills">Skills</a>
+      <a href="#conquistas">Conquistas</a>
+      <a href="#contato">Contato</a>
       <a href="https://github.com/v4mpw0l" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </header>
@@ -29,13 +34,71 @@
     <p>Bem-vindo ao meu portfólio hacker! 👨‍💻💚</p>
   </section>
 
+  <!-- Terminal Interativo -->
+  <section class="terminal-section">
+    <div id="terminal" tabindex="0"></div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="skills-section">
+    <h2 class="neon-underline">Skills</h2>
+    <div class="skills-bars">
+      <!-- Troque os valores para suas skills -->
+      <div class="skill-bar"><span>JavaScript</span><div class="bar"><div style="width:92%"></div></div></div>
+      <div class="skill-bar"><span>Node.js</span><div class="bar"><div style="width:89%"></div></div></div>
+      <div class="skill-bar"><span>Flutter</span><div class="bar"><div style="width:84%"></div></div></div>
+      <div class="skill-bar"><span>Cybersecurity</span><div class="bar"><div style="width:95%"></div></div></div>
+      <div class="skill-bar"><span>GameDev</span><div class="bar"><div style="width:80%"></div></div></div>
+      <div class="skill-bar"><span>Automation</span><div class="bar"><div style="width:87%"></div></div></div>
+      <div class="skill-bar"><span>Linux</span><div class="bar"><div style="width:91%"></div></div></div>
+      <div class="skill-bar"><span>SQL/Postgres</span><div class="bar"><div style="width:78%"></div></div></div>
+    </div>
+  </section>
+
+  <!-- Conquistas -->
+  <section id="conquistas" class="badges-section">
+    <h2 class="neon-underline">Conquistas & Certificados</h2>
+    <div class="badges-container">
+      <div class="badge neon-badge">🏆 CTF Winner</div>
+      <div class="badge neon-badge">💻 100+ Commits/Day</div>
+      <div class="badge neon-badge">🔒 Ethical Hacking</div>
+      <div class="badge neon-badge">📜 Linux Specialist</div>
+      <div class="badge neon-badge">☁️ Full Stack Dev</div>
+      <!-- Adicione seus badges/conquistas aqui -->
+    </div>
+  </section>
+
   <!-- Projetos -->
   <main>
     <h2 id="projetos" class="neon-underline">Projetos em Destaque</h2>
+    <div id="ranking-projetos"></div>
     <div id="repos-container" class="repos-container">
       <div class="loader"></div>
     </div>
   </main>
+
+<!-- Contato -->
+<section id="contato" class="contact-section">
+  <h2 class="neon-underline">Contato</h2>
+  <form id="contact-form" action="https://formsubmit.co/tiagonzk@gmail.com" method="POST" autocomplete="off" spellcheck="false">
+    <div class="contact-terminal">
+      <span class="terminal-title">root@portfolio:~# <span class="blink">_</span></span>
+      <input type="text" id="nome" name="name" placeholder="Seu Nome" required />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <textarea id="mensagem" name="message" placeholder="Mensagem" required></textarea>
+      <input type="hidden" name="_autoresponse" value="Recebido! Já já te respondo.">
+      <input type="hidden" name="_template" value="table">
+      <button type="submit">Enviar</button>
+      <div id="contact-status"></div>
+    </div>
+  </form>
+  <div class="contact-links">
+    <a href="mailto:tiagonzk@gmail.com" target="_blank" class="repo-link">Email</a>
+    <a href="https://t.me/v4mpw0l" target="_blank" class="repo-link">Telegram</a>
+    <a href="https://linkedin.com/in/v4mpw0l" target="_blank" class="repo-link">LinkedIn</a>
+  </div>
+</section>
+
 
   <footer>
     <span>&copy; 2025 V4mpw0l. <span class="neon-green">Stay hacker.</span></span>
