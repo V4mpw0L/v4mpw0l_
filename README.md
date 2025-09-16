@@ -3,11 +3,14 @@
 <!-- PROFESSIONAL CEO HEADER WITH GRADIENT WAVES -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=120&section=header&animation=twinkling" width="100%"/>
 
-<!-- CUSTOM STYLED NAME WITH ANIMATED EFFECTS -->
+<!-- ANIMATED NAME AND CEO TITLE -->
 <div align="center" style="margin: 30px 0;">
-  <h1>
-    <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=900&size=48&duration=1500&pause=800&color=10B981&background=00000000&center=true&vCenter=true&width=500&height=70&lines=%F0%9F%92%8E+TIAGO+CARDOSO;%F0%9F%9A%80+CEO+%26+FOUNDER;%E2%9C%A8+TECH+LEADER" alt="Animated Name"/>
-  </h1>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=900&size=32&duration=2000&pause=1500&color=10B981&background=00000000&center=true&vCenter=true&width=600&height=50&lines=TIAGO+CARDOSO;CEO+%26+FOUNDER" alt="Animated Name and Title"/>
+</div>
+
+<!-- ANIMATED SUBTITLE -->
+<div align="center" style="margin: 20px 0;">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=20&duration=2000&pause=1000&color=047857&background=00000000&center=true&vCenter=true&width=400&height=40&lines=✨+Tech+Leader+%26+Innovator;🔥+Full+Stack+Developer;🛡️+Security+Expert;⚡+Business+Automation;💡+Digital+Solutions" alt="Animated Roles"/>
 </div>
 
 <!-- GRADIENT SUBTITLE BADGE -->
