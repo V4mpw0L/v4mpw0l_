@@ -5,7 +5,7 @@
 
 <!-- ANIMATED NAME AND CEO TITLE -->
 <div align="center" style="margin: 30px 0;">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=900&size=32&duration=2000&pause=1500&color=10B981&background=00000000&center=true&vCenter=true&width=600&height=50&lines=TIAGO+CARDOSO;CEO+%26+FOUNDER" alt="Animated Name and Title"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=900&size=32&duration=2000&pause=1500&color=10B981&background=00000000&center=true&vCenter=true&width=600&height=50&lines=TIAGO+CARDOSO;GENNISYS+CEO+%26+FOUNDER" alt="Animated Name and Title"/>
 </div>
 
 <!-- ANIMATED SUBTITLE -->
@@ -51,7 +51,11 @@
 
 ---
 
+<div align="center">
+
 ### 👨‍💼 **About Me**
+
+</div>
 
 ```yaml
 Name: Tiago Cardoso
@@ -95,7 +99,11 @@ Vision: Building tomorrow's digital experiences today
 
 ---
 
+<div align="center">
+
 ### 🛠️ **Technology Stack**
+
+</div>
 
 <div align="center">
 
@@ -135,7 +143,11 @@ Vision: Building tomorrow's digital experiences today
 
 ---
 
+<div align="center">
+
 ### 📊 **GitHub Analytics**
+
+</div>
 
 <div align="center">
 
@@ -153,7 +165,11 @@ Vision: Building tomorrow's digital experiences today
 
 ---
 
+<div align="center">
+
 ### 🎯 **Professional Services**
+
+</div>
 
 <div align="center">
 
@@ -208,7 +224,11 @@ Vision: Building tomorrow's digital experiences today
 
 ---
 
+<div align="center">
+
 ### 🌟 **Featured Projects**
+
+</div>
 
 <div align="center">
 
@@ -259,7 +279,11 @@ Vision: Building tomorrow's digital experiences today
 
 ---
 
+<div align="center">
+
 ### 📈 **Business Impact**
+
+</div>
 
 <div align="center">
 
@@ -275,7 +299,11 @@ Vision: Building tomorrow's digital experiences today
 
 ---
 
+<div align="center">
+
 ### 🤝 **Let's Connect**
+
+</div>
 
 <div align="center">
 
