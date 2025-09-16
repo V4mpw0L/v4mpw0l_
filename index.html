@@ -3,117 +3,380 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>V4mpw0l | Portfolio Vampiro</title>
-  <meta name="theme-color" content="#12090f"/>
+  <title>Tiago Cardoso | CEO & Full Stack Developer</title>
+  <meta name="description" content="CEO, Founder & Full Stack Developer - Building innovative digital solutions and mobile applications"/>
+  <meta name="theme-color" content="#10b981"/>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="https://avatars.githubusercontent.com/u/10349223?v=4"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Matrix Rain -->
-  <canvas id="matrix-bg"></canvas>
+  <!-- Background Elements -->
+  <div class="bg-gradient"></div>
+  <div class="bg-particles" id="particles"></div>
 
-  <!-- Header -->
-  <header>
-    <div class="header-inner">
-      <div class="logo">🧛‍♂️ V4mpw0l<span class="logo-blink">_</span></div>
-      <nav>
-        <a href="#projetos">Projetos</a>
-        <a href="#skills">Skills</a>
-        <a href="#trajetoria">Trajetória</a>
-        <a href="#contato">Contato</a>
-        <a href="https://github.com/v4mpw0l" target="_blank" rel="noopener">GitHub</a>
-      </nav>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">T</span>
+        <span class="logo-text">Tiago Cardoso</span>
+      </div>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Apresentação -->
-  <main>
-    <section class="card aboutbox">
-      <div class="avatarbox">
-        <img class="avatar-glow" src="https://avatars.githubusercontent.com/u/10349223?v=4" alt="Avatar V4mpw0l">
-      </div>
-      <h1>Olá, eu sou <span class="cyber-pulse">V4mpw0l</span> <span class="about-emoji">🧛‍♂️</span></h1>
-      <p class="sub">Full Stack Dev | Cybersecurity | Automação | GameDev</p>
-      <p>Bem-vindo ao meu portfólio <b>vampiro hacker</b>! <span class="about-emoji">👾🩸</span></p>
-    </section>
-
-    <!-- Terminal Fake Interativo -->
-    <section class="card termcard">
-      <div class="term-title">
-        <span class="term-dot"></span>
-        <span>Terminal Vampiro</span>
-      </div>
-      <div id="terminalbox" tabindex="0"></div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="card">
-      <h2>Skills</h2>
-      <div class="skills-barlist">
-        <div class="skill-row"><span>JavaScript</span><div class="skillbar"><div style="width:92%"></div></div></div>
-        <div class="skill-row"><span>Node.js</span><div class="skillbar"><div style="width:89%"></div></div></div>
-        <div class="skill-row"><span>Flutter</span><div class="skillbar"><div style="width:84%"></div></div></div>
-        <div class="skill-row"><span>Cybersecurity</span><div class="skillbar"><div style="width:95%"></div></div></div>
-        <div class="skill-row"><span>GameDev</span><div class="skillbar"><div style="width:80%"></div></div></div>
-        <div class="skill-row"><span>Automation</span><div class="skillbar"><div style="width:87%"></div></div></div>
-        <div class="skill-row"><span>Linux</span><div class="skillbar"><div style="width:91%"></div></div></div>
-        <div class="skill-row"><span>SQL/Postgres</span><div class="skillbar"><div style="width:78%"></div></div></div>
-      </div>
-    </section>
-
-    <!-- Trajetória / Timeline -->
-    <section id="trajetoria" class="card">
-      <h2>Trajetória</h2>
-      <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="tl-content"><b>2024</b> Portfólio Vampiro Hacker criado.</div>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-text">Building the Future in Technology</span>
         </div>
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="tl-content"><b>2022-2024</b> Dev Full Stack, GameDev e Cybersecurity.</div>
+        <h1 class="hero-title">
+          <span class="title-line">Innovating Digital</span>
+          <span class="title-line gradient-text">Solutions</span>
+        </h1>
+        <p class="hero-description">
+          CEO, Founder & Full Stack Developer specializing in mobile applications, 
+          cybersecurity, and cutting-edge digital solutions that drive business growth.
+        </p>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn btn-primary">
+            <span>View Portfolio</span>
+            <i class="btn-icon">→</i>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>Get in Touch</span>
+          </a>
         </div>
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="tl-content"><b>2021</b> Primeiros projetos open source no GitHub.</div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="tl-content"><b>2018-2020</b> Início em automação, hacking e programação.</div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- Projetos -->
-    <section id="projetos" class="card">
-      <h2>Projetos em Destaque</h2>
-      <div id="projetos-cards"></div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="card">
-      <h2>Contato</h2>
-      <form id="contact-form" action="https://formsubmit.co/tiagonzk@gmail.com" method="POST" autocomplete="off" spellcheck="false">
-        <input type="text" id="nome" name="name" placeholder="Seu Nome" required />
-        <input type="email" id="email" name="email" placeholder="Email" required />
-        <textarea id="mensagem" name="message" placeholder="Mensagem" required></textarea>
-        <input type="hidden" name="_autoresponse" value="Recebido! Já já te respondo.">
-        <input type="hidden" name="_template" value="table">
-        <button type="submit">Enviar</button>
-      </form>
-      <div class="contact-links">
-        <a href="mailto:tiagonzk@gmail.com" target="_blank">Email</a>
-        <a href="https://t.me/v4mpw0l" target="_blank">Telegram</a>
-        <a href="https://linkedin.com/in/v4mpw0l" target="_blank">LinkedIn</a>
+      <div class="hero-visual">
+        <div class="profile-container">
+          <img src="https://avatars.githubusercontent.com/u/10349223?v=4" alt="Tiago Cardoso" class="profile-image">
+          <div class="profile-ring"></div>
+          <div class="profile-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
 
-  <footer>
-    <span>&copy; 2025 V4mpw0l. <span class="neon-green">Stay vampire. 🩸</span></span>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">About Me</span>
+        <h2 class="section-title">Building Tomorrow's Technology Today</h2>
+        <p class="section-description">
+          With a passion for innovation and a vision for the future, I lead development 
+          of cutting-edge applications that inspire and deliver exceptional experiences.
+        </p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <div class="about-item">
+            <div class="about-icon">
+              <span>🚀</span>
+            </div>
+            <div class="about-info">
+              <h3>Leadership & Vision</h3>
+              <p>Leading teams to create impactful digital solutions that drive innovation and business success.</p>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-icon">
+              <span>💻</span>
+            </div>
+            <div class="about-info">
+              <h3>Technical Excellence</h3>
+              <p>Full-stack development expertise with modern frameworks and cutting-edge technologies.</p>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-icon">
+              <span>🛡️</span>
+            </div>
+            <div class="about-info">
+              <h3>Security First</h3>
+              <p>Cybersecurity specialist ensuring robust and secure applications for enterprise clients.</p>
+            </div>
+          </div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Frontend</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Vue.js</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Next.js</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>Backend</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Docker</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>Mobile</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Flutter</span>
+              <span class="skill-tag">React Native</span>
+              <span class="skill-tag">iOS</span>
+              <span class="skill-tag">Android</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>Security</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Penetration Testing</span>
+              <span class="skill-tag">Security Audits</span>
+              <span class="skill-tag">Encryption</span>
+              <span class="skill-tag">Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Services</span>
+        <h2 class="section-title">Professional Development Solutions</h2>
+        <p class="section-description">
+          Comprehensive digital solutions from concept to deployment, tailored for modern businesses.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <span>📱</span>
+          </div>
+          <h3>Mobile Applications</h3>
+          <p>Native and cross-platform mobile apps with modern UI/UX and optimal performance.</p>
+          <ul class="service-features">
+            <li>iOS & Android Development</li>
+            <li>Cross-platform Solutions</li>
+            <li>App Store Optimization</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <span>🌐</span>
+          </div>
+          <h3>Web Development</h3>
+          <p>Full-stack web applications with scalable architecture and modern technologies.</p>
+          <ul class="service-features">
+            <li>React & Vue.js</li>
+            <li>Node.js Backend</li>
+            <li>Cloud Deployment</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <span>🛡️</span>
+          </div>
+          <h3>Cybersecurity</h3>
+          <p>Comprehensive security audits and penetration testing for enterprise applications.</p>
+          <ul class="service-features">
+            <li>Security Audits</li>
+            <li>Penetration Testing</li>
+            <li>Vulnerability Assessment</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <span>🤖</span>
+          </div>
+          <h3>Automation</h3>
+          <p>Business process automation and workflow optimization solutions.</p>
+          <ul class="service-features">
+            <li>Process Automation</li>
+            <li>API Integration</li>
+            <li>Workflow Optimization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-description">
+          Discover our suite of professional applications and innovative solutions.
+        </p>
+      </div>
+      <div id="portfolio-grid" class="portfolio-grid">
+        <!-- Projects will be loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Contact</span>
+        <h2 class="section-title">Ready to Build Something Amazing?</h2>
+        <p class="section-description">
+          Let's connect and discuss how we can bring your vision to life with cutting-edge technology.
+        </p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <span>📧</span>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <a href="mailto:tiagonzk@gmail.com">tiagonzk@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <span>💬</span>
+            </div>
+            <div class="contact-details">
+              <h4>Telegram</h4>
+              <a href="https://t.me/v4mpw0l" target="_blank">@v4mpw0l</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <span>🔗</span>
+            </div>
+            <div class="contact-details">
+              <h4>LinkedIn</h4>
+              <a href="https://linkedin.com/in/v4mpw0l" target="_blank">linkedin.com/in/v4mpw0l</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <span>💻</span>
+            </div>
+            <div class="contact-details">
+              <h4>GitHub</h4>
+              <a href="https://github.com/v4mpw0l" target="_blank">github.com/v4mpw0l</a>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form" action="https://formsubmit.co/tiagonzk@gmail.com" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon.">
+          <input type="hidden" name="_template" value="table">
+          <button type="submit" class="btn btn-primary">
+            <span>Send Message</span>
+            <i class="btn-icon">→</i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">T</span>
+            <span class="logo-text">Tiago Cardoso</span>
+          </div>
+          <p>Building innovative digital solutions for the modern world.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Mobile Apps</a></li>
+              <li><a href="#services">Web Development</a></li>
+              <li><a href="#services">Cybersecurity</a></li>
+              <li><a href="#services">Automation</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="mailto:tiagonzk@gmail.com">Email</a></li>
+              <li><a href="https://linkedin.com/in/v4mpw0l" target="_blank">LinkedIn</a></li>
+              <li><a href="https://github.com/v4mpw0l" target="_blank">GitHub</a></li>
+              <li><a href="https://t.me/v4mpw0l" target="_blank">Telegram</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiago Cardoso. All rights reserved. | Building the future, one solution at a time.</p>
+      </div>
+    </div>
   </footer>
 
-  <div class="bg-gradient"></div>
   <script src="script.js"></script>
 </body>
 </html>
