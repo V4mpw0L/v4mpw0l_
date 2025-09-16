@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- PROFESSIONAL CEO HEADER -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=300&section=header&text=Tiago%20Cardoso&fontSize=60&fontColor=ffffff&animation=twinkling&fontAlignY=35&desc=CEO%20%26%20Full%20Stack%20Developer%20%7C%20Building%20the%20Future%20in%20Technology&descAlignY=55&descSize=18" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=300&section=header&text=Tiago%20Cardoso&fontSize=60&fontColor=ffffff&animation=twinkling&fontAlignY=35&desc=CEO%20and%20Full%20Stack%20Developer%20Building%20the%20Future%20in%20Technology&descAlignY=55&descSize=18" width="100%"/>
 
 <!-- TYPING ANIMATION -->
 <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=28&duration=3000&pause=1000&color=10B981&background=00000000&center=true&vCenter=true&width=600&lines=Innovating+Digital+Solutions;Building+Tomorrow's+Technology;CEO+%26+Founder;Full+Stack+Developer;Cybersecurity+Expert" alt="Typing Animation"/>
