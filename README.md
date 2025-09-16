@@ -60,8 +60,8 @@
 ```yaml
 Name: Tiago Cardoso
 Role: CEO, Founder & Full Stack Developer
-Company: Leading innovative digital solutions
-Location: São Paulo, Brazil
+Company: Gennisys
+Location: San Diego, United States
 Mission: Creating impactful technology solutions
 Vision: Building tomorrow's digital experiences today
 ```
