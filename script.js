@@ -31,7 +31,9 @@ const DOM = {
     contactForm: null,
     sections: null,
     tabButtons: null,
-    particlesContainer: null
+    particlesContainer: null,
+    backToTop: null,
+    langButtons: null
 };
 
 // State Management
@@ -73,6 +75,8 @@ class ModernPortfolio {
         DOM.sections = document.querySelectorAll('section[id]');
         DOM.tabButtons = document.querySelectorAll('.tab-button');
         DOM.particlesContainer = document.querySelector('.bg-particles');
+        DOM.backToTop = document.querySelector('.back-to-top');
+        DOM.langButtons = document.querySelectorAll('.lang-btn');
     }
 
     setupEventListeners() {
@@ -92,6 +96,12 @@ class ModernPortfolio {
         
         // Smooth scrolling
         this.setupSmoothScrolling();
+        
+        // Back to top button
+        this.setupBackToTop();
+        
+        // Language selector
+        this.setupLanguageSelector();
     }
 
     // ===============================================
@@ -192,6 +202,9 @@ class ModernPortfolio {
                 DOM.navbar.style.transform = 'translateY(0)';
             }
         }
+
+        // Update back to top button
+        this.updateBackToTop(scrollY);
 
         state.lastScrollY = scrollY;
     }
@@ -681,6 +694,154 @@ class ModernPortfolio {
             DOM.particlesContainer.innerHTML = '';
             this.createParticles();
         }
+    }
+
+    // ===============================================
+    // BACK TO TOP BUTTON
+    // ===============================================
+
+    setupBackToTop() {
+        if (!DOM.backToTop) return;
+
+        DOM.backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    updateBackToTop(scrollY) {
+        if (!DOM.backToTop) return;
+
+        if (scrollY > 300) {
+            DOM.backToTop.classList.add('visible');
+        } else {
+            DOM.backToTop.classList.remove('visible');
+        }
+    }
+
+    // ===============================================
+    // LANGUAGE SELECTOR
+    // ===============================================
+
+    setupLanguageSelector() {
+        if (!DOM.langButtons.length) return;
+
+        DOM.langButtons.forEach(button => {
+            button.addEventListener('click', () => this.switchLanguage(button));
+        });
+
+        // Initialize with default language (English)
+        this.currentLanguage = 'en';
+        this.loadLanguageData();
+    }
+
+    switchLanguage(button) {
+        const lang = button.getAttribute('data-lang');
+        
+        if (lang === this.currentLanguage) return;
+
+        // Update active button
+        DOM.langButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Update current language
+        this.currentLanguage = lang;
+
+        // Apply language changes
+        this.applyLanguage(lang);
+    }
+
+    loadLanguageData() {
+        this.translations = {
+            en: {
+                // Navigation
+                'nav-about': 'About',
+                'nav-produtos': 'Products',
+                'nav-portfolio': 'Portfolio',
+                'nav-contact': 'Contact',
+                
+                // Hero Section
+                'hero-badge': 'CEO & Founder',
+                'hero-title-1': 'Building the Future',
+                'hero-title-2': 'of Technology',
+                'hero-subtitle': 'One Innovation at a Time',
+                'hero-description': 'Leading <strong>cutting-edge development</strong> with proprietary products that transform industries. From AI automation to business intelligence platforms.',
+                
+                // Vision
+                'vision-badge': 'Our Vision',
+                'vision-title': 'Innovation Excellence',
+                
+                // Products
+                'products-badge': 'Our Products',
+                'products-title': 'Innovative Applications',
+                'products-description': 'We develop our own products with cutting-edge technology, creating solutions that revolutionize markets and generate real impact in the business world.',
+                
+                // Contact
+                'contact-badge': 'Get in Touch',
+                'contact-title': 'Let\'s Create Something Amazing',
+                
+                // Buttons
+                'btn-contact': 'Get in Touch',
+                'btn-portfolio': 'View Portfolio',
+                'btn-send': 'Send Message'
+            },
+            pt: {
+                // Navigation
+                'nav-about': 'Sobre',
+                'nav-produtos': 'Produtos',
+                'nav-portfolio': 'Portfólio',
+                'nav-contact': 'Contato',
+                
+                // Hero Section
+                'hero-badge': 'CEO & Fundador',
+                'hero-title-1': 'Construindo o Futuro',
+                'hero-title-2': 'da Tecnologia',
+                'hero-subtitle': 'Uma Inovação por Vez',
+                'hero-description': 'Liderando <strong>desenvolvimento de ponta</strong> com produtos proprietários que transformam indústrias. Da automação com IA às plataformas de business intelligence.',
+                
+                // Vision
+                'vision-badge': 'Nossa Visão',
+                'vision-title': 'Excelência em Inovação',
+                
+                // Products
+                'products-badge': 'Nossos Produtos',
+                'products-title': 'Aplicativos Inovadores',
+                'products-description': 'Desenvolvemos nossos próprios produtos com tecnologia de ponta, criando soluções que revolucionam mercados e geram impacto real no mundo dos negócios.',
+                
+                // Contact
+                'contact-badge': 'Entre em Contato',
+                'contact-title': 'Vamos Criar Algo Incrível',
+                
+                // Buttons
+                'btn-contact': 'Entre em Contato',
+                'btn-portfolio': 'Ver Portfólio',
+                'btn-send': 'Enviar Mensagem'
+            }
+        };
+    }
+
+    applyLanguage(lang) {
+        const translations = this.translations[lang];
+        if (!translations) return;
+
+        // Apply translations to elements with data-translate attributes
+        Object.keys(translations).forEach(key => {
+            const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+            elements.forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = translations[key];
+                } else {
+                    element.innerHTML = translations[key];
+                }
+            });
+        });
+
+        // Store language preference
+        localStorage.setItem('preferred-language', lang);
+        
+        console.log(`🌍 Language switched to: ${lang === 'en' ? 'English' : 'Português'}`);
     }
 }
 

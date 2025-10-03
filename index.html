@@ -53,7 +53,10 @@
   <div id="loading-screen" class="loading-screen">
     <div class="loading-content">
       <div class="loading-logo">
-        <div class="logo-animation">TC</div>
+        <div class="logo-animation">
+          <div class="loading-avatar">TC</div>
+          <div class="loading-pulse"></div>
+        </div>
       </div>
       <div class="loading-text">Initializing...</div>
       <div class="loading-bar">
@@ -85,7 +88,7 @@
           <div class="nav-indicator"></div>
         </a>
         <a href="#about" class="nav-link">
-          <span class="nav-text">About</span>
+          <span class="nav-text" data-translate="nav-about">About</span>
           <div class="nav-indicator"></div>
         </a>
         <a href="#vision" class="nav-link">
@@ -93,20 +96,28 @@
           <div class="nav-indicator"></div>
         </a>
         <a href="#services" class="nav-link">
-          <span class="nav-text">Produtos</span>
+          <span class="nav-text" data-translate="nav-produtos">Products</span>
           <div class="nav-indicator"></div>
         </a>
         <a href="#portfolio" class="nav-link">
-          <span class="nav-text">Portfolio</span>
+          <span class="nav-text" data-translate="nav-portfolio">Portfolio</span>
           <div class="nav-indicator"></div>
         </a>
         <a href="#contact" class="nav-link">
-          <span class="nav-text">Contact</span>
+          <span class="nav-text" data-translate="nav-contact">Contact</span>
           <div class="nav-indicator"></div>
         </a>
       </div>
       <div class="nav-actions">
-        <a href="mailto:info@gennisys.com" class="btn btn-outline">Get in Touch</a>
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="en" title="English">
+            <span class="flag">🇺🇸</span>
+          </button>
+          <button class="lang-btn" data-lang="pt" title="Português">
+            <span class="flag">🇧🇷</span>
+          </button>
+        </div>
+        <a href="mailto:contact@v4mpw0l.dev" class="btn btn-outline">Get in Touch</a>
       </div>
       <div class="nav-toggle" id="nav-toggle">
         <span></span>
@@ -478,11 +489,11 @@
     <div class="container">
       <div class="contact-content">
         <div class="contact-info">
-          <div class="section-badge">Get in Touch</div>
-          <h2 class="section-title">Ready to Build the Future?</h2>
+          <div class="section-badge">Stay Connected</div>
+          <h2 class="section-title">Follow Our Innovation Journey</h2>
           <p class="section-description">
-            Let's discuss how we can bring your vision to life with cutting-edge technology 
-            and innovative solutions that drive real business impact.
+            Stay updated with our latest products and technological breakthroughs. 
+            Join our community of innovators and tech enthusiasts.
           </p>
           
           <div class="contact-methods">
@@ -531,80 +542,53 @@
             </div>
           </div>
 
-          <div class="availability-status">
+          <div class="company-status">
             <div class="status-indicator"></div>
-            <span>Available for new projects</span>
+            <span>Building innovative products</span>
           </div>
         </div>
 
-        <div class="contact-form-wrapper">
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your full name" required>
+        <div class="company-info-wrapper">
+          <div class="company-showcase">
+            <div class="showcase-item">
+              <div class="showcase-icon">🚀</div>
+              <h4>Innovation First</h4>
+              <p>Every product we create pushes the boundaries of what's possible in technology.</p>
             </div>
             
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="your.email@company.com" required>
+            <div class="showcase-item">
+              <div class="showcase-icon">🌐</div>
+              <h4>Global Impact</h4>
+              <p>Our applications are designed to solve real-world problems on a global scale.</p>
             </div>
             
-            <div class="form-group">
-              <label for="company">Company</label>
-              <input type="text" id="company" name="company" placeholder="Your company name">
+            <div class="showcase-item">
+              <div class="showcase-icon">🤖</div>
+              <h4>AI-Powered</h4>
+              <p>Artificial Intelligence is at the core of everything we build and deploy.</p>
             </div>
             
-            <div class="form-group">
-              <label for="project">Project Type</label>
-              <select id="project" name="project" required>
-                <option value="">Select project type</option>
-                <option value="mobile-app">Mobile Application</option>
-                <option value="web-platform">Web Platform</option>
-                <option value="ai-integration">AI Integration</option>
-                <option value="security-audit">Security Audit</option>
-                <option value="consultation">Technical Consultation</option>
-                <option value="other">Other</option>
-              </select>
+            <div class="showcase-item">
+              <div class="showcase-icon">🔒</div>
+              <h4>Enterprise Security</h4>
+              <p>Bank-level security and compliance built into every product from day one.</p>
             </div>
-            
-            <div class="form-group">
-              <label for="budget">Budget Range</label>
-              <select id="budget" name="budget">
-                <option value="">Select budget range</option>
-                <option value="10k-25k">$10K - $25K</option>
-                <option value="25k-50k">$25K - $50K</option>
-                <option value="50k-100k">$50K - $100K</option>
-                <option value="100k+">$100K+</option>
-                <option value="discuss">Let's discuss</option>
-              </select>
+          </div>
+          
+          <div class="direct-contact">
+            <h4>Want to know more about our products?</h4>
+            <p>Follow our journey and get updates on new releases.</p>
+            <div class="contact-actions">
+              <a href="mailto:hello@v4mpw0l.dev" class="btn btn-primary">
+                <span>Get Updates</span>
+                <span class="btn-icon">→</span>
+              </a>
+              <a href="https://github.com/v1k3rn" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <span>Follow on GitHub</span>
+                <span class="btn-icon">↗</span>
+              </a>
             </div>
-            
-            <div class="form-group">
-              <label for="timeline">Timeline</label>
-              <select id="timeline" name="timeline">
-                <option value="">Select timeline</option>
-                <option value="asap">ASAP</option>
-                <option value="1-3months">1-3 months</option>
-                <option value="3-6months">3-6 months</option>
-                <option value="6months+">6+ months</option>
-                <option value="flexible">Flexible</option>
-              </select>
-            </div>
-            
-            <div class="form-group full-width">
-              <label for="message">Project Details</label>
-              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, goals, and requirements..." required></textarea>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">
-              <span>Send Project Brief</span>
-              <div class="btn-icon">→</div>
-            </button>
-            
-            <p class="form-note">
-              We'll get back to you within 24 hours with a detailed response and next steps.
-            </p>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -684,6 +668,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <span class="back-to-top-icon">↑</span>
+  </button>
 
   <!-- Scripts -->
   <script src="script.js"></script>
