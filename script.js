@@ -6,7 +6,7 @@
 // Configuration
 const CONFIG = {
     github: {
-        username: 'v1k3rn',
+        username: 'v4mpw0l',
         token: '', // Add your GitHub token here if needed
         maxRepos: 12
     },
