@@ -947,7 +947,7 @@ class ModernPortfolio {
                 
                 // Buttons
                 'btn-contact': 'Get in Touch',
-                'btn-portfolio': 'View Portfolio',
+                'btn-portfolio': 'Explore Portfolio',
                 'btn-send': 'Send Message',
                 'btn-updates': 'Get Updates',
                 'btn-github': 'Follow on GitHub',
@@ -1076,7 +1076,7 @@ class ModernPortfolio {
                 
                 // Buttons
                 'btn-contact': 'Entre em Contato',
-                'btn-portfolio': 'Ver Portfólio',
+                'btn-portfolio': 'Explorar Portfólio',
                 'btn-send': 'Enviar Mensagem',
                 'btn-updates': 'Receber Atualizações',
                 'btn-github': 'Seguir no GitHub',
