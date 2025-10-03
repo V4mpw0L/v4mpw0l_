@@ -958,7 +958,12 @@ class ModernPortfolio {
                 'footer-dataviz': 'DataViz Pro',
                 'footer-v4mpbot': 'V4mpBot',
                 'footer-more': 'More Products',
-                'footer-company-title': 'Company'
+                'footer-company-title': 'Company',
+                
+                // Statistics
+                'stat-apps': 'Apps in Production',
+                'stat-users': 'Active Users',
+                'stat-years': 'Years Leading'
             },
             pt: {
                 // Navigation
@@ -1082,7 +1087,12 @@ class ModernPortfolio {
                 'footer-dataviz': 'DataViz Pro',
                 'footer-v4mpbot': 'V4mpBot',
                 'footer-more': 'Mais Produtos',
-                'footer-company-title': 'Empresa'
+                'footer-company-title': 'Empresa',
+                
+                // Statistics
+                'stat-apps': 'Apps em Produção',
+                'stat-users': 'Usuários Ativos',
+                'stat-years': 'Anos Liderando'
             }
         };
     }

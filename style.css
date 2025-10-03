@@ -339,12 +339,13 @@ body {
 .logo-name {
   font-size: 1.25rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--tertiary) 100%);
+  background: linear-gradient(45deg, #4a9eff, #8b5cf6, #22c55e, #f59e0b, #ef4444, #4a9eff);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
-  transition: all 0.15s ease;
+  animation: gradientShift 3s ease-in-out infinite;
 }
 
 .logo-title {
@@ -631,6 +632,7 @@ body {
   overflow: hidden;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  animation: gennisysPulse 2s ease-in-out infinite;
 }
 
 .gennisys-hero-link:hover {
@@ -1966,6 +1968,29 @@ section {
   40%, 43% { transform: translateY(-8px) translateX(-50%); }
   70% { transform: translateY(-4px) translateX(-50%); }
   90% { transform: translateY(-2px) translateX(-50%); }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gennisysPulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+    border-color: rgba(34, 197, 94, 0.5);
+  }
 }
 
 @keyframes float {
