@@ -63,6 +63,9 @@ class ModernPortfolio {
         this.handleLoadingScreen();
         
         console.log('🚀 Gennisys-inspired portfolio initialized successfully');
+        
+        // Register Service Worker for PWA
+        this.registerServiceWorker();
     }
 
     cacheDOMElements() {
@@ -716,6 +719,65 @@ class ModernPortfolio {
     }
 
     // ===============================================
+    // PWA SERVICE WORKER
+    // ===============================================
+
+    registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('✅ SW registered successfully:', registration.scope);
+                        this.handleInstallPrompt();
+                    })
+                    .catch(error => {
+                        console.log('❌ SW registration failed:', error);
+                    });
+            });
+        }
+    }
+
+    handleInstallPrompt() {
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            setTimeout(() => {
+                if (deferredPrompt && !window.matchMedia('(display-mode: standalone)').matches) {
+                    this.showInstallBanner(deferredPrompt);
+                }
+            }, 5000);
+        });
+    }
+
+    showInstallBanner(deferredPrompt) {
+        const banner = document.createElement('div');
+        banner.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 12px; background: rgba(26, 26, 46, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(74, 158, 255, 0.3); border-radius: 16px; padding: 16px; position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 10000; color: white; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);">
+                <span style="font-size: 24px;">📱</span>
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; margin-bottom: 4px;">Install App</div>
+                    <div style="font-size: 14px; opacity: 0.8;">Get the full experience!</div>
+                </div>
+                <button onclick="this.parentNode.parentNode.install()" style="background: linear-gradient(135deg, #4a9eff, #8b5cf6); border: none; padding: 8px 16px; border-radius: 8px; color: white; font-weight: 600; cursor: pointer;">Install</button>
+                <button onclick="this.parentNode.parentNode.remove()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.7;">×</button>
+            </div>
+        `;
+        
+        banner.install = () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+                banner.remove();
+            });
+        };
+        
+        document.body.appendChild(banner);
+        setTimeout(() => banner.remove(), 10000);
+    }
+
+    // ===============================================
     // BACK TO TOP BUTTON
     // ===============================================
 
@@ -852,6 +914,9 @@ class ModernPortfolio {
                 'direct-contact-title': 'Want to know more about our products?',
                 'direct-contact-desc': 'Follow our journey and get updates on new releases.',
                 
+                // Trusted By
+                'trusted-by': 'Trusted by',
+                
                 // Buttons
                 'btn-contact': 'Get in Touch',
                 'btn-portfolio': 'View Portfolio',
@@ -936,6 +1001,9 @@ class ModernPortfolio {
                 // Direct Contact
                 'direct-contact-title': 'Quer saber mais sobre nossos produtos?',
                 'direct-contact-desc': 'Acompanhe nossa jornada e receba atualizações sobre novos lançamentos.',
+                
+                // Trusted By
+                'trusted-by': 'Confiança de',
                 
                 // Buttons
                 'btn-contact': 'Entre em Contato',
