@@ -142,6 +142,22 @@ body {
   transition: all var(--transition-slow);
 }
 
+.loading-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: 
+    linear-gradient(var(--accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: gridMove 20s linear infinite;
+  z-index: -1;
+}
+
 .loading-screen.hidden {
   opacity: 0;
   visibility: hidden;
@@ -1835,6 +1851,11 @@ section {
   to { transform: translateX(0); opacity: 1; }
 }
 
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(100px, 100px); }
+}
+
 @keyframes loading {
   0% { transform: translateX(-100%); }
   50% { transform: translateX(0%); }
@@ -1894,16 +1915,24 @@ section {
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
-    padding: var(--space-4);
+    padding: var(--space-5);
     width: 100%;
     justify-content: center;
     border-radius: var(--radius-lg);
     transition: all var(--transition-fast);
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(74, 158, 255, 0.2);
+    margin: var(--space-2) 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
   
   .nav-link:hover {
-    background: rgba(74, 158, 255, 0.1);
+    background: rgba(74, 158, 255, 0.15);
     transform: scale(1.05);
+    border-color: var(--accent);
+    box-shadow: 0 8px 25px rgba(74, 158, 255, 0.3);
   }
   
   .nav-toggle {
@@ -1913,7 +1942,7 @@ section {
   }
   
   .nav-actions {
-    display: none;
+    display: flex;
   }
   
   /* Language selector mobile */
@@ -1922,6 +1951,7 @@ section {
     top: 20px;
     right: 80px;
     z-index: 1002;
+    scale: 0.9;
   }
   
   /* Back to top mobile */
@@ -1943,7 +1973,24 @@ section {
   /* Enhanced mobile menu styling */
   .nav-menu .nav-link.active {
     color: var(--text-accent);
-    background: rgba(74, 158, 255, 0.15);
+    background: rgba(74, 158, 255, 0.25);
+    border-color: var(--accent);
+    box-shadow: 0 8px 25px rgba(74, 158, 255, 0.4);
+    transform: scale(1.02);
+  }
+  
+  /* Special styling for contact button in mobile menu */
+  .nav-contact-btn {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--tertiary) 100%) !important;
+    color: var(--white) !important;
+    border-color: transparent !important;
+    font-weight: 700;
+    margin-top: var(--space-4);
+  }
+  
+  .nav-contact-btn:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 12px 35px rgba(74, 158, 255, 0.5) !important;
   }
   }
   
