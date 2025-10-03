@@ -859,6 +859,34 @@ class ModernPortfolio {
                 'products-title': 'Innovative Applications',
                 'products-description': 'We develop our own products with cutting-edge technology, creating solutions that revolutionize markets and generate real impact in the business world.',
                 
+                // Individual Products
+                'product1-title': 'GenFlow - Intelligent Automation',
+                'product1-desc': 'Revolutionary business automation platform with integrated AI. Optimizes processes, reduces costs by 60% and exponentially increases productivity.',
+                'product2-title': 'DataViz Pro - Business Intelligence',
+                'product2-desc': 'Complete BI suite with interactive dashboards, machine learning and predictive analytics. Transform data into winning strategic decisions.',
+                'product3-title': 'V4mpBot - Conversational AI',
+                'product3-desc': 'Automated customer service system with advanced natural language processing. Revolutionizes customer success with AI that truly understands.',
+                'product4-title': 'Security & Compliance',
+                'product4-desc': 'Comprehensive security audits, penetration testing, and compliance frameworks ensuring enterprise-grade protection.',
+                
+                // Product Features
+                'product1-feat1': 'Generative AI',
+                'product1-feat2': 'Intelligent Workflows',
+                'product1-feat3': 'Predictive Analytics',
+                'product1-feat4': 'Cloud Native',
+                'product2-feat1': 'Interactive Dashboards',
+                'product2-feat2': 'ML Predictions',
+                'product2-feat3': 'Real-time Analytics',
+                'product2-feat4': 'Custom Reports',
+                'product3-feat1': 'Advanced NLP',
+                'product3-feat2': 'Multi-channel',
+                'product3-feat3': 'Continuous Learning',
+                'product3-feat4': 'API Integrations',
+                'product4-feat1': 'Security Audits',
+                'product4-feat2': 'Penetration Testing',
+                'product4-feat3': 'Compliance Management',
+                'product4-feat4': 'Threat Monitoring',
+                
                 // About Section
                 'about-badge': 'About the Founder',
                 'about-title': 'Leading Innovation Through Code',
@@ -922,7 +950,15 @@ class ModernPortfolio {
                 'btn-portfolio': 'View Portfolio',
                 'btn-send': 'Send Message',
                 'btn-updates': 'Get Updates',
-                'btn-github': 'Follow on GitHub'
+                'btn-github': 'Follow on GitHub',
+                
+                // Footer
+                'footer-products-title': 'Our Products',
+                'footer-genflow': 'GenFlow AI',
+                'footer-dataviz': 'DataViz Pro',
+                'footer-v4mpbot': 'V4mpBot',
+                'footer-more': 'More Products',
+                'footer-company-title': 'Company'
             },
             pt: {
                 // Navigation
@@ -946,6 +982,34 @@ class ModernPortfolio {
                 'products-badge': 'Nossos Produtos',
                 'products-title': 'Aplicativos Inovadores',
                 'products-description': 'Desenvolvemos nossos próprios produtos com tecnologia de ponta, criando soluções que revolucionam mercados e geram impacto real no mundo dos negócios.',
+                
+                // Individual Products
+                'product1-title': 'GenFlow - Automação Inteligente',
+                'product1-desc': 'Plataforma revolucionária de automação empresarial com IA integrada. Otimiza processos, reduz custos em 60% e aumenta produtividade exponencialmente.',
+                'product2-title': 'DataViz Pro - Business Intelligence',
+                'product2-desc': 'Suite completa de BI com dashboards interativos, machine learning e análise preditiva. Transforme dados em decisões estratégicas vencedoras.',
+                'product3-title': 'V4mpBot - AI Conversacional',
+                'product3-desc': 'Sistema de atendimento automatizado com processamento de linguagem natural avançado. Revoluciona o customer success com IA que realmente entende.',
+                'product4-title': 'Segurança & Conformidade',
+                'product4-desc': 'Auditorias de segurança abrangentes, testes de penetração e estruturas de conformidade garantindo proteção de nível empresarial.',
+                
+                // Product Features
+                'product1-feat1': 'IA Generativa',
+                'product1-feat2': 'Workflows Inteligentes',
+                'product1-feat3': 'Analytics Preditivo',
+                'product1-feat4': 'Cloud Native',
+                'product2-feat1': 'Dashboards Interativos',
+                'product2-feat2': 'ML Predictions',
+                'product2-feat3': 'Real-time Analytics',
+                'product2-feat4': 'Custom Reports',
+                'product3-feat1': 'NLP Avançado',
+                'product3-feat2': 'Multi-channel',
+                'product3-feat3': 'Learning Contínuo',
+                'product3-feat4': 'API Integrations',
+                'product4-feat1': 'Auditorias de Segurança',
+                'product4-feat2': 'Testes de Penetração',
+                'product4-feat3': 'Gestão de Conformidade',
+                'product4-feat4': 'Monitoramento de Ameaças',
                 
                 // About Section
                 'about-badge': 'Sobre o Fundador',
@@ -1010,7 +1074,15 @@ class ModernPortfolio {
                 'btn-portfolio': 'Ver Portfólio',
                 'btn-send': 'Enviar Mensagem',
                 'btn-updates': 'Receber Atualizações',
-                'btn-github': 'Seguir no GitHub'
+                'btn-github': 'Seguir no GitHub',
+                
+                // Footer
+                'footer-products-title': 'Nossos Produtos',
+                'footer-genflow': 'GenFlow AI',
+                'footer-dataviz': 'DataViz Pro',
+                'footer-v4mpbot': 'V4mpBot',
+                'footer-more': 'Mais Produtos',
+                'footer-company-title': 'Empresa'
             }
         };
     }
