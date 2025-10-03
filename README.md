@@ -1,343 +1,240 @@
+# 🚀 Tiago Cardoso - CEO Portfolio
+
+> **Professional Portfolio Website** for Tiago Cardoso, CEO & Founder of Gennisys  
+> Modern, responsive, and installable as a Progressive Web App (PWA)
+
 <div align="center">
-
-<!-- PROFESSIONAL CEO HEADER WITH GRADIENT WAVES -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=120&section=header&animation=twinkling" width="100%"/>
-
-<!-- ANIMATED NAME AND CEO TITLE -->
-<div align="center" style="margin: 30px 0;">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=900&size=32&duration=2000&pause=1500&color=10B981&background=00000000&center=true&vCenter=true&width=600&height=50&lines=TIAGO+CARDOSO;GENNISYS+CEO+%26+FOUNDER" alt="Animated Name and Title"/>
-</div>
-
-<!-- ANIMATED SUBTITLE -->
-<div align="center" style="margin: 20px 0;">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=20&duration=2000&pause=1000&color=047857&background=00000000&center=true&vCenter=true&width=400&height=40&lines=✨+Tech+Leader+%26+Innovator;🔥+Full+Stack+Developer;🛡️+Security+Expert;⚡+Business+Automation;💡+Digital+Solutions" alt="Animated Roles"/>
-</div>
-
-<!-- GRADIENT SUBTITLE BADGE -->
-<div align="center" style="margin: 20px 0;">
-  <img src="https://img.shields.io/badge/%E2%9A%A1%20Building%20the%20Future%20in%20Technology%20%E2%9A%A1-10b981?style=for-the-badge&labelColor=1f2937&color=gradient&logo=rocket&logoColor=white" alt="Mission Statement"/>
-</div>
-
-<!-- CEO ICON WITH ROTATION EFFECT -->
-<div align="center" style="margin: 15px 0;">
-  <img src="https://img.shields.io/badge/%F0%9F%91%91%20CEO-10b981?style=for-the-badge&labelColor=1f2937&color=059669&animation=spin" alt="CEO Badge"/>
-  <img src="https://img.shields.io/badge/%F0%9F%92%BB%20Developer-059669?style=for-the-badge&labelColor=1f2937&color=047857" alt="Developer Badge"/>
-  <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Innovator-047857?style=for-the-badge&labelColor=1f2937&color=065f46" alt="Innovator Badge"/>
-</div>
-
-<!-- PROFESSIONAL BADGES -->
-<p align="center">
-  <img src="https://img.shields.io/badge/Role-CEO%20%26%20Founder-10b981?style=for-the-badge&logo=crown&logoColor=white&labelColor=1f2937" alt="CEO & Founder"/>
-  <img src="https://img.shields.io/badge/Focus-Innovation-059669?style=for-the-badge&logo=lightbulb&logoColor=white&labelColor=1f2937" alt="Innovation"/>
-  <img src="https://img.shields.io/badge/Experience-5%2B%20Years-047857?style=for-the-badge&logo=calendar&logoColor=white&labelColor=1f2937" alt="Experience"/>
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=v4mpw0l&label=Profile%20Views&color=10b981&style=for-the-badge" alt="Profile Views"/>
-  <img src="https://img.shields.io/github/followers/v4mpw0l?label=Followers&style=for-the-badge&color=059669&labelColor=1f2937" alt="Followers"/>
-</p>
-
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+  <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white"/>
 </div>
 
 ---
 
-<div align="center">
+## ✨ **Features**
 
-## 🚀 **Building the Future in Technology**
+### 🎨 **Design & UI**
+- **Gennisys-inspired** color palette (#4a9eff, #8b5cf6, #1a1a2e)
+- **Glassmorphism effects** with backdrop blur
+- **Smooth animations** and hover effects  
+- **Dark theme** with gradient backgrounds
+- **Responsive design** for all devices
+- **Animated particles** and floating elements
 
-*With vision and passion for innovation, I lead development of cutting-edge applications that inspire and deliver exceptional user experiences.*
+### 🌐 **Multilingual Support**
+- **English/Portuguese** language switcher 🇺🇸🇧🇷
+- **Complete translation** of all content
+- **Smart language detection** and persistence
 
-</div>
+### 📱 **Progressive Web App (PWA)**
+- **Installable** on mobile and desktop
+- **Offline functionality** with service worker
+- **Native app experience** when installed
+- **Custom install prompts** and notifications
+
+### 🔧 **Technical Stack**
+- **HTML5** - Semantic structure
+- **CSS3** - Modern styling with custom properties  
+- **Vanilla JavaScript** - Class-based architecture
+- **Service Worker** - PWA functionality
+- **Web Manifest** - App installation
 
 ---
 
-<div align="center">
+## 🏗️ **Project Structure**
 
-### 👨‍💼 **About Me**
-
-</div>
-
-```yaml
-Name: Tiago Cardoso
-Role: CEO, Founder & Full Stack Developer
-Company: Gennisys
-Location: San Diego, United States
-Mission: Creating impactful technology solutions
-Vision: Building tomorrow's digital experiences today
+```
+v4mpw0l_/
+├── index.html          # Main HTML structure
+├── style.css           # Complete CSS styling (2400+ lines)
+├── script.js           # JavaScript functionality (1000+ lines)
+├── manifest.json       # PWA manifest
+├── sw.js              # Service Worker for offline support
+└── README.md          # This documentation
 ```
 
-<div align="center">
+---
 
-### 🎯 **Core Expertise**
+## 🎯 **Sections**
 
-<table>
-<tr>
-<td align="center" width="25%">
-<img src="https://img.shields.io/badge/-Leadership-10b981?style=for-the-badge&logo=users&logoColor=white" /><br/>
-<b>Strategic Leadership</b><br/>
-<sub>Team management, vision setting, business strategy</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://img.shields.io/badge/-Full%20Stack-059669?style=for-the-badge&logo=code&logoColor=white" /><br/>
-<b>Full Stack Development</b><br/>
-<sub>Modern frameworks, scalable architecture</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://img.shields.io/badge/-Mobile%20Apps-047857?style=for-the-badge&logo=mobile&logoColor=white" /><br/>
-<b>Mobile Applications</b><br/>
-<sub>iOS, Android, cross-platform solutions</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://img.shields.io/badge/-Cybersecurity-065f46?style=for-the-badge&logo=shield&logoColor=white" /><br/>
-<b>Security Expert</b><br/>
-<sub>Penetration testing, security audits</sub>
-</td>
-</tr>
-</table>
+### 🏠 **Hero Section**
+- Professional introduction
+- Gradient animated text
+- **Centralized call-to-action buttons**
+- Company partnerships showcase  
+- Profile photo with **rotating square frame**
 
-</div>
+### 👨‍💼 **About Section**
+- Leadership expertise cards
+- Technical skills showcase
+- Technology stack display
+- Professional achievements
+
+### 🔮 **Vision Section**
+- Company mission and values
+- Innovation philosophy
+- Future roadmap
+
+### 🚀 **Products Section**
+- **GenFlow AI** - Intelligent automation platform
+- **DataViz Pro** - Business intelligence suite
+- **V4mpBot** - Advanced chatbot solution
+
+### 💼 **Portfolio Section**
+- Featured projects showcase
+- Live project links
+- Technology demonstrations
+
+### 📞 **Contact Section**
+- Multiple contact methods
+- Social media links
+- **Centralized company information**
+- Direct communication channels
+
+---
+
+## 🚀 **Getting Started**
+
+### **Local Development**
+```bash
+# Clone the repository
+git clone https://github.com/V4mpw0L/v4mpw0l_.git
+
+# Navigate to project
+cd v4mpw0l_
+
+# Start local server
+python3 -m http.server 8000
+
+# Open in browser
+open http://localhost:8000
+```
+
+### **GitHub Pages Deployment**
+1. Push to `main` branch
+2. Enable GitHub Pages in repository settings
+3. Select `main` branch as source
+4. Access via: `https://v4mpw0l.github.io/v4mpw0l_/`
+
+---
+
+## 📱 **PWA Installation**
+
+### **Mobile (iOS/Android)**
+1. Open website in Safari/Chrome
+2. Wait for install banner (5 seconds)
+3. Tap "Install" button
+4. App appears on home screen
+5. **Works offline!**
+
+### **Desktop (Chrome/Edge)**  
+1. Open website in browser
+2. Click install icon in address bar
+3. Confirm installation
+4. App opens in standalone window
+
+---
+
+## 🎨 **Customization**
+
+### **Colors (CSS Variables)**
+```css
+:root {
+  --accent: #4a9eff;      /* Primary blue */
+  --tertiary: #8b5cf6;    /* Secondary purple */
+  --background: #0a0a0f;   /* Dark background */
+  --surface: #1a1a2e;     /* Surface color */
+}
+```
+
+### **Language System**
+- Add translations in `script.js` → `translations` object
+- Use `data-translate="key"` attribute in HTML
+- Language preference stored in localStorage
+
+### **Content Updates**
+- **Profile image**: Update `src` in hero section
+- **Contact info**: Modify links in contact section
+- **Products**: Edit service cards content
+- **Social links**: Update footer social links
+
+---
+
+## 🔧 **Technical Details**
+
+### **Performance Optimizations**
+- **Lazy loading** for images
+- **Efficient animations** with RequestAnimationFrame
+- **Optimized particles** system
+- **Smart caching** with Service Worker
+
+### **Browser Support**
+- Chrome 80+ ✅
+- Firefox 75+ ✅  
+- Safari 13+ ✅
+- Edge 80+ ✅
+
+### **Mobile Optimization**
+- **Touch-friendly** interface
+- **Responsive breakpoints**
+- **Mobile-specific** animations  
+- **PWA install** prompts
+
+---
+
+## 📊 **Analytics & SEO**
+
+### **SEO Optimized**
+- Semantic HTML structure
+- Meta tags and Open Graph
+- Structured data (JSON-LD)
+- Optimized images with alt text
+
+### **Performance**
+- **Lighthouse Score**: 95+
+- **Core Web Vitals**: Optimized
+- **Mobile-first** approach
+- **Accessibility** compliant
+
+---
+
+## 🔒 **Security**
+
+- **HTTPS** ready
+- **Content Security Policy** compatible
+- **No external dependencies**
+- **Privacy-focused** design
+
+---
+
+## 🤝 **Contributing**
+
+This is a **private repository** for personal portfolio use.  
+For questions or collaboration, contact: **contact@v4mpw0l.dev**
+
+---
+
+## 📄 **License**
+
+**© 2025 Tiago Cardoso. All rights reserved.**  
+Proprietary mobile application portfolio.
+
+---
+
+## 🚀 **Live Demo**
+
+**🌐 Website**: [v4mpw0l.github.io/v4mpw0l_](https://v4mpw0l.github.io/v4mpw0l_/)  
+**📱 Install as App**: Available on all devices  
+**🔗 Repository**: Private (GitHub Pages deployment)
 
 ---
 
 <div align="center">
 
-### 🛠️ **Technology Stack**
+**Built with ❤️ using modern web technologies**  
+**Designed for the digital economy • Mobile-first • PWA-ready**
 
 </div>
-
-<div align="center">
-
-#### **Frontend Technologies**
-<p>
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
-<img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D" alt="Vue.js"/>
-<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
-<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"/>
-</p>
-
-#### **Backend & Infrastructure**
-<p>
-<img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js"/>
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
-<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
-</p>
-
-#### **Mobile Development**
-<p>
-<img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"/>
-<img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native"/>
-<img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" alt="iOS"/>
-<img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"/>
-</p>
-
-#### **Security & DevOps**
-<p>
-<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/>
-<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS"/>
-<img src="https://img.shields.io/badge/Security-FF0000?style=for-the-badge&logo=security&logoColor=white" alt="Security"/>
-<img src="https://img.shields.io/badge/Automation-10b981?style=for-the-badge&logo=robot&logoColor=white" alt="Automation"/>
-</p>
-
-</div>
-
----
-
-<div align="center">
-
-### 📊 **GitHub Analytics**
-
-</div>
-
-<div align="center">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=v4mpw0l&show_icons=true&theme=dark&bg_color=0f172a&title_color=10b981&icon_color=059669&text_color=e2e8f0&border_color=374151&hide_border=true" alt="GitHub Stats"/>
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=v4mpw0l&layout=compact&theme=dark&bg_color=0f172a&title_color=10b981&text_color=e2e8f0&border_color=374151&hide_border=true" alt="Top Languages"/>
-
-</div>
-
-<div align="center">
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=v4mpw0l&theme=dark&background=0f172a&stroke=374151&ring=10b981&fire=059669&currStreakNum=e2e8f0&sideNums=e2e8f0&currStreakLabel=10b981&sideLabels=94a3b8&dates=94a3b8&hide_border=true" alt="GitHub Streak"/>
-
-</div>
-
----
-
-<div align="center">
-
-### 🎯 **Professional Services**
-
-</div>
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center" width="50%">
-
-#### 📱 **Mobile Application Development**
-- iOS & Android Native Development
-- Cross-platform Flutter Solutions
-- App Store Optimization
-- Modern UI/UX Design
-- Performance Optimization
-
-</td>
-<td align="center" width="50%">
-
-#### 🌐 **Web Development**
-- Full-stack Applications
-- React & Vue.js Expertise
-- Node.js Backend Solutions
-- Cloud Deployment & Scaling
-- API Development & Integration
-
-</td>
-</tr>
-<tr>
-<td align="center" width="50%">
-
-#### 🛡️ **Cybersecurity Services**
-- Security Audits & Assessments
-- Penetration Testing
-- Vulnerability Analysis
-- Secure Code Review
-- Compliance Consulting
-
-</td>
-<td align="center" width="50%">
-
-#### 🤖 **Business Automation**
-- Process Automation Solutions
-- Workflow Optimization
-- API Integration Services
-- Custom Tool Development
-- Efficiency Enhancement
-
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-<div align="center">
-
-### 🌟 **Featured Projects**
-
-</div>
-
-<div align="center">
-
-<table>
-<tr>
-<td width="50%" align="center">
-
-**🚀 Enterprise Mobile App**
-<br/>
-<img src="https://img.shields.io/badge/Flutter-Production-10b981?style=for-the-badge&logo=flutter&logoColor=white" />
-<br/>
-<sub>Cross-platform business application with advanced features</sub>
-
-</td>
-<td width="50%" align="center">
-
-**🔒 Security Platform**
-<br/>
-<img src="https://img.shields.io/badge/Cybersecurity-Active-059669?style=for-the-badge&logo=shield&logoColor=white" />
-<br/>
-<sub>Comprehensive security testing and monitoring solution</sub>
-
-</td>
-</tr>
-<tr>
-<td width="50%" align="center">
-
-**🌐 SaaS Platform**
-<br/>
-<img src="https://img.shields.io/badge/React-Deployed-047857?style=for-the-badge&logo=react&logoColor=white" />
-<br/>
-<sub>Scalable web application serving thousands of users</sub>
-
-</td>
-<td width="50%" align="center">
-
-**⚡ Automation Suite**
-<br/>
-<img src="https://img.shields.io/badge/Python-Optimized-065f46?style=for-the-badge&logo=python&logoColor=white" />
-<br/>
-<sub>Business process automation increasing efficiency by 300%</sub>
-
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-<div align="center">
-
-### 📈 **Business Impact**
-
-</div>
-
-<div align="center">
-
-| Metric | Achievement |
-|--------|-------------|
-| 📱 **Apps Developed** | 50+ Professional Applications |
-| 🔒 **Security Audits** | 100+ Successful Penetration Tests |
-| 🚀 **Projects Delivered** | 200+ Satisfied Clients |
-| ⚡ **Process Optimization** | 300% Average Efficiency Increase |
-| 🌍 **Global Reach** | Applications Used Worldwide |
-
-</div>
-
----
-
-<div align="center">
-
-### 🤝 **Let's Connect**
-
-</div>
-
-<div align="center">
-
-<p>
-<a href="mailto:tiagonzk@gmail.com">
-<img src="https://img.shields.io/badge/Email-10b981?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-</a>
-<a href="https://linkedin.com/in/v4mpw0l">
-<img src="https://img.shields.io/badge/LinkedIn-059669?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-</a>
-<a href="https://t.me/v4mpw0l">
-<img src="https://img.shields.io/badge/Telegram-047857?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
-</a>
-<a href="https://github.com/v4mpw0l">
-<img src="https://img.shields.io/badge/GitHub-065f46?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-</a>
-</p>
-
-### 💼 **Ready to Build Something Amazing?**
-
-*Let's connect and discuss how we can bring your vision to life with cutting-edge technology.*
-
-<img src="https://img.shields.io/badge/Available%20for-New%20Projects-10b981?style=for-the-badge&logo=handshake&logoColor=white" alt="Available for Projects"/>
-
-</div>
-
----
-
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=120&section=footer&animation=twinkling" width="100%"/>
-
-**"Building the future, one solution at a time."**
-
-<sub>© 2025 Tiago Cardoso. All rights reserved.</sub>
 
 </div>

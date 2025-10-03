@@ -663,6 +663,7 @@ body {
   gap: var(--space-4);
   margin-bottom: var(--space-12);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hero-partners {
@@ -1730,6 +1731,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  align-items: center;
+  text-align: center;
 }
 
 .footer-logo {
@@ -1747,6 +1750,7 @@ section {
 .footer-social {
   display: flex;
   gap: var(--space-4);
+  justify-content: center;
 }
 
 .social-link {
