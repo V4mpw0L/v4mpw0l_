@@ -772,6 +772,33 @@ class ModernPortfolio {
                 'products-title': 'Innovative Applications',
                 'products-description': 'We develop our own products with cutting-edge technology, creating solutions that revolutionize markets and generate real impact in the business world.',
                 
+                // About Section
+                'about-badge': 'About the Founder',
+                'about-title': 'Leading Innovation Through Code',
+                'about-description': 'With a deep understanding of both business strategy and technical execution, I bridge the gap between vision and reality in the digital space.',
+                
+                // About Cards
+                'about-card1-title': 'Strategic Leadership',
+                'about-card1-desc': 'Directing proprietary roadmaps and enforcing disciplined delivery for every product launch across our portfolio.',
+                'about-card1-feat1': 'Product Governance',
+                'about-card1-feat2': 'Team Orchestration',
+                'about-card1-feat3': 'Market Positioning',
+                
+                'about-card2-title': 'Technical Excellence',
+                'about-card2-desc': 'Leading engineering stewardship with resilient infrastructure and continuous innovation standards.',
+                'about-card2-feat1': 'Full-Stack Architecture',
+                'about-card2-feat2': 'AI-First Development',
+                'about-card2-feat3': 'Cloud-Native Solutions',
+                
+                'about-card3-title': 'Global Vision',
+                'about-card3-desc': 'Activating strategic alliances that extend distribution and stakeholder value across international markets.',
+                'about-card3-feat1': 'Market Expansion',
+                'about-card3-feat2': 'Partnership Development',
+                'about-card3-feat3': 'Brand Growth',
+                
+                // Tech Stack
+                'tech-stack-title': 'Core Technologies',
+                
                 // Contact Section
                 'contact-badge': 'Stay Connected',
                 'contact-title': 'Follow Our Innovation Journey',
@@ -829,6 +856,33 @@ class ModernPortfolio {
                 'products-badge': 'Nossos Produtos',
                 'products-title': 'Aplicativos Inovadores',
                 'products-description': 'Desenvolvemos nossos próprios produtos com tecnologia de ponta, criando soluções que revolucionam mercados e geram impacto real no mundo dos negócios.',
+                
+                // About Section
+                'about-badge': 'Sobre o Fundador',
+                'about-title': 'Liderando Inovação Através do Código',
+                'about-description': 'Com profundo entendimento tanto de estratégia de negócios quanto execução técnica, faço a ponte entre visão e realidade no espaço digital.',
+                
+                // About Cards
+                'about-card1-title': 'Liderança Estratégica',
+                'about-card1-desc': 'Direcionando roadmaps proprietários e garantindo entrega disciplinada para cada lançamento de produto em nosso portfólio.',
+                'about-card1-feat1': 'Governança de Produto',
+                'about-card1-feat2': 'Orquestração de Equipe',
+                'about-card1-feat3': 'Posicionamento de Mercado',
+                
+                'about-card2-title': 'Excelência Técnica',
+                'about-card2-desc': 'Liderando gestão de engenharia com infraestrutura resiliente e padrões de inovação contínua.',
+                'about-card2-feat1': 'Arquitetura Full-Stack',
+                'about-card2-feat2': 'Desenvolvimento IA-First',
+                'about-card2-feat3': 'Soluções Cloud-Native',
+                
+                'about-card3-title': 'Visão Global',
+                'about-card3-desc': 'Ativando alianças estratégicas que expandem distribuição e valor para stakeholders em mercados internacionais.',
+                'about-card3-feat1': 'Expansão de Mercado',
+                'about-card3-feat2': 'Desenvolvimento de Parcerias',
+                'about-card3-feat3': 'Crescimento de Marca',
+                
+                // Tech Stack
+                'tech-stack-title': 'Tecnologias Principais',
                 
                 // Contact Section
                 'contact-badge': 'Fique Conectado',
