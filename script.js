@@ -194,14 +194,8 @@ class ModernPortfolio {
             DOM.navbar.classList.remove('scrolled');
         }
 
-        // Hide/show navbar on scroll (not on mobile)
-        if (window.innerWidth > 768) {
-            if (scrollY > state.lastScrollY && scrollY > 100) {
-                DOM.navbar.style.transform = 'translateY(-100%)';
-            } else {
-                DOM.navbar.style.transform = 'translateY(0)';
-            }
-        }
+        // Always keep navbar visible
+        DOM.navbar.style.transform = 'translateY(0)';
 
         // Update back to top button
         this.updateBackToTop(scrollY);
@@ -763,11 +757,11 @@ class ModernPortfolio {
                 'nav-contact': 'Contact',
                 
                 // Hero Section
-                'hero-badge': 'CEO & Founder',
-                'hero-title-1': 'Building the Future',
-                'hero-title-2': 'of Technology',
-                'hero-subtitle': 'One Innovation at a Time',
-                'hero-description': 'Leading <strong>cutting-edge development</strong> with proprietary products that transform industries. From AI automation to business intelligence platforms.',
+                'hero-badge': 'Independent App Studio',
+                'hero-title-1': 'Designing Proprietary',
+                'hero-title-2': 'Mobile Applications',
+                'hero-subtitle': 'for the digital economy',
+                'hero-description': 'CEO & Founder of <strong>Gennisys</strong> — Building AI-first experiences, scalable cloud infrastructure, and innovative mobile solutions that define the future of digital interaction.',
                 
                 // Vision
                 'vision-badge': 'Our Vision',
@@ -778,14 +772,40 @@ class ModernPortfolio {
                 'products-title': 'Innovative Applications',
                 'products-description': 'We develop our own products with cutting-edge technology, creating solutions that revolutionize markets and generate real impact in the business world.',
                 
-                // Contact
-                'contact-badge': 'Get in Touch',
-                'contact-title': 'Let\'s Create Something Amazing',
+                // Contact Section
+                'contact-badge': 'Stay Connected',
+                'contact-title': 'Follow Our Innovation Journey',
+                'contact-description': 'Stay updated with our latest products and technological breakthroughs. Join our community of innovators and tech enthusiasts.',
+                
+                // Contact Methods
+                'email-desc': 'Business inquiries and partnerships',
+                'telegram-desc': 'Quick questions and consultations',
+                'linkedin-desc': 'Professional networking',
+                'github-desc': 'Open source contributions',
+                
+                // Company Status
+                'status-building': 'Building innovative products',
+                
+                // Company Showcase
+                'showcase-innovation-title': 'Innovation First',
+                'showcase-innovation-desc': 'Every product we create pushes the boundaries of what\'s possible in technology.',
+                'showcase-global-title': 'Global Impact',
+                'showcase-global-desc': 'Our applications are designed to solve real-world problems on a global scale.',
+                'showcase-ai-title': 'AI-Powered',
+                'showcase-ai-desc': 'Artificial Intelligence is at the core of everything we build and deploy.',
+                'showcase-security-title': 'Enterprise Security',
+                'showcase-security-desc': 'Bank-level security and compliance built into every product from day one.',
+                
+                // Direct Contact
+                'direct-contact-title': 'Want to know more about our products?',
+                'direct-contact-desc': 'Follow our journey and get updates on new releases.',
                 
                 // Buttons
                 'btn-contact': 'Get in Touch',
                 'btn-portfolio': 'View Portfolio',
-                'btn-send': 'Send Message'
+                'btn-send': 'Send Message',
+                'btn-updates': 'Get Updates',
+                'btn-github': 'Follow on GitHub'
             },
             pt: {
                 // Navigation
@@ -795,11 +815,11 @@ class ModernPortfolio {
                 'nav-contact': 'Contato',
                 
                 // Hero Section
-                'hero-badge': 'CEO & Fundador',
-                'hero-title-1': 'Construindo o Futuro',
-                'hero-title-2': 'da Tecnologia',
-                'hero-subtitle': 'Uma Inovação por Vez',
-                'hero-description': 'Liderando <strong>desenvolvimento de ponta</strong> com produtos proprietários que transformam indústrias. Da automação com IA às plataformas de business intelligence.',
+                'hero-badge': 'Estúdio Independente de Apps',
+                'hero-title-1': 'Projetando Aplicativos',
+                'hero-title-2': 'Mobile Proprietários',
+                'hero-subtitle': 'para a economia digital',
+                'hero-description': 'CEO & Fundador da <strong>Gennisys</strong> — Construindo experiências com IA, infraestrutura de nuvem escalável e soluções móveis inovadoras que definem o futuro da interação digital.',
                 
                 // Vision
                 'vision-badge': 'Nossa Visão',
@@ -810,14 +830,40 @@ class ModernPortfolio {
                 'products-title': 'Aplicativos Inovadores',
                 'products-description': 'Desenvolvemos nossos próprios produtos com tecnologia de ponta, criando soluções que revolucionam mercados e geram impacto real no mundo dos negócios.',
                 
-                // Contact
-                'contact-badge': 'Entre em Contato',
-                'contact-title': 'Vamos Criar Algo Incrível',
+                // Contact Section
+                'contact-badge': 'Fique Conectado',
+                'contact-title': 'Acompanhe Nossa Jornada de Inovação',
+                'contact-description': 'Mantenha-se atualizado com nossos produtos mais recentes e avanços tecnológicos. Junte-se à nossa comunidade de inovadores e entusiastas da tecnologia.',
+                
+                // Contact Methods
+                'email-desc': 'Consultas comerciais e parcerias',
+                'telegram-desc': 'Perguntas rápidas e consultorias',
+                'linkedin-desc': 'Networking profissional',
+                'github-desc': 'Contribuições open source',
+                
+                // Company Status
+                'status-building': 'Construindo produtos inovadores',
+                
+                // Company Showcase
+                'showcase-innovation-title': 'Inovação em Primeiro Lugar',
+                'showcase-innovation-desc': 'Cada produto que criamos expande os limites do que é possível na tecnologia.',
+                'showcase-global-title': 'Impacto Global',
+                'showcase-global-desc': 'Nossos aplicativos são projetados para resolver problemas do mundo real em escala global.',
+                'showcase-ai-title': 'Inteligência Artificial',
+                'showcase-ai-desc': 'A Inteligência Artificial está no centro de tudo que construímos e implantamos.',
+                'showcase-security-title': 'Segurança Empresarial',
+                'showcase-security-desc': 'Segurança e conformidade de nível bancário integradas em cada produto desde o primeiro dia.',
+                
+                // Direct Contact
+                'direct-contact-title': 'Quer saber mais sobre nossos produtos?',
+                'direct-contact-desc': 'Acompanhe nossa jornada e receba atualizações sobre novos lançamentos.',
                 
                 // Buttons
                 'btn-contact': 'Entre em Contato',
                 'btn-portfolio': 'Ver Portfólio',
-                'btn-send': 'Enviar Mensagem'
+                'btn-send': 'Enviar Mensagem',
+                'btn-updates': 'Receber Atualizações',
+                'btn-github': 'Seguir no GitHub'
             }
         };
     }
