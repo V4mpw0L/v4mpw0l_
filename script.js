@@ -1087,7 +1087,7 @@ class ModernPortfolio {
                 'footer-dataviz': 'DataViz Pro',
                 'footer-v4mpbot': 'V4mpBot',
                 'footer-more': 'Mais Produtos',
-                'footer-company-title': 'Empresa',
+                                'footer-company-title': 'Empresa',
                 
                 // Statistics
                 'stat-apps': 'Apps em Produção',
