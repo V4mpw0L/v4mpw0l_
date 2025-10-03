@@ -154,7 +154,7 @@ body {
     linear-gradient(var(--accent) 1px, transparent 1px),
     linear-gradient(90deg, var(--accent) 1px, transparent 1px);
   background-size: 100px 100px;
-  animation: gridMove 20s linear infinite;
+  animation: gridMove 10s linear infinite;
   z-index: -1;
 }
 
@@ -1852,7 +1852,7 @@ section {
 }
 
 @keyframes gridMove {
-  0% { transform: translate(0, 0); }
+  0% { transform: translate(-100px, -100px); }
   100% { transform: translate(100px, 100px); }
 }
 

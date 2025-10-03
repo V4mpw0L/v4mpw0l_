@@ -59,6 +59,7 @@ class ModernPortfolio {
         this.setupEventListeners();
         this.initAnimations();
         this.createParticles();
+        this.createLoadingParticles();
         this.handleLoadingScreen();
         
         console.log('🚀 Gennisys-inspired portfolio initialized successfully');
@@ -664,6 +665,30 @@ class ModernPortfolio {
             particle.style.height = size + 'px';
             
             DOM.particlesContainer.appendChild(particle);
+        }
+    }
+
+    createLoadingParticles() {
+        const loadingParticlesContainer = document.getElementById('loading-particles');
+        if (!loadingParticlesContainer) return;
+
+        const particleCount = window.innerWidth > 768 ? 40 : 20;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random properties
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 8) + 's';
+            
+            // Random size variation
+            const size = 1 + Math.random() * 2.5;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            loadingParticlesContainer.appendChild(particle);
         }
     }
 
