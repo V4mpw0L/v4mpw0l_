@@ -1,700 +1,1234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tiago Cardoso - CEO & Founder | Gennisys</title>
-  
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#4a9eff">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="TC Portfolio">
-  
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNncmFkaWVudDApIi8+Cjx0ZXh0IHg9IjE2IiB5PSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+VEM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MCIgeDE9IjAiIHkxPSIwIiB4Mj0iMzIiIHkyPSIzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNEE5RUZGIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhCNUNGNiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=">
-  <meta name="description" content="CEO & Founder of Gennisys - Designing proprietary mobile applications for the digital economy. Full Stack Developer specializing in AI-first experiences and scalable solutions."/>
-  <meta name="keywords" content="CEO, Founder, Full Stack Developer, Mobile Apps, AI, Gennisys, Digital Solutions, React, Node.js"/>
-  <meta name="author" content="Tiago Cardoso"/>
-  <meta name="theme-color" content="#1a1a2e"/>
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tiagocardoso.dev">
-  <meta property="og:title" content="Tiago Cardoso | CEO & Founder - Gennisys">
-  <meta property="og:description" content="Designing proprietary mobile applications for the digital economy">
-  <meta property="og:image" content="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tiago Cardoso - CEO & Founder | Gennisys</title>
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://tiagocardoso.dev">
-  <meta property="twitter:title" content="Tiago Cardoso | CEO & Founder - Gennisys">
-  <meta property="twitter:description" content="Designing proprietary mobile applications for the digital economy">
-  <meta property="twitter:image" content="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png">
-  
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Tiago Cardoso",
-    "jobTitle": "CEO & Founder",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Gennisys"
-    },
-    "url": "https://gennisya.com",
-    "sameAs": [
-      "https://github.com/v4mpw0l",
-      "https://linkedin.com/in/v4mpw0l"
-    ]
-  }
-  </script>
-</head>
-<body>
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="loading-screen">
-    <div class="bg-particles loading-particles" id="loading-particles"></div>
-    <div class="loading-content">
-      <div class="loading-logo">
-        <div class="logo-animation">
-          <div class="loading-avatar">TC</div>
-          <div class="loading-pulse"></div>
-        </div>
-      </div>
-      <div class="loading-text">Initializing...</div>
-      <div class="loading-bar">
-        <div class="loading-progress"></div>
-      </div>
-    </div>
-  </div>
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#4a9eff" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="TC Portfolio" />
 
-  <!-- Background Elements -->
-  <div class="bg-gradient"></div>
-  <div class="bg-mesh"></div>
-  <div class="bg-particles" id="particles"></div>
+        <!-- Favicons -->
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNncmFkaWVudDApIi8+Cjx0ZXh0IHg9IjE2IiB5PSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ3aGl0ZSI+VEM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MCIgeDE9IjAiIHkxPSIwIiB4Mj0iMzIiIHkyPSIzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNEE5RUZGIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhCNUNGNiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo="
+        />
+        <meta
+            name="description"
+            content="CEO & Founder of Gennisys - Designing proprietary mobile applications for the digital economy. Full Stack Developer specializing in AI-first experiences and scalable solutions."
+        />
+        <meta
+            name="keywords"
+            content="CEO, Founder, Full Stack Developer, Mobile Apps, AI, Gennisys, Digital Solutions, React, Node.js"
+        />
+        <meta name="author" content="Tiago Cardoso" />
+        <meta name="theme-color" content="#1a1a2e" />
 
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <div class="logo-wrapper">
-          <span class="logo-icon">TC</span>
-          <div class="logo-text">
-            <span class="logo-name">Tiago Cardoso</span>
-            <span class="logo-title">CEO & Founder</span>
-          </div>
-        </div>
-      </div>
-      <div class="nav-menu" id="nav-menu">
-        <a href="#home" class="nav-link active">
-          <span class="nav-text">Home</span>
-          <div class="nav-indicator"></div>
-        </a>
-        <a href="#about" class="nav-link">
-          <span class="nav-text" data-translate="nav-about">About</span>
-          <div class="nav-indicator"></div>
-        </a>
-        <a href="#vision" class="nav-link">
-          <span class="nav-text">Vision</span>
-          <div class="nav-indicator"></div>
-        </a>
-        <a href="#services" class="nav-link">
-          <span class="nav-text" data-translate="nav-produtos">Products</span>
-          <div class="nav-indicator"></div>
-        </a>
-        <a href="#portfolio" class="nav-link">
-          <span class="nav-text" data-translate="nav-portfolio">Portfolio</span>
-          <div class="nav-indicator"></div>
-        </a>
-        <a href="#contact" class="nav-link">
-          <span class="nav-text" data-translate="nav-contact">Contact</span>
-          <div class="nav-indicator"></div>
-        </a>
-        <a href="mailto:info@gennisys.com" class="nav-link nav-contact-btn">
-          <span class="nav-text" data-translate="btn-contact">Get in Touch</span>
-          <div class="nav-indicator"></div>
-        </a>
-      </div>
-      <div class="nav-actions">
-        <div class="language-selector">
-          <button class="lang-btn active" data-lang="en" title="English">
-            <span class="flag">🇺🇸</span>
-          </button>
-          <button class="lang-btn" data-lang="pt" title="Português">
-            <span class="flag">🇧🇷</span>
-          </button>
-        </div>
-      </div>
-      <div class="nav-toggle" id="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </nav>
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://tiagocardoso.dev" />
+        <meta
+            property="og:title"
+            content="Tiago Cardoso | CEO & Founder - Gennisys"
+        />
+        <meta
+            property="og:description"
+            content="Designing proprietary mobile applications for the digital economy"
+        />
+        <meta
+            property="og:image"
+            content="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png"
+        />
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-bg">
-      <div class="hero-grid"></div>
-    </div>
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <div class="badge-icon">✨</div>
-          <span class="badge-text" data-translate="hero-badge">Independent App Studio</span>
-        </div>
-        
-        <div class="gennisys-badge">
-          <a href="https://www.gennisys.com" target="_blank" rel="noopener" class="gennisys-hero-link">Gennisys</a>
-        </div>
-        
-        <h1 class="hero-title">
-          <span class="title-line" data-translate="hero-title-1">Designing Proprietary</span>
-          <span class="title-line gradient-text" data-translate="hero-title-2">Mobile Applications</span>
-          <span class="title-subtitle" data-translate="hero-subtitle">for the digital economy</span>
-        </h1>
-        <p class="hero-description" data-translate="hero-description">
-          CEO & Founder of <strong>Gennisys</strong> — Building AI-first experiences, 
-          scalable cloud infrastructure, and innovative mobile solutions that define 
-          the future of digital interaction.
-        </p>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-number">
-              <span class="counter" data-target="25">25</span>
-              <span class="stat-plus">+</span>
-            </div>
-            <div class="stat-label" data-translate="stat-apps">Apps in Production</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">
-              <span class="counter" data-target="50">50</span>
-              <span class="stat-plus">K+</span>
-            </div>
-            <div class="stat-label" data-translate="stat-users">Active Users</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">
-              <span class="counter" data-target="5">5</span>
-              <span class="stat-plus">+</span>
-            </div>
-            <div class="stat-label" data-translate="stat-years">Years Leading</div>
-          </div>
-        </div>
-        <div class="hero-buttons">
-          <a href="#portfolio" class="btn btn-primary">
-            <span data-translate="btn-portfolio">Explore Portfolio</span>
-            <div class="btn-icon">→</div>
-          </a>
-          <a href="#vision" class="btn btn-secondary">
-            <span>Our Vision</span>
-            <div class="btn-icon">↗</div>
-          </a>
-        </div>
-        <div class="hero-partners">
-          <span class="partners-label" data-translate="trusted-by">Trusted by</span>
-          <div class="partners-logos">
-            <div class="partner-logo">Google</div>
-            <div class="partner-logo">Microsoft</div>
-            <div class="partner-logo">Samsung</div>
-            <div class="partner-logo">Netflix</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="profile-container">
-          <div class="profile-frame">
-            <img src="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png" alt="Tiago Cardoso - CEO & Founder" class="profile-image">
-            <div class="profile-overlay"></div>
-          </div>
-          <div class="profile-decoration">
-            <div class="decoration-ring"></div>
-            <div class="decoration-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <div class="decoration-grid"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-text">Scroll to explore</div>
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://tiagocardoso.dev" />
+        <meta
+            property="twitter:title"
+            content="Tiago Cardoso | CEO & Founder - Gennisys"
+        />
+        <meta
+            property="twitter:description"
+            content="Designing proprietary mobile applications for the digital economy"
+        />
+        <meta
+            property="twitter:image"
+            content="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png"
+        />
 
-  <!-- Vision Section -->
-  <section id="vision" class="vision">
-    <div class="container">
-      <div class="vision-content">
-        <div class="vision-quote">
-          <div class="quote-icon">"</div>
-          <blockquote>
-            We design, validate, and scale the digital products we believe must exist—precise, responsive, and built for leadership.
-          </blockquote>
-          <div class="quote-author">
-            <strong>Vision 2025</strong>
-            <span>— Gennisys Manifesto</span>
-          </div>
-        </div>
-        <div class="vision-metrics">
-          <div class="metric-card">
-            <div class="metric-icon">🚀</div>
-            <div class="metric-value">100+</div>
-            <div class="metric-label">Products Launched</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-icon">🌍</div>
-            <div class="metric-value">15+</div>
-            <div class="metric-label">Global Markets</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-icon">⚡</div>
-            <div class="metric-value">99.9%</div>
-            <div class="metric-label">Uptime Achieved</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="icon"
+            href="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge" data-translate="about-badge">About the Founder</div>
-        <h2 class="section-title" data-translate="about-title">Leading Innovation Through Code</h2>
-        <p class="section-description" data-translate="about-description">
-          With a deep understanding of both business strategy and technical execution, 
-          I bridge the gap between vision and reality in the digital space.
-        </p>
-      </div>
-      <div class="about-content">
-        <div class="about-grid">
-          <div class="about-card">
-            <div class="card-icon">
-              <div class="icon-wrapper">
-                <span class="icon">�</span>
-              </div>
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Tiago Cardoso",
+                "jobTitle": "CEO & Founder",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Gennisys"
+                },
+                "url": "https://gennisya.com",
+                "sameAs": [
+                    "https://github.com/v4mpw0l",
+                    "https://linkedin.com/in/v4mpw0l"
+                ]
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div
+                class="bg-particles loading-particles"
+                id="loading-particles"
+            ></div>
+            <div class="loading-content">
+                <div class="loading-logo">
+                    <div class="logo-animation">
+                        <div class="loading-avatar">TC</div>
+                        <div class="loading-pulse"></div>
+                    </div>
+                </div>
+                <div class="loading-text">Initializing...</div>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
             </div>
-            <div class="card-content">
-              <h3 data-translate="about-card1-title">Strategic Leadership</h3>
-              <p data-translate="about-card1-desc">Directing proprietary roadmaps and enforcing disciplined delivery for every product launch across our portfolio.</p>
-              <ul class="feature-list">
-                <li data-translate="about-card1-feat1">Product Governance</li>
-                <li data-translate="about-card1-feat2">Team Orchestration</li>
-                <li data-translate="about-card1-feat3">Market Positioning</li>
-              </ul>
-            </div>
-          </div>
-          <div class="about-card">
-            <div class="card-icon">
-              <div class="icon-wrapper">
-                <span class="icon">⚡</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <h3 data-translate="about-card2-title">Technical Excellence</h3>
-              <p data-translate="about-card2-desc">Leading engineering stewardship with resilient infrastructure and continuous innovation standards.</p>
-              <ul class="feature-list">
-                <li data-translate="about-card2-feat1">Full-Stack Architecture</li>
-                <li data-translate="about-card2-feat2">AI-First Development</li>
-                <li data-translate="about-card2-feat3">Cloud-Native Solutions</li>
-              </ul>
-            </div>
-          </div>
-          <div class="about-card">
-            <div class="card-icon">
-              <div class="icon-wrapper">
-                <span class="icon">🌐</span>
-              </div>
-            </div>
-            <div class="card-content">
-              <h3 data-translate="about-card3-title">Global Vision</h3>
-              <p data-translate="about-card3-desc">Activating strategic alliances that extend distribution and stakeholder value across international markets.</p>
-              <ul class="feature-list">
-                <li data-translate="about-card3-feat1">Market Expansion</li>
-                <li data-translate="about-card3-feat2">Partnership Development</li>
-                <li data-translate="about-card3-feat3">Brand Growth</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="tech-stack">
-          <h3 class="stack-title" data-translate="tech-stack-title">Core Technologies</h3>
-          <div class="tech-categories">
-            <div class="tech-category">
-              <h4>Frontend</h4>
-              <div class="tech-tags">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Vue.js</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">Next.js</span>
-                <span class="tech-tag">Tailwind</span>
-              </div>
-            </div>
-            <div class="tech-category">
-              <h4>Backend</h4>
-              <div class="tech-tags">
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">Redis</span>
-                <span class="tech-tag">Docker</span>
-              </div>
-            </div>
-            <div class="tech-category">
-              <h4>Mobile</h4>
-              <div class="tech-tags">
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">React Native</span>
-                <span class="tech-tag">iOS</span>
-                <span class="tech-tag">Android</span>
-                <span class="tech-tag">PWA</span>
-              </div>
-            </div>
-            <div class="tech-category">
-              <h4>Cloud & AI</h4>
-              <div class="tech-tags">
-                <span class="tech-tag">AWS</span>
-                <span class="tech-tag">OpenAI</span>
-                <span class="tech-tag">TensorFlow</span>
-                <span class="tech-tag">Kubernetes</span>
-                <span class="tech-tag">Serverless</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="services">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge" data-translate="products-badge">Nossos Produtos</div>
-        <h2 class="section-title" data-translate="products-title">Aplicativos <span class="gradient-text">Inovadores</span></h2>
-        <p class="section-description" data-translate="products-description">
-          Desenvolvemos nossos próprios produtos com tecnologia de ponta, criando soluções 
-          que revolucionam mercados e geram impacto real no mundo dos negócios.
-        </p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-number">01</div>
-          <div class="service-icon">
-            <span>�</span>
-          </div>
-          <h3 data-translate="product1-title">GenFlow - Automação Inteligente</h3>
-          <p data-translate="product1-desc">Plataforma revolucionária de automação empresarial com IA integrada. Otimiza processos, reduz custos em 60% e aumenta produtividade exponencialmente.</p>
-          <div class="service-features">
-            <div class="feature" data-translate="product1-feat1">IA Generativa</div>
-            <div class="feature" data-translate="product1-feat2">Workflows Inteligentes</div>
-            <div class="feature" data-translate="product1-feat3">Analytics Preditivo</div>
-            <div class="feature" data-translate="product1-feat4">Cloud Native</div>
-          </div>
-          <div class="service-tech">
-            <span>React</span>
-            <span>Python</span>
-            <span>TensorFlow</span>
-            <span>AWS</span>
-          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-number">02</div>
-          <div class="service-icon">
-            <span>📊</span>
-          </div>
-          <h3 data-translate="product2-title">DataViz Pro - Business Intelligence</h3>
-          <p data-translate="product2-desc">Suite completa de BI com dashboards interativos, machine learning e análise preditiva. Transforme dados em decisões estratégicas vencedoras.</p>
-          <div class="service-features">
-            <div class="feature" data-translate="product2-feat1">Dashboards Interativos</div>
-            <div class="feature" data-translate="product2-feat2">ML Predictions</div>
-            <div class="feature" data-translate="product2-feat3">Real-time Analytics</div>
-            <div class="feature" data-translate="product2-feat4">Custom Reports</div>
-          </div>
-          <div class="service-tech">
-            <span>Vue.js</span>
-            <span>D3.js</span>
-            <span>Python</span>
-            <span>PostgreSQL</span>
-          </div>
-        </div>
+        <!-- Background Elements -->
+        <div class="bg-gradient"></div>
+        <div class="bg-mesh"></div>
+        <div class="bg-particles" id="particles"></div>
 
-        <div class="service-card">
-          <div class="service-number">03</div>
-          <div class="service-icon">
-            <span>🤖</span>
-          </div>
-          <h3 data-translate="product3-title">V4mpBot - AI Conversacional</h3>
-          <p data-translate="product3-desc">Sistema de atendimento automatizado com processamento de linguagem natural avançado. Revoluciona o customer success com IA que realmente entende.</p>
-          <div class="service-features">
-            <div class="feature" data-translate="product3-feat1">NLP Avançado</div>
-            <div class="feature" data-translate="product3-feat2">Multi-channel</div>
-            <div class="feature" data-translate="product3-feat3">Learning Contínuo</div>
-            <div class="feature" data-translate="product3-feat4">API Integrations</div>
-          </div>
-          <div class="service-tech">
-            <span>OpenAI</span>
-            <span>TensorFlow</span>
-            <span>PyTorch</span>
-            <span>Hugging Face</span>
-          </div>
-        </div>
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="logo-wrapper">
+                        <span class="logo-icon">TC</span>
+                        <div class="logo-text">
+                            <span class="logo-name">Tiago Cardoso</span>
+                            <span class="logo-title">CEO & Founder</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link active">
+                        <span class="nav-text">Home</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#about" class="nav-link">
+                        <span class="nav-text" data-translate="nav-about"
+                            >About</span
+                        >
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#vision" class="nav-link">
+                        <span class="nav-text">Vision</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#services" class="nav-link">
+                        <span class="nav-text" data-translate="nav-produtos"
+                            >Products</span
+                        >
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#apps" class="nav-link">
+                        <span class="nav-text" data-translate="nav-portfolio"
+                            >Portfolio</span
+                        >
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <span class="nav-text" data-translate="nav-contact"
+                            >Contact</span
+                        >
+                        <div class="nav-indicator"></div>
+                    </a>
+                    <a
+                        href="mailto:info@gennisys.com"
+                        class="nav-link nav-contact-btn"
+                    >
+                        <span class="nav-text" data-translate="btn-contact"
+                            >Get in Touch</span
+                        >
+                        <div class="nav-indicator"></div>
+                    </a>
+                </div>
+                <div class="nav-actions">
+                    <div class="language-selector">
+                        <button
+                            class="lang-btn active"
+                            data-lang="en"
+                            title="English"
+                        >
+                            <span class="flag">🇺🇸</span>
+                        </button>
+                        <button
+                            class="lang-btn"
+                            data-lang="pt"
+                            title="Português"
+                        >
+                            <span class="flag">🇧🇷</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
 
-        <div class="service-card">
-          <div class="service-number">04</div>
-          <div class="service-icon">
-            <span>🛡️</span>
-          </div>
-          <h3 data-translate="product4-title">Security & Compliance</h3>
-          <p data-translate="product4-desc">Comprehensive security audits, penetration testing, and compliance frameworks ensuring enterprise-grade protection.</p>
-          <div class="service-features">
-            <div class="feature" data-translate="product4-feat1">Security Audits</div>
-            <div class="feature" data-translate="product4-feat2">Penetration Testing</div>
-            <div class="feature" data-translate="product4-feat3">Compliance Management</div>
-            <div class="feature" data-translate="product4-feat4">Threat Monitoring</div>
-          </div>
-          <div class="service-tech">
-            <span>OWASP</span>
-            <span>SOC 2</span>
-            <span>GDPR</span>
-            <span>ISO 27001</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-bg">
+                <div class="hero-grid"></div>
+            </div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <div class="badge-icon">✨</div>
+                        <span class="badge-text" data-translate="hero-badge"
+                            >Independent App Studio</span
+                        >
+                    </div>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="portfolio">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">Our Applications</div>
-        <h2 class="section-title">Proprietary Portfolio</h2>
-        <p class="section-description">
-          Explore our suite of applications engineered entirely in-house, 
-          each designed to solve real-world problems with innovative solutions.
-        </p>
-      </div>
-      <div class="portfolio-showcase">
-        <div class="showcase-tabs">
-          <button class="tab-button active" data-category="all">All Applications</button>
-          <button class="tab-button" data-category="mobile">Mobile</button>
-          <button class="tab-button" data-category="web">Web</button>
-          <button class="tab-button" data-category="ai">AI-Powered</button>
-        </div>
-        <div id="portfolio-grid" class="portfolio-grid">
-          <!-- Projects will be loaded dynamically -->
-        </div>
-      </div>
-    </div>
-  </section>
+                    <div class="gennisys-badge">
+                        <a
+                            href="https://www.gennisys.com"
+                            target="_blank"
+                            rel="noopener"
+                            class="gennisys-hero-link"
+                            >Gennisys</a
+                        >
+                    </div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="section-badge" data-translate="contact-badge">Stay Connected</div>
-          <h2 class="section-title" data-translate="contact-title">Follow Our Innovation Journey</h2>
-          <p class="section-description" data-translate="contact-description">
-            Stay updated with our latest products and technological breakthroughs. 
-            Join our community of innovators and tech enthusiasts.
-          </p>
-          
-          <div class="contact-methods">
-            <div class="contact-method">
-              <div class="method-icon">
-                <span>📧</span>
-              </div>
-              <div class="method-details">
-                <h4>Email</h4>
-                <a href="mailto:info@gennisys.com" rel="noopener">info@gennisys.com</a>
-                <p data-translate="email-desc">Business inquiries and partnerships</p>
-              </div>
+                    <h1 class="hero-title">
+                        <span class="title-line" data-translate="hero-title-1"
+                            >Designing Proprietary</span
+                        >
+                        <span
+                            class="title-line gradient-text"
+                            data-translate="hero-title-2"
+                            >Mobile Applications</span
+                        >
+                        <span
+                            class="title-subtitle"
+                            data-translate="hero-subtitle"
+                            >for the digital economy</span
+                        >
+                    </h1>
+                    <p
+                        class="hero-description"
+                        data-translate="hero-description"
+                    >
+                        CEO & Founder of <strong>Gennisys</strong> — Building
+                        AI-first experiences, scalable cloud infrastructure, and
+                        innovative mobile solutions that define the future of
+                        digital interaction.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">
+                                <span class="counter" data-target="12">12</span>
+                                <span class="stat-plus">+</span>
+                            </div>
+                            <div class="stat-label" data-translate="stat-apps">
+                                Products on Roadmap
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">
+                                <span class="counter" data-target="100"
+                                    >100</span
+                                >
+                                <span class="stat-plus">K+</span>
+                            </div>
+                            <div class="stat-label" data-translate="stat-users">
+                                Users We Plan to Reach
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">
+                                <span class="counter" data-target="4">4</span>
+                                <span class="stat-plus"></span>
+                            </div>
+                            <div class="stat-label" data-translate="stat-years">
+                                Markets Entering
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#apps" class="btn btn-primary">
+                            <span data-translate="btn-portfolio"
+                                >Explore Portfolio</span
+                            >
+                            <div class="btn-icon">→</div>
+                        </a>
+                        <a href="#vision" class="btn btn-secondary">
+                            <span>Our Vision</span>
+                            <div class="btn-icon">↗</div>
+                        </a>
+                    </div>
+                    <div class="hero-partners">
+                        <span class="partners-label" data-translate="trusted-by"
+                            >Trusted by</span
+                        >
+                        <div class="partners-logos">
+                            <div class="partner-logo">Google</div>
+                            <div class="partner-logo">Microsoft</div>
+                            <div class="partner-logo">Samsung</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="profile-container">
+                        <div class="profile-frame">
+                            <img
+                                src="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png"
+                                alt="Tiago Cardoso - CEO & Founder"
+                                class="profile-image"
+                            />
+                            <div class="profile-overlay"></div>
+                        </div>
+                        <div class="profile-decoration">
+                            <div class="decoration-ring"></div>
+                            <div class="decoration-dots">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <div class="decoration-grid"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="contact-method">
-              <div class="method-icon">
-                <span>💬</span>
-              </div>
-              <div class="method-details">
-                <h4>Telegram</h4>
-                <a href="https://t.me/v4mpw0l" target="_blank" rel="noopener">@v4mpw0l</a>
-                <p data-translate="telegram-desc">Quick questions and consultations</p>
-              </div>
+            <div class="scroll-indicator">
+                <div class="scroll-text">Scroll to explore</div>
+                <div class="scroll-arrow"></div>
             </div>
-            
-            <div class="contact-method">
-              <div class="method-icon">
-                <span>🔗</span>
-              </div>
-              <div class="method-details">
-                <h4>LinkedIn</h4>
-                <a href="https://linkedin.com/in/v4mpw0l" target="_blank" rel="noopener">linkedin.com/in/v4mpw0l</a>
-                <p data-translate="linkedin-desc">Professional networking</p>
-              </div>
-            </div>
+        </section>
 
-            <div class="contact-method">
-              <div class="method-icon">
-                <span>💻</span>
-              </div>
-              <div class="method-details">
-                <h4>GitHub</h4>
-                <a href="https://github.com/v4mpw0l" target="_blank" rel="noopener">github.com/v4mpw0l</a>
-                <p data-translate="github-desc">Open source contributions</p>
-              </div>
+        <!-- Vision Section -->
+        <section id="vision" class="vision">
+            <div class="container">
+                <div class="vision-content">
+                    <div class="vision-quote">
+                        <div class="quote-icon">"</div>
+                        <blockquote>
+                            We design, validate, and scale the digital products
+                            we believe must exist—precise, responsive, and built
+                            for leadership.
+                        </blockquote>
+                        <div class="quote-author">
+                            <strong>Vision 2025</strong>
+                            <span>— Gennisys Manifesto</span>
+                        </div>
+                    </div>
+                    <div class="vision-metrics">
+                        <div class="metric-card">
+                            <div class="metric-icon">🚀</div>
+                            <div class="metric-value">100+</div>
+                            <div class="metric-label">Products Launched</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">🌍</div>
+                            <div class="metric-value">15+</div>
+                            <div class="metric-label">Global Markets</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">⚡</div>
+                            <div class="metric-value">99.9%</div>
+                            <div class="metric-label">Uptime Achieved</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="company-status">
-            <div class="status-indicator"></div>
-            <span data-translate="status-building">Building innovative products</span>
-          </div>
-        </div>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge" data-translate="about-badge">
+                        About the Founder
+                    </div>
+                    <h2 class="section-title" data-translate="about-title">
+                        Leading Innovation Through Code
+                    </h2>
+                    <p
+                        class="section-description"
+                        data-translate="about-description"
+                    >
+                        With a deep understanding of both business strategy and
+                        technical execution, I bridge the gap between vision and
+                        reality in the digital space.
+                    </p>
+                </div>
+                <div class="about-content">
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <div class="card-icon">
+                                <div class="icon-wrapper">
+                                    <span class="icon">�</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 data-translate="about-card1-title">
+                                    Strategic Leadership
+                                </h3>
+                                <p data-translate="about-card1-desc">
+                                    Directing proprietary roadmaps and enforcing
+                                    disciplined delivery for every product
+                                    launch across our portfolio.
+                                </p>
+                                <ul class="feature-list">
+                                    <li data-translate="about-card1-feat1">
+                                        Product Governance
+                                    </li>
+                                    <li data-translate="about-card1-feat2">
+                                        Team Orchestration
+                                    </li>
+                                    <li data-translate="about-card1-feat3">
+                                        Market Positioning
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="about-card">
+                            <div class="card-icon">
+                                <div class="icon-wrapper">
+                                    <span class="icon">⚡</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 data-translate="about-card2-title">
+                                    Technical Excellence
+                                </h3>
+                                <p data-translate="about-card2-desc">
+                                    Leading engineering stewardship with
+                                    resilient infrastructure and continuous
+                                    innovation standards.
+                                </p>
+                                <ul class="feature-list">
+                                    <li data-translate="about-card2-feat1">
+                                        Full-Stack Architecture
+                                    </li>
+                                    <li data-translate="about-card2-feat2">
+                                        AI-First Development
+                                    </li>
+                                    <li data-translate="about-card2-feat3">
+                                        Cloud-Native Solutions
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="about-card">
+                            <div class="card-icon">
+                                <div class="icon-wrapper">
+                                    <span class="icon">🌐</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 data-translate="about-card3-title">
+                                    Global Vision
+                                </h3>
+                                <p data-translate="about-card3-desc">
+                                    Activating strategic alliances that extend
+                                    distribution and stakeholder value across
+                                    international markets.
+                                </p>
+                                <ul class="feature-list">
+                                    <li data-translate="about-card3-feat1">
+                                        Market Expansion
+                                    </li>
+                                    <li data-translate="about-card3-feat2">
+                                        Partnership Development
+                                    </li>
+                                    <li data-translate="about-card3-feat3">
+                                        Brand Growth
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <h3
+                            class="stack-title"
+                            data-translate="tech-stack-title"
+                        >
+                            Core Technologies
+                        </h3>
+                        <div class="tech-categories">
+                            <div class="tech-category">
+                                <h4>Frontend</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">TypeScript</span>
+                                    <span class="tech-tag">Next.js</span>
+                                    <span class="tech-tag">Tailwind</span>
+                                </div>
+                            </div>
+                            <div class="tech-category">
+                                <h4>Backend</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">Docker</span>
+                                </div>
+                            </div>
+                            <div class="tech-category">
+                                <h4>Mobile</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">Flutter</span>
+                                    <span class="tech-tag">React Native</span>
+                                    <span class="tech-tag">iOS</span>
+                                    <span class="tech-tag">Android</span>
+                                    <span class="tech-tag">PWA</span>
+                                </div>
+                            </div>
+                            <div class="tech-category">
+                                <h4>Cloud & AI</h4>
+                                <div class="tech-tags">
+                                    <span class="tech-tag">AWS</span>
+                                    <span class="tech-tag">OpenAI</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">Kubernetes</span>
+                                    <span class="tech-tag">Serverless</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="company-info-wrapper">
-          <div class="company-showcase">
-            <div class="showcase-item">
-              <div class="showcase-icon">🚀</div>
-              <h4 data-translate="showcase-innovation-title">Innovation First</h4>
-              <p data-translate="showcase-innovation-desc">Every product we create pushes the boundaries of what's possible in technology.</p>
-            </div>
-            
-            <div class="showcase-item">
-              <div class="showcase-icon">🌐</div>
-              <h4 data-translate="showcase-global-title">Global Impact</h4>
-              <p data-translate="showcase-global-desc">Our applications are designed to solve real-world problems on a global scale.</p>
-            </div>
-            
-            <div class="showcase-item">
-              <div class="showcase-icon">🤖</div>
-              <h4 data-translate="showcase-ai-title">AI-Powered</h4>
-              <p data-translate="showcase-ai-desc">Artificial Intelligence is at the core of everything we build and deploy.</p>
-            </div>
-            
-            <div class="showcase-item">
-              <div class="showcase-icon">🔒</div>
-              <h4 data-translate="showcase-security-title">Enterprise Security</h4>
-              <p data-translate="showcase-security-desc">Bank-level security and compliance built into every product from day one.</p>
-            </div>
-          </div>
-          
-          <div class="direct-contact">
-            <h4 data-translate="direct-contact-title">Want to know more about our products?</h4>
-            <p data-translate="direct-contact-desc">Follow our journey and get updates on new releases.</p>
-            <div class="contact-actions">
-              <a href="mailto:info@gennisys.com" class="btn btn-primary">
-                <span data-translate="btn-updates">Get Updates</span>
-                <span class="btn-icon">→</span>
-              </a>
-              <a href="https://github.com/v4mpw0l" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                <span data-translate="btn-github">Follow on GitHub</span>
-                <span class="btn-icon">↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge" data-translate="products-badge">
+                        Nossos Produtos
+                    </div>
+                    <h2 class="section-title" data-translate="products-title">
+                        Aplicativos
+                        <span class="gradient-text">Inovadores</span>
+                    </h2>
+                    <p
+                        class="section-description"
+                        data-translate="products-description"
+                    >
+                        Desenvolvemos nossos próprios produtos com tecnologia de
+                        ponta, criando soluções que revolucionam mercados e
+                        geram impacto real no mundo dos negócios.
+                    </p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-number">01</div>
+                        <div class="service-icon">
+                            <span>�</span>
+                        </div>
+                        <h3 data-translate="product1-title">
+                            GenFlow - Automação Inteligente
+                        </h3>
+                        <p data-translate="product1-desc">
+                            Plataforma revolucionária de automação empresarial
+                            com IA integrada. Otimiza processos, reduz custos em
+                            60% e aumenta produtividade exponencialmente.
+                        </p>
+                        <div class="service-features">
+                            <div
+                                class="feature"
+                                data-translate="product1-feat1"
+                            >
+                                IA Generativa
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product1-feat2"
+                            >
+                                Workflows Inteligentes
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product1-feat3"
+                            >
+                                Analytics Preditivo
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product1-feat4"
+                            >
+                                Cloud Native
+                            </div>
+                        </div>
+                        <div class="service-tech">
+                            <span>React</span>
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="logo-icon">TC</span>
-            <div class="logo-text">
-              <span class="logo-name">Tiago Cardoso</span>
-              <span class="logo-title">CEO & Founder</span>
+                    <div class="service-card">
+                        <div class="service-number">02</div>
+                        <div class="service-icon">
+                            <span>📊</span>
+                        </div>
+                        <h3 data-translate="product2-title">
+                            DataViz Pro - Business Intelligence
+                        </h3>
+                        <p data-translate="product2-desc">
+                            Suite completa de BI com dashboards interativos,
+                            machine learning e análise preditiva. Transforme
+                            dados em decisões estratégicas vencedoras.
+                        </p>
+                        <div class="service-features">
+                            <div
+                                class="feature"
+                                data-translate="product2-feat1"
+                            >
+                                Dashboards Interativos
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product2-feat2"
+                            >
+                                ML Predictions
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product2-feat3"
+                            >
+                                Real-time Analytics
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product2-feat4"
+                            >
+                                Custom Reports
+                            </div>
+                        </div>
+                        <div class="service-tech">
+                            <span>Vue.js</span>
+                            <span>D3.js</span>
+                            <span>Python</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-number">03</div>
+                        <div class="service-icon">
+                            <span>🤖</span>
+                        </div>
+                        <h3 data-translate="product3-title">
+                            V4mpBot - AI Conversacional
+                        </h3>
+                        <p data-translate="product3-desc">
+                            Sistema de atendimento automatizado com
+                            processamento de linguagem natural avançado.
+                            Revoluciona o customer success com IA que realmente
+                            entende.
+                        </p>
+                        <div class="service-features">
+                            <div
+                                class="feature"
+                                data-translate="product3-feat1"
+                            >
+                                NLP Avançado
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product3-feat2"
+                            >
+                                Multi-channel
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product3-feat3"
+                            >
+                                Learning Contínuo
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product3-feat4"
+                            >
+                                API Integrations
+                            </div>
+                        </div>
+                        <div class="service-tech">
+                            <span>OpenAI</span>
+                            <span>TensorFlow</span>
+                            <span>PyTorch</span>
+                            <span>Hugging Face</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-number">04</div>
+                        <div class="service-icon">
+                            <span>🛡️</span>
+                        </div>
+                        <h3 data-translate="product4-title">
+                            Security & Compliance
+                        </h3>
+                        <p data-translate="product4-desc">
+                            Comprehensive security audits, penetration testing,
+                            and compliance frameworks ensuring enterprise-grade
+                            protection.
+                        </p>
+                        <div class="service-features">
+                            <div
+                                class="feature"
+                                data-translate="product4-feat1"
+                            >
+                                Security Audits
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product4-feat2"
+                            >
+                                Penetration Testing
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product4-feat3"
+                            >
+                                Compliance Management
+                            </div>
+                            <div
+                                class="feature"
+                                data-translate="product4-feat4"
+                            >
+                                Threat Monitoring
+                            </div>
+                        </div>
+                        <div class="service-tech">
+                            <span>OWASP</span>
+                            <span>SOC 2</span>
+                            <span>GDPR</span>
+                            <span>ISO 27001</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <p class="footer-description">
-            Designing proprietary mobile applications for the digital economy. 
-            Building the future, one solution at a time.
-          </p>
-          <div class="footer-social">
-            <a href="https://linkedin.com/in/v4mpw0l" target="_blank" rel="noopener" class="social-link">
-              <span class="social-icon">in</span>
-            </a>
-            <a href="https://github.com/v4mpw0l" target="_blank" rel="noopener" class="social-link">
-              <span class="social-icon">gh</span>
-            </a>
-            <a href="https://t.me/v4mpw0l" target="_blank" rel="noopener" class="social-link">
-              <span class="social-icon">tg</span>
-            </a>
-          </div>
-        </div>
-        
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Navigation</h4>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#vision">Vision</a></li>
-              <li><a href="#services">Produtos</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-column">
-            <h4 data-translate="footer-products-title">Nossos Produtos</h4>
-            <ul>
-              <li><a href="#services" data-translate="footer-genflow">GenFlow AI</a></li>
-              <li><a href="#services" data-translate="footer-dataviz">DataViz Pro</a></li>
-              <li><a href="#services" data-translate="footer-v4mpbot">V4mpBot</a></li>
-              <li><a href="#services" data-translate="footer-more">Mais Produtos</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-column">
-            <h4 data-translate="footer-company-title">Company</h4>
-            <ul>
-              <li><a href="https://gennisys.com" target="_blank" rel="noopener">Gennisys</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="mailto:info@gennisys.com">Careers</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div class="footer-copyright">
-          <p>&copy; 2025 Tiago Cardoso. All rights reserved.</p>
-          <p>Proprietary mobile application portfolio.</p>
-        </div>
-        <div class="footer-legal">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+        </section>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
-    <span class="back-to-top-icon">↑</span>
-  </button>
+        <!-- Apps Section -->
+        <section id="apps" class="section section-solutions">
+            <div class="card solutions-card tilt" data-reveal>
+                <div class="section-header">
+                    <span class="section-eyebrow" data-key="apps_badge"
+                        >Gennisys Portfolio</span
+                    >
+                    <h2 data-key="apps_title">Our Applications</h2>
+                    <p data-key="apps_subtitle">
+                        Explore the proprietary applications engineered entirely
+                        in-house.
+                    </p>
+                </div>
+                <div class="apps-grid">
+                    <a
+                        class="app-item tilt"
+                        data-reveal
+                        href="#"
+                        data-app-url="https://v4mpw0l.github.io/GenCalc/"
+                        data-app-target="new"
+                    >
+                        <div class="app-header">
+                            <div class="app-icon">🧮</div>
+                            <div>
+                                <h3 data-key="app_calculator_title">GenCalc</h3>
+                                <p data-key="app_calculator_desc">
+                                    Advanced calculator with scientific
+                                    functions and audit-ready history tracking.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span>Web</span>
+                            <span>Scientific</span>
+                            <span>History</span>
+                        </div>
+                    </a>
+                    <a
+                        class="app-item tilt"
+                        data-reveal
+                        href="#"
+                        data-app-url="https://v4mpw0l.github.io/BudgetBox/"
+                        data-app-target="new"
+                    >
+                        <div class="app-header">
+                            <div class="app-icon">💰</div>
+                            <div>
+                                <h3 data-key="app_calendar_title">BudgetBox</h3>
+                                <p data-key="app_calendar_desc">
+                                    Smart financial manager to track expenses,
+                                    set budgets, and achieve your financial
+                                    goals.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span>Finance</span>
+                            <span>Budget</span>
+                            <span>Analytics</span>
+                        </div>
+                    </a>
+                    <a
+                        class="app-item tilt"
+                        data-reveal
+                        href="#"
+                        data-app-url="https://v4mpw0l.github.io/FazendaRPG/"
+                        data-app-target="new"
+                    >
+                        <div class="app-header">
+                            <div class="app-icon">🌾</div>
+                            <div>
+                                <h3 data-key="app_maps_title">FazendaRPG</h3>
+                                <p data-key="app_maps_desc">
+                                    Immersive farming RPG game where you build
+                                    and manage your own virtual farm.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span>RPG</span>
+                            <span>Farming</span>
+                            <span>Simulation</span>
+                        </div>
+                    </a>
+                    <a
+                        class="app-item tilt"
+                        data-reveal
+                        href="#"
+                        data-app-url="https://v4mpw0l.github.io/hacker0S/"
+                        data-app-target="new"
+                    >
+                        <div class="app-header">
+                            <div class="app-icon">💻</div>
+                            <div>
+                                <h3 data-key="app_games_title">Hacker0s</h3>
+                                <p data-key="app_games_desc">
+                                    Interactive hacking simulation tool with
+                                    realistic terminal experience and
+                                    cybersecurity challenges.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span>Terminal</span>
+                            <span>Hacking</span>
+                            <span>Security</span>
+                        </div>
+                    </a>
+                    <a
+                        class="app-item tilt"
+                        data-reveal
+                        href="#"
+                        data-app-url="https://v4mpw0l.github.io/packetclickermmo/"
+                        data-app-target="new"
+                    >
+                        <div class="app-header">
+                            <div class="app-icon">📦</div>
+                            <div>
+                                <h3 data-key="app_utilities_title">
+                                    PacketClicker
+                                </h3>
+                                <p data-key="app_utilities_desc">
+                                    Addictive incremental clicker game where you
+                                    collect packets and upgrade your network
+                                    infrastructure.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span>Clicker</span>
+                            <span>Incremental</span>
+                            <span>Network</span>
+                        </div>
+                    </a>
+                    <a
+                        class="app-item tilt"
+                        data-reveal
+                        href="#"
+                        data-app-url="http://passmap.app/"
+                        data-app-target="new"
+                    >
+                        <div class="app-header">
+                            <div class="app-icon">🔐</div>
+                            <div>
+                                <h3 data-key="app_music_title">PassMap</h3>
+                                <p data-key="app_music_desc">
+                                    Secure password and address management tool
+                                    to organize your digital life safely.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="app-tags">
+                            <span>Security</span>
+                            <span>Password</span>
+                            <span>Manager</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
-</body>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div
+                            class="section-badge"
+                            data-translate="contact-badge"
+                        >
+                            Stay Connected
+                        </div>
+                        <h2
+                            class="section-title"
+                            data-translate="contact-title"
+                        >
+                            Follow Our Innovation Journey
+                        </h2>
+                        <p
+                            class="section-description"
+                            data-translate="contact-description"
+                        >
+                            Stay updated with our latest products and
+                            technological breakthroughs. Join our community of
+                            innovators and tech enthusiasts.
+                        </p>
+
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <span>📧</span>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <a
+                                        href="mailto:info@gennisys.com"
+                                        rel="noopener"
+                                        >info@gennisys.com</a
+                                    >
+                                    <p data-translate="email-desc">
+                                        Business inquiries and partnerships
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <span>💬</span>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Telegram</h4>
+                                    <a
+                                        href="https://t.me/v4mpw0l"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >@v4mpw0l</a
+                                    >
+                                    <p data-translate="telegram-desc">
+                                        Quick questions and consultations
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <span>🔗</span>
+                                </div>
+                                <div class="method-details">
+                                    <h4>LinkedIn</h4>
+                                    <a
+                                        href="https://linkedin.com/in/v4mpw0l"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >linkedin.com/in/v4mpw0l</a
+                                    >
+                                    <p data-translate="linkedin-desc">
+                                        Professional networking
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <span>💻</span>
+                                </div>
+                                <div class="method-details">
+                                    <h4>GitHub</h4>
+                                    <a
+                                        href="https://github.com/v4mpw0l"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >github.com/v4mpw0l</a
+                                    >
+                                    <p data-translate="github-desc">
+                                        Open source contributions
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="company-status">
+                            <div class="status-indicator"></div>
+                            <span data-translate="status-building"
+                                >Building innovative products</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="company-info-wrapper">
+                        <div class="company-showcase">
+                            <div class="showcase-item">
+                                <div class="showcase-icon">🚀</div>
+                                <h4 data-translate="showcase-innovation-title">
+                                    Innovation First
+                                </h4>
+                                <p data-translate="showcase-innovation-desc">
+                                    Every product we create pushes the
+                                    boundaries of what's possible in technology.
+                                </p>
+                            </div>
+
+                            <div class="showcase-item">
+                                <div class="showcase-icon">🌐</div>
+                                <h4 data-translate="showcase-global-title">
+                                    Global Impact
+                                </h4>
+                                <p data-translate="showcase-global-desc">
+                                    Our applications are designed to solve
+                                    real-world problems on a global scale.
+                                </p>
+                            </div>
+
+                            <div class="showcase-item">
+                                <div class="showcase-icon">🤖</div>
+                                <h4 data-translate="showcase-ai-title">
+                                    AI-Powered
+                                </h4>
+                                <p data-translate="showcase-ai-desc">
+                                    Artificial Intelligence is at the core of
+                                    everything we build and deploy.
+                                </p>
+                            </div>
+
+                            <div class="showcase-item">
+                                <div class="showcase-icon">🔒</div>
+                                <h4 data-translate="showcase-security-title">
+                                    Enterprise Security
+                                </h4>
+                                <p data-translate="showcase-security-desc">
+                                    Bank-level security and compliance built
+                                    into every product from day one.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="direct-contact">
+                            <h4 data-translate="direct-contact-title">
+                                Want to know more about our products?
+                            </h4>
+                            <p data-translate="direct-contact-desc">
+                                Follow our journey and get updates on new
+                                releases.
+                            </p>
+                            <div class="contact-actions">
+                                <a
+                                    href="mailto:info@gennisys.com"
+                                    class="btn btn-primary"
+                                >
+                                    <span data-translate="btn-updates"
+                                        >Get Updates</span
+                                    >
+                                    <span class="btn-icon">→</span>
+                                </a>
+                                <a
+                                    href="https://github.com/v4mpw0l"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn btn-secondary"
+                                >
+                                    <span data-translate="btn-github"
+                                        >Follow on GitHub</span
+                                    >
+                                    <span class="btn-icon">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <span class="logo-icon">TC</span>
+                            <div class="logo-text">
+                                <span class="logo-name">Tiago Cardoso</span>
+                                <span class="logo-title">CEO & Founder</span>
+                            </div>
+                        </div>
+                        <p class="footer-description">
+                            Designing proprietary mobile applications for the
+                            digital economy. Building the future, one solution
+                            at a time.
+                        </p>
+                        <div class="footer-social">
+                            <a
+                                href="https://linkedin.com/in/v4mpw0l"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-link"
+                            >
+                                <span class="social-icon">in</span>
+                            </a>
+                            <a
+                                href="https://github.com/v4mpw0l"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-link"
+                            >
+                                <span class="social-icon">gh</span>
+                            </a>
+                            <a
+                                href="https://t.me/v4mpw0l"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-link"
+                            >
+                                <span class="social-icon">tg</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Navigation</h4>
+                            <ul>
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#vision">Vision</a></li>
+                                <li><a href="#services">Produtos</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4 data-translate="footer-products-title">
+                                Nossos Produtos
+                            </h4>
+                            <ul>
+                                <li>
+                                    <a
+                                        href="#services"
+                                        data-translate="footer-genflow"
+                                        >GenFlow AI</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#services"
+                                        data-translate="footer-dataviz"
+                                        >DataViz Pro</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#services"
+                                        data-translate="footer-v4mpbot"
+                                        >V4mpBot</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#services"
+                                        data-translate="footer-more"
+                                        >Mais Produtos</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4 data-translate="footer-company-title">
+                                Company
+                            </h4>
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://gennisys.com"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >Gennisys</a
+                                    >
+                                </li>
+                                <li><a href="#apps">Portfolio</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                                <li>
+                                    <a href="mailto:info@gennisys.com"
+                                        >Careers</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        <p>&copy; 2025 Tiago Cardoso. All rights reserved.</p>
+                        <p>Proprietary mobile application portfolio.</p>
+                    </div>
+                    <div class="footer-legal">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+            <span class="back-to-top-icon">↑</span>
+        </button>
+
+        <!-- Scripts -->
+        <script src="script.js"></script>
+    </body>
 </html>
