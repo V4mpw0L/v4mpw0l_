@@ -123,6 +123,17 @@
   box-sizing: border-box;
 }
 
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 *::before,
 *::after {
   box-sizing: border-box;
@@ -132,6 +143,12 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -144,6 +161,7 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  will-change: scroll-position;
 }
 
 /* ===============================================
@@ -161,7 +179,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: all var(--transition-slow);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .loading-screen::before {
@@ -171,13 +189,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image:
     linear-gradient(var(--accent) 1px, transparent 1px),
     linear-gradient(90deg, var(--accent) 1px, transparent 1px);
   background-size: 100px 100px;
-  animation: gridMove 10s linear infinite;
+  animation: gridMove 20s linear infinite;
   z-index: -1;
+  will-change: transform;
 }
 
 .loading-screen.hidden {
@@ -206,8 +225,9 @@ body {
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--text-accent);
-  animation: rotate 1s linear infinite;
+  animation: rotate 0.8s linear infinite;
   margin: 0 auto;
+  will-change: transform;
 }
 
 .loading-text {
@@ -215,7 +235,7 @@ body {
   font-size: 1.125rem;
   font-weight: 500;
   margin-bottom: var(--space-6);
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
 .loading-bar {
@@ -231,7 +251,8 @@ body {
   height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--tertiary));
   border-radius: var(--radius-full);
-  animation: loading 2s ease-in-out infinite;
+  transition: width 0.1s ease-out;
+  will-change: width;
 }
 
 /* ===============================================
@@ -287,6 +308,9 @@ body {
   border-radius: var(--radius-full);
   animation: float 20s infinite linear;
   opacity: 0.6;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* ===============================================
@@ -603,6 +627,7 @@ body {
 
 .hero-content {
   animation: slideInLeft 1s ease-out;
+  will-change: transform, opacity;
 }
 
 .hero-badge {
@@ -833,6 +858,7 @@ body {
   justify-content: center;
   align-items: center;
   animation: slideInRight 1s ease-out;
+  will-change: transform, opacity;
 }
 
 .profile-container {
@@ -896,6 +922,8 @@ body {
   border: 2px solid var(--tertiary);
   border-radius: 12px;
   animation: rotate 15s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .decoration-dots {
@@ -948,6 +976,7 @@ body {
   align-items: center;
   gap: var(--space-2);
   animation: bounce 2s infinite;
+  will-change: transform;
 }
 
 .scroll-text {
@@ -2018,8 +2047,12 @@ section {
    =============================================== */
 
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
 }
 
 @keyframes pulse {
@@ -2058,10 +2091,10 @@ section {
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+  0% { transform: translate3d(0, 100vh, 0) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
   90% { opacity: 1; }
-  100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+  100% { transform: translate3d(100px, -100px, 0) rotate(360deg); opacity: 0; }
 }
 
 @keyframes slideInLeft {

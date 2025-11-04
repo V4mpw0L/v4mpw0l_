@@ -94,8 +94,19 @@
                 ]
             }
         </script>
+
+        <!-- Force scroll to top on page load -->
+        <script>
+            // Prevent scroll restoration
+            if ("scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+            }
+            // Force scroll to top immediately
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+        </script>
     </head>
-    <body>
+    <body style="overflow-x: hidden">
         <!-- Loading Screen -->
         <div id="loading-screen" class="loading-screen">
             <div
@@ -178,15 +189,11 @@
                 </div>
                 <div class="nav-actions">
                     <div class="language-selector">
-                        <button
-                            class="lang-btn active"
-                            data-lang="en"
-                            title="English"
-                        >
-                            <span class="flag">🇺🇸</span>
+                        <button class="lang-btn" data-lang="en" title="English">
+                            EN
                         </button>
                         <button
-                            class="lang-btn"
+                            class="lang-btn active"
                             data-lang="pt"
                             title="Português"
                         >

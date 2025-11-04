@@ -51,6 +51,13 @@ const state = {
 
 class ModernPortfolio {
   constructor() {
+    // Force scroll to top on page load
+    window.scrollTo(0, 0);
+    // Also set scroll position immediately
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
     this.init();
   }
 
@@ -119,21 +126,21 @@ class ModernPortfolio {
   handleLoadingScreen() {
     if (!DOM.loadingScreen) return;
 
-    // Simulate loading progress
+    // Simulate loading progress - FASTER
     const progressBar = DOM.loadingScreen.querySelector(".loading-progress");
     if (progressBar) {
       let progress = 0;
       const interval = setInterval(() => {
-        progress += Math.random() * 15;
+        progress += Math.random() * 30; // Doubled speed
         if (progress > 95) {
           progress = 100;
           clearInterval(interval);
-          setTimeout(() => this.hideLoadingScreen(), 500);
+          setTimeout(() => this.hideLoadingScreen(), 150); // Reduced from 500ms
         }
         progressBar.style.width = `${Math.min(progress, 100)}%`;
-      }, 200);
+      }, 80); // Reduced from 200ms
     } else {
-      setTimeout(() => this.hideLoadingScreen(), 1500);
+      setTimeout(() => this.hideLoadingScreen(), 400); // Reduced from 1500ms
     }
   }
 
@@ -147,7 +154,7 @@ class ModernPortfolio {
       DOM.loadingScreen.classList.add("hidden");
       setTimeout(() => {
         DOM.loadingScreen.style.display = "none";
-      }, 500);
+      }, 300); // Reduced from 500ms
     }
   }
 
@@ -894,9 +901,18 @@ class ModernPortfolio {
       button.addEventListener("click", () => this.switchLanguage(button));
     });
 
-    // Initialize with default language (English)
-    this.currentLanguage = "en";
+    // Initialize with default language (Portuguese - Brazil)
+    this.currentLanguage = "pt";
     this.loadLanguageData();
+
+    // Set PT button as active by default
+    DOM.langButtons.forEach((btn) => {
+      if (btn.getAttribute("data-lang") === "pt") {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
   }
 
   switchLanguage(button) {
@@ -1381,8 +1397,21 @@ window.addEventListener("unhandledrejection", (e) => {
 // INITIALIZATION
 // ===============================================
 
+// Force scroll to top before anything else
+window.addEventListener("beforeunload", () => {
+  window.scrollTo(0, 0);
+});
+
+// Scroll to top immediately
+window.scrollTo(0, 0);
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+
 // Initialize the application when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
+  // Ensure we're at the top
+  window.scrollTo(0, 0);
+
   new ModernPortfolio();
   initAppLinks();
 });
