@@ -43,6 +43,8 @@ const state = {
   lastScrollY: 0,
   isScrolling: false,
   loadedProjects: new Map(),
+  rafPending: false,
+  sectionPositions: new Map(),
 };
 
 // ===============================================
@@ -64,6 +66,7 @@ class ModernPortfolio {
   init() {
     this.cacheDOMElements();
     this.setupEventListeners();
+    this.cacheSectionPositions();
     this.initAnimations();
     this.createParticles();
     this.createLoadingParticles();
@@ -218,28 +221,54 @@ class ModernPortfolio {
     state.lastScrollY = scrollY;
   }
 
-  updateActiveNavLink() {
-    const scrollPosition = window.scrollY + 100;
-
+  cacheSectionPositions() {
+    // Cache section positions to avoid reflow during scroll
+    state.sectionPositions.clear();
     DOM.sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
       const sectionId = section.getAttribute("id");
-      const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+      state.sectionPositions.set(sectionId, {
+        top: section.offsetTop,
+        height: section.offsetHeight,
+      });
+    });
+  }
 
-      if (
-        scrollPosition >= sectionTop &&
-        scrollPosition < sectionTop + sectionHeight
-      ) {
-        // Remove active class from all links
-        DOM.navLinks.forEach((link) => link.classList.remove("active"));
+  updateActiveNavLink() {
+    // Use requestAnimationFrame to prevent forced reflow
+    if (state.rafPending) return;
 
-        // Add active class to current link
-        if (navLink) {
-          navLink.classList.add("active");
-          state.currentSection = sectionId;
+    state.rafPending = true;
+    requestAnimationFrame(() => {
+      state.rafPending = false;
+
+      const scrollPosition = window.scrollY + 100;
+
+      DOM.sections.forEach((section) => {
+        const sectionId = section.getAttribute("id");
+        const cached = state.sectionPositions.get(sectionId);
+
+        if (!cached) return;
+
+        const sectionTop = cached.top;
+        const sectionHeight = cached.height;
+        const navLink = document.querySelector(
+          `.nav-link[href="#${sectionId}"]`,
+        );
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          // Remove active class from all links
+          DOM.navLinks.forEach((link) => link.classList.remove("active"));
+
+          // Add active class to current link
+          if (navLink) {
+            navLink.classList.add("active");
+            state.currentSection = sectionId;
+          }
         }
-      }
+      });
     });
   }
 
@@ -661,6 +690,12 @@ class ModernPortfolio {
 
   setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      // Skip app links and empty hash links
+      const href = anchor.getAttribute("href");
+      if (href === "#" || anchor.classList.contains("app-item")) {
+        return;
+      }
+
       anchor.addEventListener("click", (e) =>
         this.handleSmoothScroll(e, anchor),
       );
@@ -668,9 +703,15 @@ class ModernPortfolio {
   }
 
   handleSmoothScroll(e, anchor) {
+    const targetId = anchor.getAttribute("href");
+
+    // Validate selector before using it
+    if (!targetId || targetId === "#" || targetId.length <= 1) {
+      return;
+    }
+
     e.preventDefault();
 
-    const targetId = anchor.getAttribute("href");
     const target = document.querySelector(targetId);
 
     if (target) {
@@ -795,6 +836,9 @@ class ModernPortfolio {
   }
 
   handleResize() {
+    // Recalculate section positions on resize
+    this.cacheSectionPositions();
+
     // Recreate particles on resize
     if (DOM.particlesContainer) {
       DOM.particlesContainer.innerHTML = "";
