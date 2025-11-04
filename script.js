@@ -45,6 +45,7 @@ const state = {
   loadedProjects: new Map(),
   rafPending: false,
   sectionPositions: new Map(),
+  resizeTimeout: null,
 };
 
 // ===============================================
@@ -836,14 +837,21 @@ class ModernPortfolio {
   }
 
   handleResize() {
-    // Recalculate section positions on resize
-    this.cacheSectionPositions();
-
-    // Recreate particles on resize
-    if (DOM.particlesContainer) {
-      DOM.particlesContainer.innerHTML = "";
-      this.createParticles();
+    // Debounce resize events for better performance
+    if (state.resizeTimeout) {
+      clearTimeout(state.resizeTimeout);
     }
+
+    state.resizeTimeout = setTimeout(() => {
+      // Recalculate section positions on resize
+      this.cacheSectionPositions();
+
+      // Recreate particles on resize
+      if (DOM.particlesContainer) {
+        DOM.particlesContainer.innerHTML = "";
+        this.createParticles();
+      }
+    }, 250);
   }
 
   // ===============================================
