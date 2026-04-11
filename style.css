@@ -590,7 +590,8 @@ body {
   align-items: center;
   position: relative;
   padding: var(--space-20) 0;
-  overflow: hidden;
+  padding-top: calc(80px + var(--space-8));
+  overflow: visible;
 }
 
 .hero-bg {
@@ -2473,11 +2474,26 @@ section {
 
   .hero-visual {
     order: -1;
+    overflow: visible;
+  }
+
+  .profile-container {
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .profile-frame {
-    width: 280px;
-    height: 280px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .profile-decoration {
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
   }
 
   .hero-stats {
@@ -2587,9 +2603,14 @@ section {
     max-width: 280px;
   }
 
+  .profile-container {
+    max-width: 220px;
+  }
+
   .profile-frame {
-    width: 240px;
-    height: 240px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
   }
 
   .showcase-tabs {
