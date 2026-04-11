@@ -149,6 +149,10 @@
                         <span class="nav-text">Home</span>
                         <div class="nav-indicator"></div>
                     </a>
+                    <a href="#blog" class="nav-link">
+                        <span class="nav-text" data-translate="nav-blog">Blog</span>
+                        <div class="nav-indicator"></div>
+                    </a>
                     <a href="#about" class="nav-link">
                         <span class="nav-text" data-translate="nav-about"
                             >About</span
@@ -189,11 +193,11 @@
                 </div>
                 <div class="nav-actions">
                     <div class="language-selector">
-                        <button class="lang-btn" data-lang="en" title="English">
-                            EN
+                        <button class="lang-btn active" data-lang="en" title="English">
+                            <span class="flag">🇺🇸</span>
                         </button>
                         <button
-                            class="lang-btn active"
+                            class="lang-btn"
                             data-lang="pt"
                             title="Português"
                         >
@@ -216,7 +220,7 @@
             </div>
             <div class="hero-container">
                 <div class="hero-content">
-                    <div class="hero-badge">
+                    <div class="hero-badge" style="justify-content: center; width: 100%;">
                         <div class="badge-icon">✨</div>
                         <span class="badge-text" data-translate="hero-badge"
                             >Independent App Studio</span
@@ -336,6 +340,27 @@
             <div class="scroll-indicator">
                 <div class="scroll-text">Scroll to explore</div>
                 <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- Blog / Feed Section -->
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-badge" data-translate="blog-badge">Dev Log</div>
+                    <h2 class="section-title" data-translate="blog-title">
+                        Latest <span class="gradient-text">Updates</span>
+                    </h2>
+                    <p class="section-description" data-translate="blog-description">
+                        Thoughts, experiments, and random things from my dev journey. No filters, just vibes.
+                    </p>
+                </div>
+                <div class="blog-grid" id="blog-grid">
+                    <!-- Posts rendered by JS -->
+                </div>
+                <div class="blog-pagination" id="blog-pagination">
+                    <!-- Pagination rendered by JS -->
+                </div>
             </div>
         </section>
 
@@ -1219,7 +1244,7 @@
 
                 <div class="footer-bottom">
                     <div class="footer-copyright">
-                        <p>&copy; 2025 Tiago Cardoso. All rights reserved.</p>
+                        <p>&copy; 2026 Tiago Cardoso. All rights reserved.</p>
                         <p>Proprietary mobile application portfolio.</p>
                     </div>
                     <div class="footer-legal">

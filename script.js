@@ -27,13 +27,13 @@ const DOM = {
   navMenu: null,
   navLinks: null,
   loadingScreen: null,
-  // portfolioGrid: null, // Not needed - apps are static
   contactForm: null,
   sections: null,
-  // tabButtons: null, // Not needed - apps are static
   particlesContainer: null,
   backToTop: null,
   langButtons: null,
+  blogGrid: null,
+  blogPagination: null,
 };
 
 // State Management
@@ -46,7 +46,103 @@ const state = {
   rafPending: false,
   sectionPositions: new Map(),
   resizeTimeout: null,
+  blogPage: 1,
+  blogPostsPerPage: 3,
 };
+
+// Blog Posts Data
+const BLOG_POSTS = [
+  {
+    id: 1,
+    date: "2026-04-10",
+    icon: "🔥",
+    tag: "launch",
+    title_en: "PassMap is Live!",
+    title_pt: "PassMap tá no ar!",
+    body_en: "Finally shipped PassMap — a password + address manager that actually respects your privacy. No cloud, no BS. Just local-first encryption the way it should be. Check it out at passmap.app",
+    body_pt: "Finalmente lancei o PassMap — um gerenciador de senhas + endereços que respeita sua privacidade de verdade. Sem cloud, sem enrolação. Criptografia local-first do jeito que deveria ser. Confere em passmap.app",
+  },
+  {
+    id: 2,
+    date: "2026-04-05",
+    icon: "🤖",
+    tag: "ai",
+    title_en: "Been experimenting with local LLMs",
+    title_pt: "Experimentando com LLMs locais",
+    body_en: "Running Llama 3 locally on my setup now. The idea of not depending on OpenAI for everything is pretty exciting. Building a small wrapper to plug into V4mpBot. AI should be yours, not rented.",
+    body_pt: "Rodando Llama 3 localmente no meu setup agora. A ideia de não depender da OpenAI pra tudo é bem empolgante. Construindo um wrapper pequeno pra plugar no V4mpBot. IA deveria ser sua, não alugada.",
+  },
+  {
+    id: 3,
+    date: "2026-03-28",
+    icon: "🎮",
+    tag: "fun",
+    title_en: "FazendaRPG got 2K players in a week",
+    title_pt: "FazendaRPG chegou a 2K jogadores em uma semana",
+    body_en: "A farming RPG built in vanilla JS, no frameworks, no engine. Just vibes. People are actually addicted to it lol. Lesson learned: sometimes less stack = more fun.",
+    body_pt: "Um RPG de fazenda feito em JS puro, sem frameworks, sem engine. Só vibes. O pessoal tá viciando de verdade kkk. Lição aprendida: às vezes menos stack = mais diversão.",
+  },
+  {
+    id: 4,
+    date: "2026-03-20",
+    icon: "⚡",
+    tag: "tech",
+    title_en: "Migrated everything to edge functions",
+    title_pt: "Migrei tudo pra edge functions",
+    body_en: "Cold starts were killing me. Moved all the Gennisys backend services to Cloudflare Workers + Durable Objects. Response times went from ~800ms to ~40ms. The future is at the edge, literally.",
+    body_pt: "Os cold starts tavam me matando. Mudei todos os serviços backend da Gennisys pra Cloudflare Workers + Durable Objects. Tempo de resposta caiu de ~800ms pra ~40ms. O futuro tá no edge, literalmente.",
+  },
+  {
+    id: 5,
+    date: "2026-03-12",
+    icon: "💀",
+    tag: "story",
+    title_en: "Almost broke prod at 3am",
+    title_pt: "Quase quebrei prod às 3 da manhã",
+    body_en: "Pushed a migration script that wiped the staging DB config. Luckily caught it before it hit production. Added 4 more checks to the CI pipeline after that. Sleep > heroics.",
+    body_pt: "Dei push num script de migração que zerou a config do banco de staging. Sorte que peguei antes de chegar em produção. Adicionei mais 4 checks no pipeline de CI depois disso. Dormir > heroísmo.",
+  },
+  {
+    id: 6,
+    date: "2026-03-01",
+    icon: "🧮",
+    tag: "launch",
+    title_en: "GenCalc redesign is out",
+    title_pt: "Redesign do GenCalc saiu",
+    body_en: "New UI for GenCalc with dark mode, scientific mode, and full history export. Small tools deserve love too. It's the app I use most myself, honestly.",
+    body_pt: "Nova UI pro GenCalc com modo escuro, modo científico e exportação completa de histórico. Ferramentas pequenas também merecem amor. É o app que eu mais uso, sinceramente.",
+  },
+  {
+    id: 7,
+    date: "2026-02-18",
+    icon: "🛡️",
+    tag: "security",
+    title_en: "Got my first bug bounty!",
+    title_pt: "Recebi meu primeiro bug bounty!",
+    body_en: "Found an IDOR in a fintech API while doing research. Reported it responsibly, got a nice payout. Security isn't just about defense — it's about understanding the offense.",
+    body_pt: "Achei um IDOR na API de uma fintech fazendo pesquisa. Reportei responsavelmente, recebi um bom pagamento. Segurança não é só sobre defesa — é sobre entender o ataque.",
+  },
+  {
+    id: 8,
+    date: "2026-02-05",
+    icon: "🌐",
+    tag: "thoughts",
+    title_en: "Why I build open source side projects",
+    title_pt: "Por que eu faço projetos open source paralelos",
+    body_en: "It's not about clout. It's about learning in public, getting feedback from real users, and building a portfolio that speaks for itself. Every side project taught me something my day job couldn't.",
+    body_pt: "Não é sobre fama. É sobre aprender em público, receber feedback de usuários reais e construir um portfólio que fala por si só. Cada projeto paralelo me ensinou algo que meu trabalho principal não conseguia.",
+  },
+  {
+    id: 9,
+    date: "2026-01-20",
+    icon: "📦",
+    tag: "fun",
+    title_en: "PacketClicker just hit 10K daily active",
+    title_pt: "PacketClicker bateu 10K ativos diários",
+    body_en: "A clicker game about networking. Who knew. People are out there building crazy network empires. I added a prestige system last week and engagement tripled. Game dev is something else man.",
+    body_pt: "Um jogo clicker sobre redes. Quem diria. O pessoal tá lá construindo impérios de rede insanos. Adicionei um sistema de prestígio semana passada e o engajamento triplicou. Game dev é outro nível mano.",
+  },
+];
 
 // ===============================================
 // INITIALIZATION
@@ -72,6 +168,7 @@ class ModernPortfolio {
     this.createParticles();
     this.createLoadingParticles();
     this.handleLoadingScreen();
+    this.setupBlog();
 
     console.log("🚀 Gennisys-inspired portfolio initialized successfully");
 
@@ -92,6 +189,8 @@ class ModernPortfolio {
     DOM.particlesContainer = document.querySelector(".bg-particles");
     DOM.backToTop = document.querySelector(".back-to-top");
     DOM.langButtons = document.querySelectorAll(".lang-btn");
+    DOM.blogGrid = document.getElementById("blog-grid");
+    DOM.blogPagination = document.getElementById("blog-pagination");
   }
 
   setupEventListeners() {
@@ -918,6 +1017,98 @@ class ModernPortfolio {
   }
 
   // ===============================================
+  // BLOG / FEED
+  // ===============================================
+
+  setupBlog() {
+    if (!DOM.blogGrid) return;
+    this.renderBlogPage(1);
+  }
+
+  renderBlogPage(page) {
+    state.blogPage = page;
+    const lang = this.currentLanguage || "en";
+    const start = (page - 1) * state.blogPostsPerPage;
+    const end = start + state.blogPostsPerPage;
+    const posts = BLOG_POSTS.slice(start, end);
+    const totalPages = Math.ceil(BLOG_POSTS.length / state.blogPostsPerPage);
+
+    if (!DOM.blogGrid) return;
+
+    const tagColors = {
+      launch: "var(--success)",
+      ai: "var(--tertiary)",
+      fun: "#f59e0b",
+      tech: "var(--accent)",
+      story: "#ef4444",
+      security: "#ec4899",
+      thoughts: "#06b6d4",
+    };
+
+    DOM.blogGrid.innerHTML = posts
+      .map((post) => {
+        const title = lang === "pt" ? post.title_pt : post.title_en;
+        const body = lang === "pt" ? post.body_pt : post.body_en;
+        const dateStr = new Date(post.date).toLocaleDateString(
+          lang === "pt" ? "pt-BR" : "en-US",
+          { year: "numeric", month: "short", day: "numeric" }
+        );
+        const tagColor = tagColors[post.tag] || "var(--accent)";
+
+        return `
+          <article class="blog-post">
+            <div class="blog-post-header">
+              <span class="blog-post-icon">${post.icon}</span>
+              <div class="blog-post-meta">
+                <span class="blog-post-tag" style="--tag-color: ${tagColor}">${post.tag}</span>
+                <time class="blog-post-date">${dateStr}</time>
+              </div>
+            </div>
+            <h3 class="blog-post-title">${title}</h3>
+            <p class="blog-post-body">${body}</p>
+          </article>
+        `;
+      })
+      .join("");
+
+    // Animate posts in
+    setTimeout(() => {
+      const articles = DOM.blogGrid.querySelectorAll(".blog-post");
+      articles.forEach((article, i) => {
+        setTimeout(() => article.classList.add("visible"), i * 120);
+      });
+    }, 50);
+
+    // Render pagination
+    this.renderBlogPagination(page, totalPages);
+  }
+
+  renderBlogPagination(currentPage, totalPages) {
+    if (!DOM.blogPagination || totalPages <= 1) return;
+
+    let html = "";
+
+    // Previous
+    html += `<button class="blog-page-btn ${currentPage === 1 ? "disabled" : ""}" 
+      ${currentPage > 1 ? `onclick="window._portfolio.renderBlogPage(${currentPage - 1})"` : "disabled"}>
+      ←
+    </button>`;
+
+    for (let i = 1; i <= totalPages; i++) {
+      html += `<button class="blog-page-btn ${i === currentPage ? "active" : ""}" 
+        onclick="window._portfolio.renderBlogPage(${i})">${i}</button>`;
+    }
+
+    // Next
+    html += `<button class="blog-page-btn ${currentPage === totalPages ? "disabled" : ""}" 
+      ${currentPage < totalPages ? `onclick="window._portfolio.renderBlogPage(${currentPage + 1})"` : "disabled"}>
+      →
+    </button>`;
+
+    DOM.blogPagination.innerHTML = html;
+  }
+
+  // ===============================================
   // BACK TO TOP BUTTON
   // ===============================================
 
@@ -953,18 +1144,26 @@ class ModernPortfolio {
       button.addEventListener("click", () => this.switchLanguage(button));
     });
 
-    // Initialize with default language (Portuguese - Brazil)
-    this.currentLanguage = "pt";
+    // Load translation data first
     this.loadLanguageData();
 
-    // Set PT button as active by default
+    // Check localStorage for saved preference, default to English (matches HTML)
+    const savedLang = localStorage.getItem("preferred-language") || "en";
+    this.currentLanguage = savedLang;
+
+    // Sync button active state with actual language
     DOM.langButtons.forEach((btn) => {
-      if (btn.getAttribute("data-lang") === "pt") {
+      if (btn.getAttribute("data-lang") === savedLang) {
         btn.classList.add("active");
       } else {
         btn.classList.remove("active");
       }
     });
+
+    // Apply translations if not English (HTML is already in English)
+    if (savedLang !== "en") {
+      this.applyLanguage(savedLang);
+    }
   }
 
   switchLanguage(button) {
@@ -1153,6 +1352,12 @@ class ModernPortfolio {
         "stat-apps": "Apps in Production",
         "stat-users": "Active Users",
         "stat-years": "Years Leading",
+
+        // Blog
+        "nav-blog": "Blog",
+        "blog-badge": "Dev Log",
+        "blog-title": 'Latest <span class="gradient-text">Updates</span>',
+        "blog-description": "Thoughts, experiments, and random things from my dev journey. No filters, just vibes.",
       },
       pt: {
         // Navigation
@@ -1322,6 +1527,12 @@ class ModernPortfolio {
         "stat-apps": "Apps em Produção",
         "stat-users": "Usuários Ativos",
         "stat-years": "Anos Liderando",
+
+        // Blog
+        "nav-blog": "Blog",
+        "blog-badge": "Dev Log",
+        "blog-title": 'Últimas <span class="gradient-text">Novidades</span>',
+        "blog-description": "Pensamentos, experimentos e aleatoriedades da minha jornada dev. Sem filtro, só vibes.",
       },
     };
   }
@@ -1344,6 +1555,11 @@ class ModernPortfolio {
 
     // Store language preference
     localStorage.setItem("preferred-language", lang);
+
+    // Re-render blog posts in new language
+    if (DOM.blogGrid) {
+      this.renderBlogPage(state.blogPage);
+    }
 
     console.log(
       `🌍 Language switched to: ${lang === "en" ? "English" : "Português"}`,
@@ -1464,7 +1680,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ensure we're at the top
   window.scrollTo(0, 0);
 
-  new ModernPortfolio();
+  const portfolio = new ModernPortfolio();
+  window._portfolio = portfolio;
   initAppLinks();
 });
 
