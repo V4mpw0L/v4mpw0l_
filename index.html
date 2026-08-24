@@ -142,15 +142,6 @@
                     <p class="section-desc" data-i18n="devlog-desc">Registros de arquitetura, lançamentos, experimentos de baixo nível e notas de desenvolvimento sem filtros corporativos.</p>
                 </div>
 
-                <div class="devlog-controls">
-                    <div class="category-filters">
-                        <button class="filter-btn active" data-category="all" data-i18n="filter-all">Todos</button>
-                        <button class="filter-btn" data-category="shipped" data-i18n="filter-shipped">Lançamentos</button>
-                        <button class="filter-btn" data-category="systems" data-i18n="filter-systems">Sistemas & Infra</button>
-                        <button class="filter-btn" data-category="research" data-i18n="filter-research">P&D / Lab</button>
-                    </div>
-                </div>
-
                 <div class="devlog-grid" id="devlog-grid">
                     <!-- Dynamic DevLog cards rendered via devlog.js -->
                 </div>
@@ -165,137 +156,17 @@
         <section id="armory" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-meta" data-i18n="armory-meta">ARSENAL & REPOSITÓRIOS</span>
+                    <span class="section-meta" data-i18n="armory-meta">PROJETOS & REPOSITÓRIOS</span>
                     <h2 class="section-title" data-i18n="armory-title">Projetos Selecionados</h2>
                     <p class="section-desc" data-i18n="armory-desc">Sistemas autorais construídos do zero com foco em velocidade, soberania de dados e zero dependências desnecessárias.</p>
                 </div>
 
-                <div class="armory-grid">
-                    <!-- Card 1: PassMap -->
-                    <div class="armory-card">
-                        <div class="armory-top">
-                            <div class="armory-meta">
-                                <span class="armory-icon">🛡️</span>
-                                <span class="armory-status">LIVE // ZERO-KNOWLEDGE</span>
-                            </div>
-                            <h3 class="armory-title">PassMap</h3>
-                            <p class="armory-desc" data-i18n="passmap-desc">Cofre de credenciais e senhas com criptografia client-side AES-GCM / PBKDF2. Zero nuvem forçada, zero telemetria invasiva.</p>
-                            <div class="armory-tags">
-                                <span class="tech-tag">WebCrypto</span>
-                                <span class="tech-tag">AES-GCM</span>
-                                <span class="tech-tag">Local-First</span>
-                            </div>
-                        </div>
-                        <div class="armory-actions">
-                            <a href="https://v4mpw0l.github.io/PassMap/" target="_blank" rel="noopener" class="armory-btn armory-btn-launch" data-i18n="launch-btn">Acessar Demo</a>
-                            <a href="https://github.com/v4mpw0l/PassMap" target="_blank" rel="noopener" class="armory-btn armory-btn-repo" data-i18n="repo-btn">Código Fonte</a>
-                        </div>
-                    </div>
+                <div class="armory-grid" id="armory-grid">
+                    <!-- Dynamic Armory project cards rendered via script.js -->
+                </div>
 
-                    <!-- Card 2: FazendaRPG -->
-                    <div class="armory-card">
-                        <div class="armory-top">
-                            <div class="armory-meta">
-                                <span class="armory-icon">🌾</span>
-                                <span class="armory-status">v1.4 // 60 FPS</span>
-                            </div>
-                            <h3 class="armory-title">FazendaRPG</h3>
-                            <p class="armory-desc" data-i18n="fazendarpg-desc">Simulador agrícola e RPG ecológico construído em Vanilla JS sem engines pesadas. Ciclos climáticos e persistência assíncrona.</p>
-                            <div class="armory-tags">
-                                <span class="tech-tag">Vanilla JS</span>
-                                <span class="tech-tag">Procedural Loops</span>
-                                <span class="tech-tag">Async Storage</span>
-                            </div>
-                        </div>
-                        <div class="armory-actions">
-                            <a href="https://v4mpw0l.github.io/fazendarpg/" target="_blank" rel="noopener" class="armory-btn armory-btn-launch" data-i18n="launch-btn">Acessar Demo</a>
-                            <a href="https://github.com/v4mpw0l/fazendarpg" target="_blank" rel="noopener" class="armory-btn armory-btn-repo" data-i18n="repo-btn">Código Fonte</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Hacker0s -->
-                    <div class="armory-card">
-                        <div class="armory-top">
-                            <div class="armory-meta">
-                                <span class="armory-icon">📟</span>
-                                <span class="armory-status">BUILD 2.1 // TACTICAL</span>
-                            </div>
-                            <h3 class="armory-title">Hacker0s</h3>
-                            <p class="armory-desc" data-i18n="hacker0s-desc">Simulador cibernético de terminal CRT com nós de invasão lógica, decodificação hash em tempo real e desafios de engenharia reversa.</p>
-                            <div class="armory-tags">
-                                <span class="tech-tag">Terminal Core</span>
-                                <span class="tech-tag">CRT Scanlines</span>
-                                <span class="tech-tag">Crypto Puzzles</span>
-                            </div>
-                        </div>
-                        <div class="armory-actions">
-                            <a href="https://v4mpw0l.github.io/hacker0S/" target="_blank" rel="noopener" class="armory-btn armory-btn-launch" data-i18n="launch-btn">Acessar Demo</a>
-                            <a href="https://github.com/v4mpw0l/hacker0S" target="_blank" rel="noopener" class="armory-btn armory-btn-repo" data-i18n="repo-btn">Código Fonte</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: PacketClicker MMO -->
-                    <div class="armory-card">
-                        <div class="armory-top">
-                            <div class="armory-meta">
-                                <span class="armory-icon">⚡</span>
-                                <span class="armory-status">v2.0 // HIGH-THROUGHPUT</span>
-                            </div>
-                            <h3 class="armory-title">PacketClicker</h3>
-                            <p class="armory-desc" data-i18n="packetclicker-desc">Simulador incremental de tráfego de dados e clusters quânticos com árvores de habilidades e progressão offline precisa.</p>
-                            <div class="armory-tags">
-                                <span class="tech-tag">Network Math</span>
-                                <span class="tech-tag">Automation</span>
-                                <span class="tech-tag">Petabyte Scaling</span>
-                            </div>
-                        </div>
-                        <div class="armory-actions">
-                            <a href="https://v4mpw0l.github.io/PacketClicker-MMO/" target="_blank" rel="noopener" class="armory-btn armory-btn-launch" data-i18n="launch-btn">Acessar Demo</a>
-                            <a href="https://github.com/v4mpw0l/PacketClicker-MMO" target="_blank" rel="noopener" class="armory-btn armory-btn-repo" data-i18n="repo-btn">Código Fonte</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 5: GenCalc // Utils -->
-                    <div class="armory-card">
-                        <div class="armory-top">
-                            <div class="armory-meta">
-                                <span class="armory-icon">🧮</span>
-                                <span class="armory-status">STABLE // IEEE-754</span>
-                            </div>
-                            <h3 class="armory-title">GenCalc & BudgetBox</h3>
-                            <p class="armory-desc" data-i18n="gencalc-desc">Suíte de utilitários rápidos com precisão de ponto flutuante calibrada, ergonomia 100% via teclado e exportação analítica.</p>
-                            <div class="armory-tags">
-                                <span class="tech-tag">Financial Engine</span>
-                                <span class="tech-tag">Keyboard UX</span>
-                                <span class="tech-tag">Zero Bloat</span>
-                            </div>
-                        </div>
-                        <div class="armory-actions">
-                            <a href="https://v4mpw0l.github.io/GenCalc/" target="_blank" rel="noopener" class="armory-btn armory-btn-launch" data-i18n="launch-btn">Acessar Demo</a>
-                            <a href="https://github.com/v4mpw0l/GenCalc" target="_blank" rel="noopener" class="armory-btn armory-btn-repo" data-i18n="repo-btn">Código Fonte</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 6: Gennisys Studio Core -->
-                    <div class="armory-card">
-                        <div class="armory-top">
-                            <div class="armory-meta">
-                                <span class="armory-icon">🌐</span>
-                                <span class="armory-status">STUDIO CORE // LIVE</span>
-                            </div>
-                            <h3 class="armory-title">Gennisys Studio</h3>
-                            <p class="armory-desc" data-i18n="gennisys-desc">Portal central e design system atmosférico com suporte a auras místicas, catálogo de criações e sistema autoral de transmissões.</p>
-                            <div class="armory-tags">
-                                <span class="tech-tag">Design System</span>
-                                <span class="tech-tag">Atmospheric Aura</span>
-                                <span class="tech-tag">60 FPS</span>
-                            </div>
-                        </div>
-                        <div class="armory-actions">
-                            <a href="https://gennisys.com" target="_blank" rel="noopener" class="armory-btn armory-btn-launch" data-i18n="launch-btn">Acessar Demo</a>
-                            <a href="https://github.com/V4mpw0L/Gennisys" target="_blank" rel="noopener" class="armory-btn armory-btn-repo" data-i18n="repo-btn">Código Fonte</a>
-                        </div>
-                    </div>
+                <div class="pagination-container" id="armory-pagination">
+                    <!-- Armory pagination controls -->
                 </div>
             </div>
         </section>
@@ -335,8 +206,8 @@
         <section id="uplink" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-meta" data-i18n="uplink-meta">CANAL DE COMUNICAÇÃO</span>
-                    <h2 class="section-title" data-i18n="uplink-title">Uplink & Conexões</h2>
+                    <span class="section-meta" data-i18n="uplink-meta">CONTATO & CANAIS</span>
+                    <h2 class="section-title" data-i18n="uplink-title">Contato Direto</h2>
                     <p class="section-desc" data-i18n="uplink-desc">Canais diretos para contato profissional, segurança, colaborações técnicas e trocas de ideias.</p>
                 </div>
 
