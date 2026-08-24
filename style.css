@@ -594,6 +594,7 @@ body::before {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
+    min-height: 380px;
 }
 
 .devlog-card {
@@ -775,7 +776,8 @@ body::before {
 .armory-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 18px;
+    min-height: 460px;
 }
 
 .armory-card {

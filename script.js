@@ -275,6 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPaginationControls(pagination, currentDevlogPage, totalPages, (newPage) => {
             currentDevlogPage = newPage;
             renderDevlogs();
+            const sec = document.getElementById('devlog');
+            if (sec) {
+                const y = sec.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
         });
     }
 
@@ -318,6 +323,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPaginationControls(pagination, currentArmoryPage, totalPages, (newPage) => {
             currentArmoryPage = newPage;
             renderArmory();
+            const sec = document.getElementById('armory');
+            if (sec) {
+                const y = sec.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
         });
     }
 
