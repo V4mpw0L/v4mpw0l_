@@ -859,46 +859,33 @@ body::before {
 .armory-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
     padding-top: 12px;
     border-top: 1px solid var(--border-subtle);
 }
 
-.armory-btn {
-    flex: 1;
+.armory-btn-launch {
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 6px 10px;
-    font-size: 0.74rem;
+    padding: 8px 14px;
+    font-size: 0.8rem;
     font-weight: 700;
     text-decoration: none;
     border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-}
-
-.armory-btn-launch {
-    background: rgba(0, 255, 136, 0.08);
+    background: rgba(0, 255, 136, 0.06);
     color: var(--accent-emerald-light);
     border: 1px solid var(--accent-emerald-border);
+    transition: all var(--transition-fast);
 }
 
 .armory-btn-launch:hover {
     background: var(--accent-emerald);
     color: #040806;
-}
-
-.armory-btn-repo {
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--text-muted);
-    border: 1px solid var(--border-subtle);
-}
-
-.armory-btn-repo:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text-pure);
-    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 16px rgba(0, 255, 136, 0.35);
+    transform: translateY(-1px);
 }
 
 /* --------------------------------------------------------------------------

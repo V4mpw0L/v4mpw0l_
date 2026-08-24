@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'armory-meta': 'PROJETOS & REPOSITÓRIOS',
             'armory-title': 'Projetos Selecionados',
             'armory-desc': 'Sistemas autorais construídos do zero com foco em velocidade, soberania de dados e zero dependências desnecessárias.',
-            'launch-btn': 'Acessar Demo',
+            'launch-btn': 'Acessar',
             'repo-btn': 'Código Fonte',
 
             'protocols-meta': 'DIRETIVAS DE ENGENHARIA',
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'armory-meta': 'PROJECTS & REPOSITORIES',
             'armory-title': 'Selected Projects',
             'armory-desc': 'Proprietary systems built from first principles prioritizing raw speed, user sovereignty, and zero bloat.',
-            'launch-btn': 'Live Demo',
+            'launch-btn': 'Access',
             'repo-btn': 'Source Code',
 
             'protocols-meta': 'ENGINEERING DIRECTIVES',
@@ -313,8 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="armory-actions">
-                    <a href="${proj.launch}" target="_blank" rel="noopener" class="armory-btn armory-btn-launch">${launchText}</a>
-                    <a href="${proj.repo}" target="_blank" rel="noopener" class="armory-btn armory-btn-repo">${repoText}</a>
+                    <a href="${proj.launch}" target="_blank" rel="noopener" class="armory-btn armory-btn-launch">${launchText} →</a>
                 </div>
             </div>
         `).join('');
