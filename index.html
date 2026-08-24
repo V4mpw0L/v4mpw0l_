@@ -60,7 +60,7 @@
                 </div>
             </a>
 
-            <nav>
+            <nav class="desktop-nav">
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="#devlog" class="nav-link" data-i18n="nav-transmissions">DevLog</a></li>
                     <li><a href="#protocols" class="nav-link" data-i18n="nav-protocols">Protocolos</a></li>
@@ -69,12 +69,34 @@
             </nav>
 
             <div class="nav-controls">
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Alternar Navegação">
+                    <span class="bar-top"></span>
+                    <span class="bar-bottom"></span>
                 </button>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Drawer Navigation (Matching Gennisys Studio) -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <div class="drawer-inner">
+            <div class="drawer-sigil">
+                <img src="https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png" alt="Tiago Cardoso" class="drawer-avatar-img">
+                <div class="drawer-brand-name">v4mpw0l</div>
+            </div>
+            <nav class="mobile-nav-links">
+                <a href="#devlog" class="mobile-link" data-i18n="nav-transmissions">DevLog</a>
+                <a href="#protocols" class="mobile-link" data-i18n="nav-protocols">Protocolos</a>
+                <a href="#uplink" class="mobile-link" data-i18n="nav-uplink">Contato</a>
+            </nav>
+            <div class="drawer-footer">
+                <span class="drawer-status-indicator">
+                    <span class="status-dot"></span>
+                    <span data-i18n="hero-beacon">ONLINE</span>
+                </span>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Hero Section -->

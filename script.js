@@ -313,18 +313,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mobile Menu Toggle
+    // Mobile Drawer Navigation (Matching Gennisys Studio)
     const mobileBtn = document.getElementById('mobile-menu-btn');
-    const navMenu = document.getElementById('nav-menu');
-    if (mobileBtn && navMenu) {
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileBtn && mobileDrawer) {
         mobileBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('open');
+            const isOpen = mobileDrawer.classList.toggle('open');
+            mobileBtn.classList.toggle('open', isOpen);
+            mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
-        navMenu.querySelectorAll('.nav-link').forEach(link => {
+        mobileDrawer.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('open');
+                mobileDrawer.classList.remove('open');
+                mobileBtn.classList.remove('open');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+                mobileDrawer.classList.remove('open');
+                mobileBtn.classList.remove('open');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
         });
     }
 
