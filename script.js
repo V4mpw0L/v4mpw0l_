@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const startIdx = (currentDevlogPage - 1) * postsPerPage;
         const pageLogs = allLogs.slice(startIdx, startIdx + postsPerPage);
 
-        const readMoreText = I18N[currentLang]['read-more'] || 'Abrir Transmissão →';
+        const readMoreText = I18N[currentLang]['read-more'] || 'Abrir Notícia →';
 
         grid.innerHTML = pageLogs.map(log => `
             <div class="devlog-card" data-id="${log.id}">
