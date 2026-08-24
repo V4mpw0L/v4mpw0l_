@@ -1,1696 +1,356 @@
-// ===============================================
-// GENNISYS-INSPIRED PROFESSIONAL WEBSITE
-// Modern CEO Portfolio - Tiago Cardoso
-// ===============================================
+/* ==========================================================================
+   V4MPW0L // TIAGO CARDOSO — PORTAL ENGINE (script.js)
+   ========================================================================== */
 
-// Configuration
-const CONFIG = {
-  github: {
-    username: "v4mpw0l",
-    token: "", // Add your GitHub token here if needed
-    maxRepos: 12,
-  },
-  animations: {
-    duration: 300,
-    easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-  },
-  observer: {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  },
-};
+document.addEventListener('DOMContentLoaded', () => {
+    // State
+    let currentLang = localStorage.getItem('v4mp_lang') || 'pt';
+    let currentCategory = 'all';
+    let currentPage = 1;
+    const postsPerPage = 4;
 
-// DOM Elements Cache
-const DOM = {
-  navbar: null,
-  navToggle: null,
-  navMenu: null,
-  navLinks: null,
-  loadingScreen: null,
-  contactForm: null,
-  sections: null,
-  particlesContainer: null,
-  backToTop: null,
-  langButtons: null,
-  blogGrid: null,
-  blogPagination: null,
-};
+    // Translations Dictionary
+    const I18N = {
+        pt: {
+            'nav-transmissions': 'DevLog',
+            'nav-armory': 'Projetos',
+            'nav-protocols': 'Protocolos',
+            'nav-uplink': 'Contato',
+            
+            'hero-beacon': 'ONLINE',
+            'hero-role': 'Engenheiro de Software & Arquiteto de Sistemas',
+            'hero-bio': 'Fundador da <strong>Gennisys</strong>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
+            'hero-btn-transmissions': 'Ler Transmissões',
+            'hero-btn-gennisys': 'Acessar Gennisys Studio ↗',
+            
+            'devlog-meta': 'LOGS & TRANSMISSÕES',
+            'devlog-title': 'DevLog & Notas de Engenharia',
+            'devlog-desc': 'Registros de arquitetura, lançamentos, experimentos de baixo nível e notas de desenvolvimento sem filtros corporativos.',
+            'filter-all': 'Todos',
+            'filter-shipped': 'Lançamentos',
+            'filter-systems': 'Sistemas & Infra',
+            'filter-research': 'P&D / Lab',
+            'read-more': 'Abrir Transmissão →',
 
-// State Management
-const state = {
-  isNavOpen: false,
-  currentSection: "hero",
-  lastScrollY: 0,
-  isScrolling: false,
-  loadedProjects: new Map(),
-  rafPending: false,
-  sectionPositions: new Map(),
-  resizeTimeout: null,
-  blogPage: 1,
-  blogPostsPerPage: 3,
-};
+            'armory-meta': 'PROJETOS & REPOSITÓRIOS',
+            'armory-title': 'Projetos Selecionados',
+            'armory-desc': 'Sistemas autorais construídos do zero com foco em velocidade, soberania de dados e zero dependências desnecessárias.',
+            'launch-btn': 'Acessar Demo',
+            'repo-btn': 'Código Fonte',
 
-// Blog Posts Data
-const BLOG_POSTS = [
-  {
-    id: 1,
-    date: "2026-04-10",
-    icon: "🔥",
-    tag: "launch",
-    title_en: "PassMap is Live!",
-    title_pt: "PassMap tá no ar!",
-    body_en: "Finally shipped PassMap — a password + address manager that actually respects your privacy. No cloud, no BS. Just local-first encryption the way it should be. Check it out at passmap.app",
-    body_pt: "Finalmente lancei o PassMap — um gerenciador de senhas + endereços que respeita sua privacidade de verdade. Sem cloud, sem enrolação. Criptografia local-first do jeito que deveria ser. Confere em passmap.app",
-  },
-  {
-    id: 2,
-    date: "2026-04-05",
-    icon: "🤖",
-    tag: "ai",
-    title_en: "Been experimenting with local LLMs",
-    title_pt: "Experimentando com LLMs locais",
-    body_en: "Running Llama 3 locally on my setup now. The idea of not depending on OpenAI for everything is pretty exciting. Building a small wrapper to plug into V4mpBot. AI should be yours, not rented.",
-    body_pt: "Rodando Llama 3 localmente no meu setup agora. A ideia de não depender da OpenAI pra tudo é bem empolgante. Construindo um wrapper pequeno pra plugar no V4mpBot. IA deveria ser sua, não alugada.",
-  },
-  {
-    id: 3,
-    date: "2026-03-28",
-    icon: "🎮",
-    tag: "fun",
-    title_en: "FazendaRPG got 2K players in a week",
-    title_pt: "FazendaRPG chegou a 2K jogadores em uma semana",
-    body_en: "A farming RPG built in vanilla JS, no frameworks, no engine. Just vibes. People are actually addicted to it lol. Lesson learned: sometimes less stack = more fun.",
-    body_pt: "Um RPG de fazenda feito em JS puro, sem frameworks, sem engine. Só vibes. O pessoal tá viciando de verdade kkk. Lição aprendida: às vezes menos stack = mais diversão.",
-  },
-  {
-    id: 4,
-    date: "2026-03-20",
-    icon: "⚡",
-    tag: "tech",
-    title_en: "Migrated everything to edge functions",
-    title_pt: "Migrei tudo pra edge functions",
-    body_en: "Cold starts were killing me. Moved all the Gennisys backend services to Cloudflare Workers + Durable Objects. Response times went from ~800ms to ~40ms. The future is at the edge, literally.",
-    body_pt: "Os cold starts tavam me matando. Mudei todos os serviços backend da Gennisys pra Cloudflare Workers + Durable Objects. Tempo de resposta caiu de ~800ms pra ~40ms. O futuro tá no edge, literalmente.",
-  },
-  {
-    id: 5,
-    date: "2026-03-12",
-    icon: "💀",
-    tag: "story",
-    title_en: "Almost broke prod at 3am",
-    title_pt: "Quase quebrei prod às 3 da manhã",
-    body_en: "Pushed a migration script that wiped the staging DB config. Luckily caught it before it hit production. Added 4 more checks to the CI pipeline after that. Sleep > heroics.",
-    body_pt: "Dei push num script de migração que zerou a config do banco de staging. Sorte que peguei antes de chegar em produção. Adicionei mais 4 checks no pipeline de CI depois disso. Dormir > heroísmo.",
-  },
-  {
-    id: 6,
-    date: "2026-03-01",
-    icon: "🧮",
-    tag: "launch",
-    title_en: "GenCalc redesign is out",
-    title_pt: "Redesign do GenCalc saiu",
-    body_en: "New UI for GenCalc with dark mode, scientific mode, and full history export. Small tools deserve love too. It's the app I use most myself, honestly.",
-    body_pt: "Nova UI pro GenCalc com modo escuro, modo científico e exportação completa de histórico. Ferramentas pequenas também merecem amor. É o app que eu mais uso, sinceramente.",
-  },
-  {
-    id: 7,
-    date: "2026-02-18",
-    icon: "🛡️",
-    tag: "security",
-    title_en: "Got my first bug bounty!",
-    title_pt: "Recebi meu primeiro bug bounty!",
-    body_en: "Found an IDOR in a fintech API while doing research. Reported it responsibly, got a nice payout. Security isn't just about defense — it's about understanding the offense.",
-    body_pt: "Achei um IDOR na API de uma fintech fazendo pesquisa. Reportei responsavelmente, recebi um bom pagamento. Segurança não é só sobre defesa — é sobre entender o ataque.",
-  },
-  {
-    id: 8,
-    date: "2026-02-05",
-    icon: "🌐",
-    tag: "thoughts",
-    title_en: "Why I build open source side projects",
-    title_pt: "Por que eu faço projetos open source paralelos",
-    body_en: "It's not about clout. It's about learning in public, getting feedback from real users, and building a portfolio that speaks for itself. Every side project taught me something my day job couldn't.",
-    body_pt: "Não é sobre fama. É sobre aprender em público, receber feedback de usuários reais e construir um portfólio que fala por si só. Cada projeto paralelo me ensinou algo que meu trabalho principal não conseguia.",
-  },
-  {
-    id: 9,
-    date: "2026-01-20",
-    icon: "📦",
-    tag: "fun",
-    title_en: "PacketClicker just hit 10K daily active",
-    title_pt: "PacketClicker bateu 10K ativos diários",
-    body_en: "A clicker game about networking. Who knew. People are out there building crazy network empires. I added a prestige system last week and engagement tripled. Game dev is something else man.",
-    body_pt: "Um jogo clicker sobre redes. Quem diria. O pessoal tá lá construindo impérios de rede insanos. Adicionei um sistema de prestígio semana passada e o engajamento triplicou. Game dev é outro nível mano.",
-  },
-];
+            'passmap-desc': 'Cofre de credenciais e senhas com criptografia client-side AES-GCM / PBKDF2. Zero nuvem forçada, zero telemetria invasiva.',
+            'fazendarpg-desc': 'Simulador agrícola e RPG ecológico construído em Vanilla JS sem engines pesadas. Ciclos climáticos e persistência assíncrona.',
+            'hacker0s-desc': 'Simulador cibernético de terminal CRT com nós de invasão lógica, decodificação hash em tempo real e desafios de engenharia reversa.',
+            'packetclicker-desc': 'Simulador incremental de tráfego de dados e clusters quânticos com árvores de habilidades e progressão offline precisa.',
+            'gencalc-desc': 'Suíte de utilitários rápidos com precisão de ponto flutuante calibrada, ergonomia 100% via teclado e exportação analítica.',
+            'gennisys-desc': 'Portal central e design system atmosférico com suporte a auras místicas, catálogo de criações e sistema autoral de transmissões.',
 
-// ===============================================
-// INITIALIZATION
-// ===============================================
+            'protocols-meta': 'DIRETIVAS DE ENGENHARIA',
+            'protocols-title': 'Princípios & Protocolos',
+            'protocols-desc': 'Diretrizes fundamentais que regem cada linha de código e sistema que desenvolvo.',
+            'proto-1-title': 'Zero Bloat // Desempenho Puro',
+            'proto-1-desc': 'Aplicações leves construídas com tecnologias fundamentais (Vanilla JS, C, Node), garantindo tempos de resposta sub-50ms e 60 FPS consistentes.',
+            'proto-2-title': 'Local-First & Soberania',
+            'proto-2-desc': 'Os dados pertencem ao usuário. Criptografia client-side (AES-GCM / Zero-Knowledge) e funcionamento offline sem dependência de nuvens intrusivas.',
+            'proto-3-title': 'Arquitetura Autoral',
+            'proto-3-desc': 'Construção a partir dos primeiros princípios, dominando cada camada da pilha em vez de colar dependências frágeis de terceiros.',
 
-class ModernPortfolio {
-  constructor() {
-    // Force scroll to top on page load
-    window.scrollTo(0, 0);
-    // Also set scroll position immediately
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
+            'uplink-meta': 'CONTATO & CANAIS',
+            'uplink-title': 'Contato Direto',
+            'uplink-desc': 'Canais diretos para contato profissional, segurança, colaborações técnicas e trocas de ideias.',
+            'studio-box-title': 'Gennisys Studio',
+            'studio-box-desc': 'Nosso estúdio independente dedicado a criar jogos autorais, ferramentas de produtividade e experiências interativas.',
+            'studio-btn': 'Explorar Estúdio Gennisys →',
+            
+            'footer-status': 'SISTEMAS OPERANDO NORMALMENTE',
+            'footer-copy': '© 2026 Tiago Cardoso (v4mpw0l). Todos os direitos reservados.'
+        },
+        en: {
+            'nav-transmissions': 'DevLog',
+            'nav-armory': 'Projects',
+            'nav-protocols': 'Protocols',
+            'nav-uplink': 'Contact',
+            
+            'hero-beacon': 'ONLINE',
+            'hero-role': 'Software Engineer & Systems Architect',
+            'hero-bio': 'Founder of <strong>Gennisys</strong>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
+            'hero-btn-transmissions': 'Read Transmissions',
+            'hero-btn-gennisys': 'Access Gennisys Studio ↗',
+            
+            'devlog-meta': 'LOGS & TRANSMISSIONS',
+            'devlog-title': 'DevLog & Engineering Notes',
+            'devlog-desc': 'Architecture chronicles, releases, low-level experiments, and technical deep-dives without corporate filters.',
+            'filter-all': 'All',
+            'filter-shipped': 'Shipped',
+            'filter-systems': 'Systems & Infra',
+            'filter-research': 'R&D / Lab',
+            'read-more': 'Open Transmission →',
 
-    this.init();
-  }
+            'armory-meta': 'PROJECTS & REPOSITORIES',
+            'armory-title': 'Selected Works',
+            'armory-desc': 'Proprietary systems built from first principles prioritizing raw speed, user sovereignty, and zero bloat.',
+            'launch-btn': 'Live Demo',
+            'repo-btn': 'Source Code',
 
-  init() {
-    this.cacheDOMElements();
-    this.setupEventListeners();
-    this.cacheSectionPositions();
-    this.initAnimations();
-    this.createParticles();
-    this.createLoadingParticles();
-    this.handleLoadingScreen();
-    this.setupBlog();
+            'passmap-desc': 'Zero-knowledge credential and password vault with client-side AES-GCM / PBKDF2 encryption. No forced cloud, no invasive telemetry.',
+            'fazendarpg-desc': 'Agricultural simulation & ecological RPG engine built in Vanilla JS without heavy runtimes. Dynamic weather and async persistence.',
+            'hacker0s-desc': 'Cybernetic CRT terminal simulator featuring logic infiltration nodes, real-time hash deciphering, and reverse-engineering challenges.',
+            'packetclicker-desc': 'Incremental network traffic and quantum cluster simulator featuring progression trees and deterministic offline calculations.',
+            'gencalc-desc': 'Productivity utility suite with IEEE-754 precision correction, 100% keyboard-driven ergonomics, and cashflow charts.',
+            'gennisys-desc': 'Central portal and atmospheric design system supporting dynamic auras, creations catalog, and proprietary transmissions engine.',
 
-    console.log("🚀 Gennisys-inspired portfolio initialized successfully");
+            'protocols-meta': 'ENGINEERING DIRECTIVES',
+            'protocols-title': 'Principles & Protocols',
+            'protocols-desc': 'Core architectural principles governing every system and line of code I craft.',
+            'proto-1-title': 'Zero Bloat // Pure Speed',
+            'proto-1-desc': 'Lightweight applications crafted on fundamental foundations (Vanilla JS, C, Node), guaranteeing sub-50ms latency and steady 60 FPS.',
+            'proto-2-title': 'Local-First & Data Sovereignty',
+            'proto-2-desc': 'User sovereignty first. Client-side cryptography (AES-GCM / Zero-Knowledge) with full offline functionality without intrusive cloud locks.',
+            'proto-3-title': 'First-Principles Architecture',
+            'proto-3-desc': 'Crafting solutions from foundational roots, owning the stack rather than stacking fragile third-party dependencies.',
 
-    // Register Service Worker for PWA
-    this.registerServiceWorker();
-  }
-
-  cacheDOMElements() {
-    DOM.navbar = document.querySelector(".navbar");
-    DOM.navToggle = document.querySelector(".nav-toggle");
-    DOM.navMenu = document.querySelector(".nav-menu");
-    DOM.navLinks = document.querySelectorAll(".nav-link");
-    DOM.loadingScreen = document.querySelector(".loading-screen");
-    // DOM.portfolioGrid = document.querySelector(".portfolio-grid"); // Not needed - apps are static
-    DOM.contactForm = document.querySelector(".contact-form");
-    DOM.sections = document.querySelectorAll("section[id]");
-    // DOM.tabButtons = document.querySelectorAll(".tab-button"); // Not needed - apps are static
-    DOM.particlesContainer = document.querySelector(".bg-particles");
-    DOM.backToTop = document.querySelector(".back-to-top");
-    DOM.langButtons = document.querySelectorAll(".lang-btn");
-    DOM.blogGrid = document.getElementById("blog-grid");
-    DOM.blogPagination = document.getElementById("blog-pagination");
-  }
-
-  setupEventListeners() {
-    // Window events
-    window.addEventListener("load", () => this.handleWindowLoad());
-    window.addEventListener("scroll", () => this.handleScroll(), {
-      passive: true,
-    });
-    window.addEventListener("resize", () => this.handleResize(), {
-      passive: true,
-    });
-
-    // Navigation events
-    this.setupNavigationEvents();
-
-    // Portfolio events - DISABLED: Apps are now static
-    // this.setupPortfolioEvents();
-
-    // Contact form events
-    this.setupContactForm();
-
-    // Smooth scrolling
-    this.setupSmoothScrolling();
-
-    // Back to top button
-    this.setupBackToTop();
-
-    // Language selector
-    this.setupLanguageSelector();
-  }
-
-  // ===============================================
-  // LOADING SCREEN
-  // ===============================================
-
-  handleLoadingScreen() {
-    if (!DOM.loadingScreen) return;
-
-    // Simulate loading progress - FASTER
-    const progressBar = DOM.loadingScreen.querySelector(".loading-progress");
-    if (progressBar) {
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += Math.random() * 30; // Doubled speed
-        if (progress > 95) {
-          progress = 100;
-          clearInterval(interval);
-          setTimeout(() => this.hideLoadingScreen(), 150); // Reduced from 500ms
+            'uplink-meta': 'CONTACT & CHANNELS',
+            'uplink-title': 'Direct Contact',
+            'uplink-desc': 'Direct communication channels for professional inquiries, security reports, and technical exchanges.',
+            'studio-box-title': 'Gennisys Studio',
+            'studio-box-desc': 'Our independent studio crafting proprietary games, productivity tools, and interactive digital worlds.',
+            'studio-btn': 'Explore Gennisys Studio →',
+            
+            'footer-status': 'SYSTEMS OPERATING NOMINALLY',
+            'footer-copy': '© 2026 Tiago Cardoso (v4mpw0l). All rights reserved.'
         }
-        progressBar.style.width = `${Math.min(progress, 100)}%`;
-      }, 80); // Reduced from 200ms
-    } else {
-      setTimeout(() => this.hideLoadingScreen(), 400); // Reduced from 1500ms
-    }
-  }
-
-  handleWindowLoad() {
-    // Additional loading complete actions
-    document.body.classList.add("loaded");
-  }
-
-  hideLoadingScreen() {
-    if (DOM.loadingScreen) {
-      DOM.loadingScreen.classList.add("hidden");
-      setTimeout(() => {
-        DOM.loadingScreen.style.display = "none";
-      }, 300); // Reduced from 500ms
-    }
-  }
-
-  // ===============================================
-  // NAVIGATION
-  // ===============================================
-
-  setupNavigationEvents() {
-    // Mobile navigation toggle
-    if (DOM.navToggle && DOM.navMenu) {
-      DOM.navToggle.addEventListener("click", () => this.toggleMobileNav());
-    }
-
-    // Close mobile nav when clicking on links
-    DOM.navLinks.forEach((link) => {
-      link.addEventListener("click", () => this.closeMobileNav());
-    });
-
-    // Close mobile nav when clicking outside
-    document.addEventListener("click", (e) => {
-      if (state.isNavOpen && !e.target.closest(".navbar")) {
-        this.closeMobileNav();
-      }
-    });
-  }
-
-  toggleMobileNav() {
-    state.isNavOpen = !state.isNavOpen;
-    if (DOM.navToggle) DOM.navToggle.classList.toggle("active");
-    if (DOM.navMenu) DOM.navMenu.classList.toggle("active");
-    document.body.classList.toggle("nav-open");
-  }
-
-  closeMobileNav() {
-    if (state.isNavOpen) {
-      state.isNavOpen = false;
-      if (DOM.navToggle) DOM.navToggle.classList.remove("active");
-      if (DOM.navMenu) DOM.navMenu.classList.remove("active");
-      document.body.classList.remove("nav-open");
-    }
-  }
-
-  updateNavbar() {
-    if (!DOM.navbar) return;
-
-    const scrollY = window.scrollY;
-
-    // Add scrolled class
-    if (scrollY > 50) {
-      DOM.navbar.classList.add("scrolled");
-    } else {
-      DOM.navbar.classList.remove("scrolled");
-    }
-
-    // Always keep navbar visible
-    DOM.navbar.style.transform = "translateY(0)";
-
-    // Update back to top button
-    this.updateBackToTop(scrollY);
-
-    state.lastScrollY = scrollY;
-  }
-
-  cacheSectionPositions() {
-    // Cache section positions to avoid reflow during scroll
-    state.sectionPositions.clear();
-    DOM.sections.forEach((section) => {
-      const sectionId = section.getAttribute("id");
-      state.sectionPositions.set(sectionId, {
-        top: section.offsetTop,
-        height: section.offsetHeight,
-      });
-    });
-  }
-
-  updateActiveNavLink() {
-    // Use requestAnimationFrame to prevent forced reflow
-    if (state.rafPending) return;
-
-    state.rafPending = true;
-    requestAnimationFrame(() => {
-      state.rafPending = false;
-
-      const scrollPosition = window.scrollY + 100;
-
-      DOM.sections.forEach((section) => {
-        const sectionId = section.getAttribute("id");
-        const cached = state.sectionPositions.get(sectionId);
-
-        if (!cached) return;
-
-        const sectionTop = cached.top;
-        const sectionHeight = cached.height;
-        const navLink = document.querySelector(
-          `.nav-link[href="#${sectionId}"]`,
-        );
-
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-          // Remove active class from all links
-          DOM.navLinks.forEach((link) => link.classList.remove("active"));
-
-          // Add active class to current link
-          if (navLink) {
-            navLink.classList.add("active");
-            state.currentSection = sectionId;
-          }
-        }
-      });
-    });
-  }
-
-  // ===============================================
-  // PORTFOLIO - DISABLED (Apps are now static HTML)
-  // ===============================================
-
-  /*
-  setupPortfolioEvents() {
-    if (!DOM.tabButtons.length || !DOM.portfolioGrid) return;
-
-    DOM.tabButtons.forEach((button) => {
-      button.addEventListener("click", () => this.handlePortfolioTab(button));
-    });
-
-    // Load initial content
-    this.loadPortfolioContent("all");
-  }
-
-  handlePortfolioTab(button) {
-    const filter = button.getAttribute("data-filter") || "all";
-
-    // Update active tab
-    DOM.tabButtons.forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    // Load content based on filter
-    this.loadPortfolioContent(filter);
-  }
-
-  async loadPortfolioContent(filter) {
-    if (!DOM.portfolioGrid) return;
-
-    this.showPortfolioLoading();
-
-    try {
-      let projects = [];
-
-      if (filter === "github") {
-        projects = await this.fetchGitHubProjects();
-      } else {
-        projects = this.getStaticProjects(filter);
-      }
-
-      this.renderProjects(projects);
-    } catch (error) {
-      console.error("Error loading portfolio:", error);
-      this.showPortfolioError();
-    }
-  }
-  */
-
-  async fetchGitHubProjects() {
-    if (state.loadedProjects.has("github")) {
-      return state.loadedProjects.get("github");
-    }
-
-    try {
-      const headers = {
-        Accept: "application/vnd.github.v3+json",
-        "User-Agent": "Modern-Portfolio-App",
-      };
-
-      if (CONFIG.github.token) {
-        headers["Authorization"] = `token ${CONFIG.github.token}`;
-      }
-
-      const response = await fetch(
-        `https://api.github.com/users/${CONFIG.github.username}/repos?sort=updated&per_page=${CONFIG.github.maxRepos}`,
-        { headers },
-      );
-
-      if (!response.ok) {
-        throw new Error(`GitHub API error: ${response.status}`);
-      }
-
-      const repos = await response.json();
-      const filteredRepos = repos
-        .filter((repo) => !repo.fork && repo.name !== CONFIG.github.username)
-        .slice(0, 6)
-        .map((repo) => this.transformGitHubRepo(repo));
-
-      state.loadedProjects.set("github", filteredRepos);
-      return filteredRepos;
-    } catch (error) {
-      console.error("GitHub fetch error:", error);
-      return [];
-    }
-  }
-
-  transformGitHubRepo(repo) {
-    return {
-      id: repo.id,
-      title: repo.name
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase()),
-      description:
-        repo.description ||
-        "Projeto desenvolvido com foco em soluções inovadoras e tecnologias modernas.",
-      tags: [
-        `⭐ ${repo.stargazers_count}`,
-        `🍴 ${repo.forks_count}`,
-        ...(repo.language ? [repo.language] : []),
-        ...this.detectTechnologies(repo),
-      ].slice(0, 6),
-      links: [
-        { text: "Ver Código", url: repo.html_url, icon: "→" },
-        ...(repo.homepage
-          ? [{ text: "Ver Demo", url: repo.homepage, icon: "↗" }]
-          : []),
-      ],
-      category: "github",
-      featured: repo.stargazers_count > 0,
-    };
-  }
-
-  detectTechnologies(repo) {
-    const searchText =
-      `${repo.name} ${repo.description || ""} ${repo.language || ""} ${repo.topics?.join(" ") || ""}`.toLowerCase();
-
-    const techMap = {
-      React: ["react", "jsx", "next.js"],
-      "Vue.js": ["vue", "nuxt"],
-      Angular: ["angular"],
-      "Node.js": ["node", "express", "fastify"],
-      Python: ["python", "django", "flask"],
-      TypeScript: ["typescript", "ts"],
-      Docker: ["docker", "container"],
-      API: ["api", "rest", "graphql"],
-      Mobile: ["android", "ios", "react-native", "flutter"],
-      "AI/ML": ["ai", "ml", "tensorflow", "pytorch"],
     };
 
-    return Object.entries(techMap)
-      .filter(([, keywords]) =>
-        keywords.some((keyword) => searchText.includes(keyword)),
-      )
-      .map(([tech]) => tech)
-      .slice(0, 3);
-  }
-
-  getStaticProjects(filter) {
-    const projectDatabase = {
-      all: [
-        {
-          id: 1,
-          title: "GenCalc",
-          description:
-            "Advanced calculator with scientific functions, history tracking, and an intuitive interface.",
-          tags: ["Web", "JavaScript", "Scientific", "History", "PWA"],
-          links: [
-            {
-              text: "Launch App",
-              url: "https://v4mpw0l.github.io/GenCalc/",
-              icon: "↗",
-            },
-          ],
-          category: "web",
-          featured: true,
-        },
-        {
-          id: 2,
-          title: "BudgetBox",
-          description:
-            "Smart financial manager to track expenses, set budgets, and achieve your financial goals.",
-          tags: ["Finance", "Web", "Budget", "Analytics", "PWA"],
-          links: [
-            {
-              text: "Launch App",
-              url: "https://v4mpw0l.github.io/BudgetBox/",
-              icon: "↗",
-            },
-          ],
-          category: "web",
-          featured: true,
-        },
-        {
-          id: 3,
-          title: "FazendaRPG",
-          description:
-            "Immersive farming RPG game where you build and manage your own virtual farm.",
-          tags: ["RPG", "Game", "Farming", "Simulation", "Web"],
-          links: [
-            {
-              text: "Play Now",
-              url: "https://v4mpw0l.github.io/FazendaRPG/",
-              icon: "↗",
-            },
-          ],
-          category: "mobile",
-          featured: true,
-        },
-        {
-          id: 4,
-          title: "Hacker0s",
-          description:
-            "Interactive hacking simulation tool with realistic terminal experience and cybersecurity challenges.",
-          tags: ["Terminal", "Hacking", "Security", "Simulation", "Web"],
-          links: [
-            {
-              text: "Launch Tool",
-              url: "https://v4mpw0l.github.io/hacker0S/",
-              icon: "↗",
-            },
-          ],
-          category: "web",
-          featured: false,
-        },
-        {
-          id: 5,
-          title: "PacketClicker",
-          description:
-            "Addictive incremental clicker game where you collect packets and upgrade your network infrastructure.",
-          tags: ["Clicker", "Incremental", "Game", "Network", "Web"],
-          links: [
-            {
-              text: "Play Now",
-              url: "https://v4mpw0l.github.io/packetclickermmo/",
-              icon: "↗",
-            },
-          ],
-          category: "mobile",
-          featured: false,
-        },
-        {
-          id: 6,
-          title: "PassMap",
-          description:
-            "Secure password and address management tool to organize your digital life safely.",
-          tags: ["Security", "Password", "Manager", "Encryption", "Web"],
-          links: [
-            { text: "Launch App", url: "http://passmap.app/", icon: "↗" },
-          ],
-          category: "web",
-          featured: false,
-        },
-      ],
-    };
-
-    const allProjects = projectDatabase.all;
-
-    if (filter === "all") return allProjects;
-
-    return allProjects.filter((project) => project.category === filter);
-  }
-
-  renderProjects(projects) {
-    if (!DOM.portfolioGrid || !projects.length) {
-      this.showNoProjects();
-      return;
+    // Helper: Get DevLog Data safely
+    function getDevlogData() {
+        return window.DEVLOG_DATA || [];
     }
 
-    const projectsHTML = projects
-      .map((project) => this.createProjectCard(project))
-      .join("");
+    // Set Language (updates header, body, footer toggles and content)
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('v4mp_lang', lang);
 
-    DOM.portfolioGrid.innerHTML = projectsHTML;
+        // Update All Toggle Buttons (both header and footer)
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
 
-    // Animate cards in
-    setTimeout(() => {
-      const cards = DOM.portfolioGrid.querySelectorAll(".project-card");
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add("visible");
-        }, index * 100);
-      });
-    }, 100);
-  }
+        // Translate Static Elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (I18N[lang] && I18N[lang][key]) {
+                el.innerHTML = I18N[lang][key];
+            }
+        });
 
-  createProjectCard(project) {
-    const tagsHTML = project.tags
-      .map((tag) => `<span class="project-tag">${tag}</span>`)
-      .join("");
+        // Re-render DevLogs
+        renderDevlogs();
+    }
 
-    const linksHTML = project.links
-      .map(
-        (link) => `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="project-link">
-                    ${link.text} <span class="btn-icon">${link.icon}</span>
-                </a>
-            `,
-      )
-      .join("");
+    // Language Toggle Click Handlers (Delegated / All buttons)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            if (lang && lang !== currentLang) {
+                setLanguage(lang);
+            }
+        });
+    });
 
-    return `
-            <div class="project-card fade-in" data-category="${project.category}">
-                <div class="project-header">
-                    <h3 class="project-title">${project.title}</h3>
-                    ${project.featured ? '<span class="project-badge">⭐ Destaque</span>' : ""}
-                </div>
-                <p class="project-description">${project.description}</p>
-                <div class="project-tags">${tagsHTML}</div>
-                <div class="project-footer">${linksHTML}</div>
-            </div>
-        `;
-  }
+    // Render DevLogs Grid & Pagination
+    function renderDevlogs() {
+        const grid = document.getElementById('devlog-grid');
+        const pagination = document.getElementById('devlog-pagination');
+        if (!grid) return;
 
-  showPortfolioLoading() {
-    if (DOM.portfolioGrid) {
-      DOM.portfolioGrid.innerHTML = `
-                <div class="portfolio-loading">
-                    <div class="loading-spinner"></div>
-                    <p>Carregando projetos incríveis...</p>
+        const allLogs = getDevlogData();
+        const filtered = currentCategory === 'all' 
+            ? allLogs 
+            : allLogs.filter(log => log.category === currentCategory);
+
+        const totalPages = Math.ceil(filtered.length / postsPerPage) || 1;
+        if (currentPage > totalPages) currentPage = 1;
+
+        const startIdx = (currentPage - 1) * postsPerPage;
+        const pageLogs = filtered.slice(startIdx, startIdx + postsPerPage);
+
+        if (pageLogs.length === 0) {
+            grid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.84rem;">
+                    [ NO TRANSMISSIONS FOUND FOR CURRENT FILTER ]
                 </div>
             `;
-    }
-  }
-
-  showPortfolioError() {
-    if (DOM.portfolioGrid) {
-      DOM.portfolioGrid.innerHTML = `
-                <div class="portfolio-error">
-                    <p>Ops! Erro ao carregar projetos.</p>
-                    <button onclick="location.reload()" class="btn btn-primary">Tentar Novamente</button>
-                </div>
-            `;
-    }
-  }
-
-  showNoProjects() {
-    if (DOM.portfolioGrid) {
-      DOM.portfolioGrid.innerHTML = `
-                <div class="no-projects">
-                    <p>Nenhum projeto encontrado nesta categoria.</p>
-                </div>
-            `;
-    }
-  }
-
-  // ===============================================
-  // CONTACT FORM
-  // ===============================================
-
-  setupContactForm() {
-    if (!DOM.contactForm) return;
-
-    DOM.contactForm.addEventListener("submit", (e) =>
-      this.handleContactSubmit(e),
-    );
-  }
-
-  async handleContactSubmit(e) {
-    e.preventDefault();
-
-    const formData = new FormData(DOM.contactForm);
-    const data = Object.fromEntries(formData);
-
-    // Validate form data
-    if (!this.validateContactForm(data)) return;
-
-    const submitButton = DOM.contactForm.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-
-    // Show loading state
-    submitButton.textContent = "Enviando...";
-    submitButton.disabled = true;
-    submitButton.classList.add("loading");
-
-    try {
-      // Simulate API call (replace with actual endpoint)
-      await this.simulateFormSubmission(data);
-
-      // Success feedback
-      this.showFormSuccess();
-      DOM.contactForm.reset();
-    } catch (error) {
-      console.error("Form submission error:", error);
-      this.showFormError();
-    } finally {
-      // Reset button state
-      submitButton.textContent = originalText;
-      submitButton.disabled = false;
-      submitButton.classList.remove("loading");
-    }
-  }
-
-  validateContactForm(data) {
-    const required = ["name", "email", "message"];
-    const missing = required.filter((field) => !data[field]?.trim());
-
-    if (missing.length > 0) {
-      alert(
-        `Por favor, preencha os campos obrigatórios: ${missing.join(", ")}`,
-      );
-      return false;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-      alert("Por favor, insira um email válido.");
-      return false;
-    }
-
-    return true;
-  }
-
-  async simulateFormSubmission(data) {
-    // Simulate network delay
-    return new Promise((resolve) => {
-      setTimeout(resolve, 2000);
-    });
-  }
-
-  showFormSuccess() {
-    // You could implement a toast notification here
-    alert("✅ Mensagem enviada com sucesso! Entrarei em contato em breve.");
-  }
-
-  showFormError() {
-    alert(
-      "❌ Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente.",
-    );
-  }
-
-  // ===============================================
-  // SMOOTH SCROLLING
-  // ===============================================
-
-  setupSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      // Skip app links and empty hash links
-      const href = anchor.getAttribute("href");
-      if (href === "#" || anchor.classList.contains("app-item")) {
-        return;
-      }
-
-      anchor.addEventListener("click", (e) =>
-        this.handleSmoothScroll(e, anchor),
-      );
-    });
-  }
-
-  handleSmoothScroll(e, anchor) {
-    const targetId = anchor.getAttribute("href");
-
-    // Validate selector before using it
-    if (!targetId || targetId === "#" || targetId.length <= 1) {
-      return;
-    }
-
-    e.preventDefault();
-
-    const target = document.querySelector(targetId);
-
-    if (target) {
-      const offset = DOM.navbar ? DOM.navbar.offsetHeight : 0;
-      const targetPosition = target.offsetTop - offset;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-
-      // Close mobile nav if open
-      this.closeMobileNav();
-    }
-  }
-
-  // ===============================================
-  // ANIMATIONS & EFFECTS
-  // ===============================================
-
-  initAnimations() {
-    this.setupIntersectionObserver();
-    this.initParallax();
-  }
-
-  setupIntersectionObserver() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+            if (pagination) pagination.innerHTML = '';
+            return;
         }
-      });
-    }, CONFIG.observer);
 
-    // Observe elements with fade-in class
-    document.querySelectorAll(".fade-in").forEach((el) => {
-      observer.observe(el);
-    });
-  }
+        const readMoreText = I18N[currentLang]['read-more'] || 'Abrir Transmissão →';
 
-  initParallax() {
-    // Simple parallax effect for hero background
-    const hero = document.querySelector(".hero");
-    if (!hero) return;
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        const scrolled = window.pageYOffset;
-        const parallax = hero.querySelector(".hero-bg");
-
-        if (parallax) {
-          const speed = scrolled * 0.5;
-          parallax.style.transform = `translateY(${speed}px)`;
-        }
-      },
-      { passive: true },
-    );
-  }
-
-  createParticles() {
-    if (!DOM.particlesContainer) return;
-
-    const particleCount = window.innerWidth > 768 ? 50 : 25;
-
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement("div");
-      particle.className = "particle";
-
-      // Random properties
-      particle.style.left = Math.random() * 100 + "%";
-      particle.style.animationDelay = Math.random() * 20 + "s";
-      particle.style.animationDuration = 15 + Math.random() * 10 + "s";
-
-      // Random size variation
-      const size = 1 + Math.random() * 2;
-      particle.style.width = size + "px";
-      particle.style.height = size + "px";
-
-      DOM.particlesContainer.appendChild(particle);
-    }
-  }
-
-  createLoadingParticles() {
-    const loadingParticlesContainer =
-      document.getElementById("loading-particles");
-    if (!loadingParticlesContainer) return;
-
-    const particleCount = window.innerWidth > 768 ? 40 : 20;
-
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement("div");
-      particle.className = "particle";
-
-      // Random properties
-      particle.style.left = Math.random() * 100 + "%";
-      particle.style.animationDelay = Math.random() * 15 + "s";
-      particle.style.animationDuration = 10 + Math.random() * 8 + "s";
-
-      // Random size variation
-      const size = 1 + Math.random() * 2.5;
-      particle.style.width = size + "px";
-      particle.style.height = size + "px";
-
-      loadingParticlesContainer.appendChild(particle);
-    }
-  }
-
-  // ===============================================
-  // SCROLL HANDLING
-  // ===============================================
-
-  handleScroll() {
-    if (!state.isScrolling) {
-      requestAnimationFrame(() => {
-        this.updateNavbar();
-        this.updateActiveNavLink();
-        state.isScrolling = false;
-      });
-    }
-    state.isScrolling = true;
-  }
-
-  handleResize() {
-    // Debounce resize events for better performance
-    if (state.resizeTimeout) {
-      clearTimeout(state.resizeTimeout);
-    }
-
-    state.resizeTimeout = setTimeout(() => {
-      // Recalculate section positions on resize
-      this.cacheSectionPositions();
-
-      // Recreate particles on resize
-      if (DOM.particlesContainer) {
-        DOM.particlesContainer.innerHTML = "";
-        this.createParticles();
-      }
-    }, 250);
-  }
-
-  // ===============================================
-  // PWA SERVICE WORKER
-  // ===============================================
-
-  registerServiceWorker() {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("/sw.js")
-          .then((registration) => {
-            console.log("✅ SW registered successfully:", registration.scope);
-            this.handleInstallPrompt();
-          })
-          .catch((error) => {
-            console.log("❌ SW registration failed:", error);
-          });
-      });
-    }
-  }
-
-  handleInstallPrompt() {
-    let deferredPrompt;
-
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-
-      setTimeout(() => {
-        if (
-          deferredPrompt &&
-          !window.matchMedia("(display-mode: standalone)").matches
-        ) {
-          this.showInstallBanner(deferredPrompt);
-        }
-      }, 5000);
-    });
-  }
-
-  showInstallBanner(deferredPrompt) {
-    const banner = document.createElement("div");
-    banner.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 12px; background: rgba(26, 26, 46, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(74, 158, 255, 0.3); border-radius: 16px; padding: 16px; position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 10000; color: white; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);">
-                <span style="font-size: 24px;">📱</span>
-                <div style="flex: 1;">
-                    <div style="font-weight: 600; margin-bottom: 4px;">Install App</div>
-                    <div style="font-size: 14px; opacity: 0.8;">Get the full experience!</div>
+        grid.innerHTML = pageLogs.map(log => `
+            <div class="devlog-card" data-id="${log.id}">
+                <div>
+                    <div class="devlog-header">
+                        <span class="devlog-badge ${log.badgeClass}">${log.badge[currentLang] || log.badge.pt}</span>
+                        <span class="devlog-date">${log.date[currentLang] || log.date.pt}</span>
+                    </div>
+                    <h3 class="devlog-title">${log.title[currentLang] || log.title.pt}</h3>
+                    <div class="devlog-excerpt">${log.excerpt[currentLang] || log.excerpt.pt}</div>
                 </div>
-                <button onclick="this.parentNode.parentNode.install()" style="background: linear-gradient(135deg, #4a9eff, #8b5cf6); border: none; padding: 8px 16px; border-radius: 8px; color: white; font-weight: 600; cursor: pointer;">Install</button>
-                <button onclick="this.parentNode.parentNode.remove()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.7;">×</button>
+                <div class="devlog-footer">
+                    <span class="devlog-tag">${log.tag || ''}</span>
+                    <span class="devlog-read-btn">${readMoreText}</span>
+                </div>
+            </div>
+        `).join('');
+
+        // Wire Click Events to Open Modal
+        grid.querySelectorAll('.devlog-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.getAttribute('data-id');
+                openTransmissionModal(id);
+            });
+        });
+
+        // Render Pagination
+        if (pagination) {
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+            } else {
+                let html = `
+                    <button class="page-btn prev-btn" ${currentPage === 1 ? 'disabled' : ''} aria-label="Previous Page">‹</button>
+                `;
+                for (let i = 1; i <= totalPages; i++) {
+                    html += `
+                        <button class="page-btn num-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>
+                    `;
+                }
+                html += `
+                    <button class="page-btn next-btn" ${currentPage === totalPages ? 'disabled' : ''} aria-label="Next Page">›</button>
+                `;
+                pagination.innerHTML = html;
+
+                pagination.querySelectorAll('.num-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentPage = parseInt(btn.dataset.page, 10);
+                        renderDevlogs();
+                    });
+                });
+
+                const prevBtn = pagination.querySelector('.prev-btn');
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        if (currentPage > 1) {
+                            currentPage--;
+                            renderDevlogs();
+                        }
+                    });
+                }
+
+                const nextBtn = pagination.querySelector('.next-btn');
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            renderDevlogs();
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    // Category Filter Buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCategory = btn.dataset.category || 'all';
+            currentPage = 1;
+            renderDevlogs();
+        });
+    });
+
+    // Transmission Modal Logic
+    const modal = document.getElementById('transmission-modal');
+    const modalContent = document.getElementById('modal-content-area');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    function openTransmissionModal(logId) {
+        const item = getDevlogData().find(l => l.id === logId);
+        if (!item || !modal || !modalContent) return;
+
+        const lang = currentLang;
+        const fullText = (item.texto && item.texto[lang]) ? item.texto[lang] : `<p>${item.excerpt ? item.excerpt[lang] : ''}</p>`;
+        const tagHtml = item.tag ? `<span class="modal-tag">${item.tag}</span>` : '<span></span>';
+        const dateHtml = (item.date && item.date[lang]) ? `<span class="modal-date">${item.date[lang]}</span>` : '';
+
+        modalContent.innerHTML = `
+            <div class="modal-top">
+                <span class="devlog-badge ${item.badgeClass}">${item.badge[lang] || item.badge.pt}</span>
+            </div>
+            <h3 class="modal-title">${item.title[lang] || item.title.pt}</h3>
+            <div class="modal-body-card">
+                ${fullText}
+            </div>
+            <div class="modal-footer">
+                ${tagHtml}
+                ${dateHtml}
             </div>
         `;
-
-    banner.install = () => {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        banner.remove();
-      });
-    };
-
-    document.body.appendChild(banner);
-    setTimeout(() => banner.remove(), 10000);
-  }
-
-  // ===============================================
-  // BLOG / FEED
-  // ===============================================
-
-  setupBlog() {
-    if (!DOM.blogGrid) return;
-    this.renderBlogPage(1);
-  }
-
-  renderBlogPage(page) {
-    state.blogPage = page;
-    const lang = this.currentLanguage || "en";
-    const start = (page - 1) * state.blogPostsPerPage;
-    const end = start + state.blogPostsPerPage;
-    const posts = BLOG_POSTS.slice(start, end);
-    const totalPages = Math.ceil(BLOG_POSTS.length / state.blogPostsPerPage);
-
-    if (!DOM.blogGrid) return;
-
-    const tagColors = {
-      launch: "var(--success)",
-      ai: "var(--tertiary)",
-      fun: "#f59e0b",
-      tech: "var(--accent)",
-      story: "#ef4444",
-      security: "#ec4899",
-      thoughts: "#06b6d4",
-    };
-
-    DOM.blogGrid.innerHTML = posts
-      .map((post) => {
-        const title = lang === "pt" ? post.title_pt : post.title_en;
-        const body = lang === "pt" ? post.body_pt : post.body_en;
-        const dateStr = new Date(post.date).toLocaleDateString(
-          lang === "pt" ? "pt-BR" : "en-US",
-          { year: "numeric", month: "short", day: "numeric" }
-        );
-        const tagColor = tagColors[post.tag] || "var(--accent)";
-
-        return `
-          <article class="blog-post">
-            <div class="blog-post-header">
-              <span class="blog-post-icon">${post.icon}</span>
-              <div class="blog-post-meta">
-                <span class="blog-post-tag" style="--tag-color: ${tagColor}">${post.tag}</span>
-                <time class="blog-post-date">${dateStr}</time>
-              </div>
-            </div>
-            <h3 class="blog-post-title">${title}</h3>
-            <p class="blog-post-body">${body}</p>
-          </article>
-        `;
-      })
-      .join("");
-
-    // Animate posts in
-    setTimeout(() => {
-      const articles = DOM.blogGrid.querySelectorAll(".blog-post");
-      articles.forEach((article, i) => {
-        setTimeout(() => article.classList.add("visible"), i * 120);
-      });
-    }, 50);
-
-    // Render pagination
-    this.renderBlogPagination(page, totalPages);
-  }
-
-  renderBlogPagination(currentPage, totalPages) {
-    if (!DOM.blogPagination || totalPages <= 1) return;
-
-    let html = "";
-
-    // Previous
-    html += `<button class="blog-page-btn ${currentPage === 1 ? "disabled" : ""}" 
-      ${currentPage > 1 ? `onclick="window._portfolio.renderBlogPage(${currentPage - 1})"` : "disabled"}>
-      ←
-    </button>`;
-
-    for (let i = 1; i <= totalPages; i++) {
-      html += `<button class="blog-page-btn ${i === currentPage ? "active" : ""}" 
-        onclick="window._portfolio.renderBlogPage(${i})">${i}</button>`;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
     }
 
-    // Next
-    html += `<button class="blog-page-btn ${currentPage === totalPages ? "disabled" : ""}" 
-      ${currentPage < totalPages ? `onclick="window._portfolio.renderBlogPage(${currentPage + 1})"` : "disabled"}>
-      →
-    </button>`;
-
-    DOM.blogPagination.innerHTML = html;
-  }
-
-  // ===============================================
-  // BACK TO TOP BUTTON
-  // ===============================================
-
-  setupBackToTop() {
-    if (!DOM.backToTop) return;
-
-    DOM.backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  }
-
-  updateBackToTop(scrollY) {
-    if (!DOM.backToTop) return;
-
-    if (scrollY > 300) {
-      DOM.backToTop.classList.add("visible");
-    } else {
-      DOM.backToTop.classList.remove("visible");
-    }
-  }
-
-  // ===============================================
-  // LANGUAGE SELECTOR
-  // ===============================================
-
-  setupLanguageSelector() {
-    if (!DOM.langButtons.length) return;
-
-    DOM.langButtons.forEach((button) => {
-      button.addEventListener("click", () => this.switchLanguage(button));
-    });
-
-    // Load translation data first
-    this.loadLanguageData();
-
-    // Check localStorage for saved preference, default to English (matches HTML)
-    const savedLang = localStorage.getItem("preferred-language") || "en";
-    this.currentLanguage = savedLang;
-
-    // Sync button active state with actual language
-    DOM.langButtons.forEach((btn) => {
-      if (btn.getAttribute("data-lang") === savedLang) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
-      }
-    });
-
-    // Apply translations if not English (HTML is already in English)
-    if (savedLang !== "en") {
-      this.applyLanguage(savedLang);
-    }
-  }
-
-  switchLanguage(button) {
-    const lang = button.getAttribute("data-lang");
-
-    if (lang === this.currentLanguage) return;
-
-    // Update active button
-    DOM.langButtons.forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    // Update current language
-    this.currentLanguage = lang;
-
-    // Apply language changes
-    this.applyLanguage(lang);
-  }
-
-  loadLanguageData() {
-    this.translations = {
-      en: {
-        // Navigation
-        "nav-about": "About",
-        "nav-produtos": "Products",
-        "nav-portfolio": "Portfolio",
-        "nav-contact": "Contact",
-
-        // Hero Section
-        "hero-badge": "Independent App Studio",
-        "hero-title-1": "Designing Proprietary",
-        "hero-title-2": "Mobile Applications",
-        "hero-subtitle": "for the digital economy",
-        "hero-description":
-          "CEO & Founder of <strong>Gennisys</strong> — Building AI-first experiences, scalable cloud infrastructure, and innovative mobile solutions that define the future of digital interaction.",
-
-        // Vision
-        "vision-badge": "Our Vision",
-        "vision-title": "Innovation Excellence",
-
-        // Products
-        "products-badge": "Our Products",
-        "products-title": "Innovative Applications",
-        "products-description":
-          "We develop our own products with cutting-edge technology, creating solutions that revolutionize markets and generate real impact in the business world.",
-
-        // Individual Products
-        "product1-title": "GenFlow - Intelligent Automation",
-        "product1-desc":
-          "Revolutionary business automation platform with integrated AI. Optimizes processes, reduces costs by 60% and exponentially increases productivity.",
-        "product2-title": "DataViz Pro - Business Intelligence",
-        "product2-desc":
-          "Complete BI suite with interactive dashboards, machine learning and predictive analytics. Transform data into winning strategic decisions.",
-        "product3-title": "V4mpBot - Conversational AI",
-        "product3-desc":
-          "Automated customer service system with advanced natural language processing. Revolutionizes customer success with AI that truly understands.",
-        "product4-title": "Security & Compliance",
-        "product4-desc":
-          "Comprehensive security audits, penetration testing, and compliance frameworks ensuring enterprise-grade protection.",
-
-        // Product Features
-        "product1-feat1": "Generative AI",
-        "product1-feat2": "Intelligent Workflows",
-        "product1-feat3": "Predictive Analytics",
-        "product1-feat4": "Cloud Native",
-        "product2-feat1": "Interactive Dashboards",
-        "product2-feat2": "ML Predictions",
-        "product2-feat3": "Real-time Analytics",
-        "product2-feat4": "Custom Reports",
-        "product3-feat1": "Advanced NLP",
-        "product3-feat2": "Multi-channel",
-        "product3-feat3": "Continuous Learning",
-        "product3-feat4": "API Integrations",
-        "product4-feat1": "Security Audits",
-        "product4-feat2": "Penetration Testing",
-        "product4-feat3": "Compliance Management",
-        "product4-feat4": "Threat Monitoring",
-
-        // About Section
-        "about-badge": "About the Founder",
-        "about-title": "Leading Innovation Through Code",
-        "about-description":
-          "With a deep understanding of both business strategy and technical execution, I bridge the gap between vision and reality in the digital space.",
-
-        // About Cards
-        "about-card1-title": "Strategic Leadership",
-        "about-card1-desc":
-          "Directing proprietary roadmaps and enforcing disciplined delivery for every product launch across our portfolio.",
-        "about-card1-feat1": "Product Governance",
-        "about-card1-feat2": "Team Orchestration",
-        "about-card1-feat3": "Market Positioning",
-
-        "about-card2-title": "Technical Excellence",
-        "about-card2-desc":
-          "Leading engineering stewardship with resilient infrastructure and continuous innovation standards.",
-        "about-card2-feat1": "Full-Stack Architecture",
-        "about-card2-feat2": "AI-First Development",
-        "about-card2-feat3": "Cloud-Native Solutions",
-
-        "about-card3-title": "Global Vision",
-        "about-card3-desc":
-          "Activating strategic alliances that extend distribution and stakeholder value across international markets.",
-        "about-card3-feat1": "Market Expansion",
-        "about-card3-feat2": "Partnership Development",
-        "about-card3-feat3": "Brand Growth",
-
-        // Tech Stack
-        "tech-stack-title": "Core Technologies",
-
-        // Contact Section
-        "contact-badge": "Stay Connected",
-        "contact-title": "Follow Our Innovation Journey",
-        "contact-description":
-          "Stay updated with our latest products and technological breakthroughs. Join our community of innovators and tech enthusiasts.",
-
-        // Contact Methods
-        "email-desc": "Business inquiries and partnerships",
-        "telegram-desc": "Quick questions and consultations",
-        "linkedin-desc": "Professional networking",
-        "github-desc": "Open source contributions",
-
-        // Company Status
-        "status-building": "Building innovative products",
-
-        // Company Showcase
-        "showcase-innovation-title": "Innovation First",
-        "showcase-innovation-desc":
-          "Every product we create pushes the boundaries of what's possible in technology.",
-        "showcase-global-title": "Global Impact",
-        "showcase-global-desc":
-          "Our applications are designed to solve real-world problems on a global scale.",
-        "showcase-ai-title": "AI-Powered",
-        "showcase-ai-desc":
-          "Artificial Intelligence is at the core of everything we build and deploy.",
-        "showcase-security-title": "Enterprise Security",
-        "showcase-security-desc":
-          "Bank-level security and compliance built into every product from day one.",
-
-        // Direct Contact
-        "direct-contact-title": "Want to know more about our products?",
-        "direct-contact-desc":
-          "Follow our journey and get updates on new releases.",
-
-        // Trusted By
-        "trusted-by": "Trusted by",
-
-        // Apps Section
-        apps_badge: "Gennisys Portfolio",
-        apps_title: "Our Applications",
-        apps_subtitle:
-          "Explore the proprietary applications engineered entirely in-house.",
-        app_calculator_title: "GenCalc",
-        app_calculator_desc:
-          "Advanced calculator with scientific functions and audit-ready history tracking.",
-        app_calendar_title: "BudgetBox",
-        app_calendar_desc:
-          "Smart financial manager to track expenses, set budgets, and achieve your financial goals.",
-        app_maps_title: "FazendaRPG",
-        app_maps_desc:
-          "Immersive farming RPG game where you build and manage your own virtual farm.",
-        app_games_title: "Hacker0s",
-        app_games_desc:
-          "Interactive hacking simulation tool with realistic terminal experience and cybersecurity challenges.",
-        app_utilities_title: "PacketClicker",
-        app_utilities_desc:
-          "Addictive incremental clicker game where you collect packets and upgrade your network infrastructure.",
-        app_music_title: "PassMap",
-        app_music_desc:
-          "Secure password and address management tool to organize your digital life safely.",
-
-        // Buttons
-        "btn-contact": "Get in Touch",
-        "btn-portfolio": "Explore Portfolio",
-        "btn-send": "Send Message",
-        "btn-updates": "Get Updates",
-        "btn-github": "Follow on GitHub",
-
-        // Footer
-        "footer-products-title": "Our Products",
-        "footer-genflow": "GenFlow AI",
-        "footer-dataviz": "DataViz Pro",
-        "footer-v4mpbot": "V4mpBot",
-        "footer-more": "More Products",
-        "footer-company-title": "Company",
-
-        // Statistics
-        "stat-apps": "Apps in Production",
-        "stat-users": "Active Users",
-        "stat-years": "Years Leading",
-
-        // Blog
-        "nav-blog": "Blog",
-        "blog-badge": "Dev Log",
-        "blog-title": 'Latest <span class="gradient-text">Updates</span>',
-        "blog-description": "Thoughts, experiments, and random things from my dev journey. No filters, just vibes.",
-      },
-      pt: {
-        // Navigation
-        "nav-about": "Sobre",
-        "nav-produtos": "Produtos",
-        "nav-portfolio": "Portfólio",
-        "nav-contact": "Contato",
-
-        // Hero Section
-        "hero-badge": "Estúdio Independente de Apps",
-        "hero-title-1": "Projetando Aplicativos",
-        "hero-title-2": "Mobile Proprietários",
-        "hero-subtitle": "para a economia digital",
-        "hero-description":
-          "CEO & Fundador da <strong>Gennisys</strong> — Construindo experiências com IA, infraestrutura de nuvem escalável e soluções móveis inovadoras que definem o futuro da interação digital.",
-
-        // Vision
-        "vision-badge": "Nossa Visão",
-        "vision-title": "Excelência em Inovação",
-
-        // Products
-        "products-badge": "Nossos Produtos",
-        "products-title": "Aplicativos Inovadores",
-        "products-description":
-          "Desenvolvemos nossos próprios produtos com tecnologia de ponta, criando soluções que revolucionam mercados e geram impacto real no mundo dos negócios.",
-
-        // Individual Products
-        "product1-title": "GenFlow - Automação Inteligente",
-        "product1-desc":
-          "Plataforma revolucionária de automação empresarial com IA integrada. Otimiza processos, reduz custos em 60% e aumenta produtividade exponencialmente.",
-        "product2-title": "DataViz Pro - Business Intelligence",
-        "product2-desc":
-          "Suite completa de BI com dashboards interativos, machine learning e análise preditiva. Transforme dados em decisões estratégicas vencedoras.",
-        "product3-title": "V4mpBot - AI Conversacional",
-        "product3-desc":
-          "Sistema de atendimento automatizado com processamento de linguagem natural avançado. Revoluciona o customer success com IA que realmente entende.",
-        "product4-title": "Segurança & Conformidade",
-        "product4-desc":
-          "Auditorias de segurança abrangentes, testes de penetração e estruturas de conformidade garantindo proteção de nível empresarial.",
-
-        // Product Features
-        "product1-feat1": "IA Generativa",
-        "product1-feat2": "Workflows Inteligentes",
-        "product1-feat3": "Analytics Preditivo",
-        "product1-feat4": "Cloud Native",
-        "product2-feat1": "Dashboards Interativos",
-        "product2-feat2": "ML Predictions",
-        "product2-feat3": "Real-time Analytics",
-        "product2-feat4": "Custom Reports",
-        "product3-feat1": "NLP Avançado",
-        "product3-feat2": "Multi-channel",
-        "product3-feat3": "Learning Contínuo",
-        "product3-feat4": "API Integrations",
-        "product4-feat1": "Auditorias de Segurança",
-        "product4-feat2": "Testes de Penetração",
-        "product4-feat3": "Gestão de Conformidade",
-        "product4-feat4": "Monitoramento de Ameaças",
-
-        // About Section
-        "about-badge": "Sobre o Fundador",
-        "about-title": "Liderando Inovação Através do Código",
-        "about-description":
-          "Com profundo entendimento tanto de estratégia de negócios quanto execução técnica, faço a ponte entre visão e realidade no espaço digital.",
-
-        // About Cards
-        "about-card1-title": "Liderança Estratégica",
-        "about-card1-desc":
-          "Direcionando roadmaps proprietários e garantindo entrega disciplinada para cada lançamento de produto em nosso portfólio.",
-        "about-card1-feat1": "Governança de Produto",
-        "about-card1-feat2": "Orquestração de Equipe",
-        "about-card1-feat3": "Posicionamento de Mercado",
-
-        "about-card2-title": "Excelência Técnica",
-        "about-card2-desc":
-          "Liderando gestão de engenharia com infraestrutura resiliente e padrões de inovação contínua.",
-        "about-card2-feat1": "Arquitetura Full-Stack",
-        "about-card2-feat2": "Desenvolvimento IA-First",
-        "about-card2-feat3": "Soluções Cloud-Native",
-
-        "about-card3-title": "Visão Global",
-        "about-card3-desc":
-          "Ativando alianças estratégicas que expandem distribuição e valor para stakeholders em mercados internacionais.",
-        "about-card3-feat1": "Expansão de Mercado",
-        "about-card3-feat2": "Desenvolvimento de Parcerias",
-        "about-card3-feat3": "Crescimento de Marca",
-
-        // Tech Stack
-        "tech-stack-title": "Tecnologias Principais",
-
-        // Contact Section
-        "contact-badge": "Fique Conectado",
-        "contact-title": "Acompanhe Nossa Jornada de Inovação",
-        "contact-description":
-          "Mantenha-se atualizado com nossos produtos mais recentes e avanços tecnológicos. Junte-se à nossa comunidade de inovadores e entusiastas da tecnologia.",
-
-        // Contact Methods
-        "email-desc": "Consultas comerciais e parcerias",
-        "telegram-desc": "Perguntas rápidas e consultorias",
-        "linkedin-desc": "Networking profissional",
-        "github-desc": "Contribuições open source",
-
-        // Company Status
-        "status-building": "Construindo produtos inovadores",
-
-        // Company Showcase
-        "showcase-innovation-title": "Inovação em Primeiro Lugar",
-        "showcase-innovation-desc":
-          "Cada produto que criamos expande os limites do que é possível na tecnologia.",
-        "showcase-global-title": "Impacto Global",
-        "showcase-global-desc":
-          "Nossos aplicativos são projetados para resolver problemas do mundo real em escala global.",
-        "showcase-ai-title": "Inteligência Artificial",
-        "showcase-ai-desc":
-          "A Inteligência Artificial está no centro de tudo que construímos e implantamos.",
-        "showcase-security-title": "Segurança Empresarial",
-        "showcase-security-desc":
-          "Segurança e conformidade de nível bancário integradas em cada produto desde o primeiro dia.",
-
-        // Direct Contact
-        "direct-contact-title": "Quer saber mais sobre nossos produtos?",
-        "direct-contact-desc":
-          "Acompanhe nossa jornada e receba atualizações sobre novos lançamentos.",
-
-        // Trusted By
-        "trusted-by": "Confiança de",
-
-        // Apps Section
-        apps_badge: "Portfólio Gennisys",
-        apps_title: "Nossos Aplicativos",
-        apps_subtitle:
-          "Explore os aplicativos proprietários desenvolvidos inteiramente internamente.",
-        app_calculator_title: "GenCalc",
-        app_calculator_desc:
-          "Calculadora avançada com funções científicas e rastreamento de histórico auditável.",
-        app_calendar_title: "BudgetBox",
-        app_calendar_desc:
-          "Gerenciador financeiro inteligente para rastrear despesas, definir orçamentos e alcançar suas metas financeiras.",
-        app_maps_title: "FazendaRPG",
-        app_maps_desc:
-          "Jogo RPG de fazenda imersivo onde você constrói e gerencia sua própria fazenda virtual.",
-        app_games_title: "Hacker0s",
-        app_games_desc:
-          "Ferramenta de simulação de hacking interativa com experiência de terminal realista e desafios de segurança cibernética.",
-        app_utilities_title: "PacketClicker",
-        app_utilities_desc:
-          "Jogo clicker incremental viciante onde você coleta pacotes e atualiza sua infraestrutura de rede.",
-        app_music_title: "PassMap",
-        app_music_desc:
-          "Ferramenta segura de gerenciamento de senhas e endereços para organizar sua vida digital com segurança.",
-
-        // Buttons
-        "btn-contact": "Entre em Contato",
-        "btn-portfolio": "Explorar Portfólio",
-        "btn-send": "Enviar Mensagem",
-        "btn-updates": "Receber Atualizações",
-        "btn-github": "Seguir no GitHub",
-
-        // Footer
-        "footer-products-title": "Nossos Produtos",
-        "footer-genflow": "GenFlow AI",
-        "footer-dataviz": "DataViz Pro",
-        "footer-v4mpbot": "V4mpBot",
-        "footer-more": "Mais Produtos",
-        "footer-company-title": "Empresa",
-
-        // Statistics
-        "stat-apps": "Apps em Produção",
-        "stat-users": "Usuários Ativos",
-        "stat-years": "Anos Liderando",
-
-        // Blog
-        "nav-blog": "Blog",
-        "blog-badge": "Dev Log",
-        "blog-title": 'Últimas <span class="gradient-text">Novidades</span>',
-        "blog-description": "Pensamentos, experimentos e aleatoriedades da minha jornada dev. Sem filtro, só vibes.",
-      },
-    };
-  }
-
-  applyLanguage(lang) {
-    const translations = this.translations[lang];
-    if (!translations) return;
-
-    // Apply translations to elements with data-translate attributes
-    Object.keys(translations).forEach((key) => {
-      const elements = document.querySelectorAll(`[data-translate="${key}"]`);
-      elements.forEach((element) => {
-        if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
-          element.placeholder = translations[key];
-        } else {
-          element.innerHTML = translations[key];
+    function closeModal() {
+        if (modal) {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
         }
-      });
-    });
-
-    // Store language preference
-    localStorage.setItem("preferred-language", lang);
-
-    // Re-render blog posts in new language
-    if (DOM.blogGrid) {
-      this.renderBlogPage(state.blogPage);
     }
 
-    console.log(
-      `🌍 Language switched to: ${lang === "en" ? "English" : "Português"}`,
-    );
-  }
-}
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
 
-// ===============================================
-// APP LINKS HANDLER
-// ===============================================
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
 
-function initAppLinks() {
-  const appCards = document.querySelectorAll(".apps-grid .app-item");
-  if (!appCards.length) return;
-
-  appCards.forEach((card) => {
-    card.addEventListener("click", (event) => {
-      const rawUrl = card.dataset.appUrl || card.getAttribute("href") || "";
-      const url = rawUrl.trim();
-
-      if (!url || url === "#") {
-        event.preventDefault();
-        return;
-      }
-
-      event.preventDefault();
-      const targetPref = (card.dataset.appTarget || "new").toLowerCase();
-
-      if (targetPref === "self") {
-        window.location.href = url;
-      } else {
-        window.open(url, "_blank", "noopener");
-      }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+            closeModal();
+        }
     });
-  });
-}
 
-// ===============================================
-// INITIALIZE
-// ===============================================
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+    if (mobileBtn && navMenu) {
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
 
-const utils = {
-  debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  },
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+            });
+        });
+    }
 
-  throttle(func, limit) {
-    let inThrottle;
-    return function () {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => (inThrottle = false), limit);
-      }
-    };
-  },
+    
+    // Scroll to Top on Brand Logo Click
+    const brandLogoBtn = document.getElementById('brand-logo-btn') || document.querySelector('.brand-sigil');
+    if (brandLogoBtn) {
+        brandLogoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            history.pushState(null, null, window.location.pathname);
+        });
+    }
 
-  animateCounter(element, target, duration = 2000) {
-    const start = parseInt(element.textContent) || 0;
-    const increment = (target - start) / (duration / 16);
-    let current = start;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        element.textContent = target;
-        clearInterval(timer);
-      } else {
-        element.textContent = Math.floor(current);
-      }
-    }, 16);
-  },
-};
-
-// ===============================================
-// ERROR HANDLING
-// ===============================================
-
-window.addEventListener("error", (e) => {
-  console.error("🚨 JavaScript Error:", {
-    message: e.message,
-    filename: e.filename,
-    lineno: e.lineno,
-    error: e.error,
-  });
+    // Initialize Language & Render
+    setLanguage(currentLang);
 });
-
-window.addEventListener("unhandledrejection", (e) => {
-  console.error("🚨 Unhandled Promise Rejection:", e.reason);
-});
-
-// ===============================================
-// INITIALIZATION
-// ===============================================
-
-// Force scroll to top before anything else
-window.addEventListener("beforeunload", () => {
-  window.scrollTo(0, 0);
-});
-
-// Scroll to top immediately
-window.scrollTo(0, 0);
-document.documentElement.scrollTop = 0;
-document.body.scrollTop = 0;
-
-// Initialize the application when DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  // Ensure we're at the top
-  window.scrollTo(0, 0);
-
-  const portfolio = new ModernPortfolio();
-  window._portfolio = portfolio;
-  initAppLinks();
-});
-
-// Additional initialization for late-loading elements
-window.addEventListener("load", () => {
-  console.log("🎉 All resources loaded successfully");
-});
-
-// Export for potential external use
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { ModernPortfolio, utils };
-}
