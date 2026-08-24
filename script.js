@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'term-listening': 'aguardando notícias..._',
 
             'devlog-meta': 'LOGS & NOTÍCIAS',
-            'devlog-title': 'DevLog & Notas de Engenharia',
+            'devlog-title': 'DevLog & Notas',
             'devlog-desc': 'Registros de arquitetura, lançamentos, experimentos de baixo nível e notas de desenvolvimento sem filtros corporativos.',
             'read-more': 'Abrir Notícia →',
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'term-listening': 'listening for updates..._',
 
             'devlog-meta': 'LOGS & NEWS',
-            'devlog-title': 'DevLog & Engineering Notes',
+            'devlog-title': 'DevLog & Notes',
             'devlog-desc': 'Architecture chronicles, releases, low-level experiments, and technical deep-dives without corporate filters.',
             'read-more': 'Read Article →',
 
