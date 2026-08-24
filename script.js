@@ -18,17 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-beacon': 'ONLINE',
             'hero-role': 'Engenheiro de Software & Arquiteto de Sistemas',
             'hero-bio': 'Fundador da <a href="https://gennisys.com" target="_blank" rel="noopener" class="hero-brand-link">Gennisys</a>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
-            'hero-btn-transmissions': 'Ler Transmissões',
+            'hero-btn-transmissions': 'Ler Notícias',
             'hero-btn-gennisys': 'Acessar Gennisys Studio ↗',
             
             'term-role': 'Arquiteto de Sistemas // Fundador @ Gennisys',
             'term-protocols': '[Zero-Bloat, Local-First, JS-Puro, C, Async-IO]',
-            'term-listening': 'ouvindo transmissões..._',
+            'term-listening': 'aguardando notícias..._',
 
-            'devlog-meta': 'LOGS & TRANSMISSÕES',
+            'devlog-meta': 'LOGS & NOTÍCIAS',
             'devlog-title': 'DevLog & Notas de Engenharia',
             'devlog-desc': 'Registros de arquitetura, lançamentos, experimentos de baixo nível e notas de desenvolvimento sem filtros corporativos.',
-            'read-more': 'Abrir Transmissão →',
+            'read-more': 'Abrir Notícia →',
 
             'protocols-meta': 'DIRETIVAS DE ENGENHARIA',
             'protocols-title': 'Princípios & Protocolos',
@@ -58,17 +58,17 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-beacon': 'ONLINE',
             'hero-role': 'Software Engineer & Systems Architect',
             'hero-bio': 'Founder of <a href="https://gennisys.com" target="_blank" rel="noopener" class="hero-brand-link">Gennisys</a>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
-            'hero-btn-transmissions': 'Read Transmissions',
+            'hero-btn-transmissions': 'Read News',
             'hero-btn-gennisys': 'Access Gennisys Studio ↗',
             
             'term-role': 'Systems Architect // Founder @ Gennisys',
             'term-protocols': '[Zero-Bloat, Local-First, Pure-JS, C, Async-IO]',
-            'term-listening': 'listening for transmissions..._',
+            'term-listening': 'listening for updates..._',
 
-            'devlog-meta': 'LOGS & TRANSMISSIONS',
+            'devlog-meta': 'LOGS & NEWS',
             'devlog-title': 'DevLog & Engineering Notes',
             'devlog-desc': 'Architecture chronicles, releases, low-level experiments, and technical deep-dives without corporate filters.',
-            'read-more': 'Open Transmission →',
+            'read-more': 'Read Article →',
 
             'protocols-meta': 'ENGINEERING DIRECTIVES',
             'protocols-title': 'Principles & Protocols',
