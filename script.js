@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'studio-box-desc': 'Nosso estúdio independente dedicado a criar jogos autorais, ferramentas de produtividade e experiências interativas.',
             'studio-btn': 'Explorar Estúdio Gennisys →',
             
-            'footer-status': 'SISTEMAS OPERANDO NORMALMENTE',
+            'footer-status': 'SISTEMAS ONLINE',
             'footer-copy': '© 2026 Tiago Cardoso (v4mpw0l). Todos os direitos reservados.'
         },
         en: {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'studio-box-desc': 'Our independent studio crafting proprietary games, productivity tools, and interactive digital worlds.',
             'studio-btn': 'Explore Gennisys Studio →',
             
-            'footer-status': 'SYSTEMS OPERATING NOMINALLY',
+            'footer-status': 'SYSTEMS ONLINE',
             'footer-copy': '© 2026 Tiago Cardoso (v4mpw0l). All rights reserved.'
         }
     };
