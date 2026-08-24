@@ -436,6 +436,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    // Floating Back to Top Logic
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     // Initialize Language & Render
     setLanguage(currentLang);
 });
