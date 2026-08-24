@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-bio': 'Fundador da <strong>Gennisys</strong>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
             'hero-btn-transmissions': 'Ler Transmissões',
             'hero-btn-gennisys': 'Acessar Gennisys Studio ↗',
+            'term-role': 'Arquiteto de Sistemas // Fundador @ Gennisys',
+            'term-protocols': '[Zero-Bloat, Local-First, JS-Puro, C, Async-IO]',
+            'term-listening': 'ouvindo transmissões..._',
             
             'devlog-meta': 'LOGS & TRANSMISSÕES',
             'devlog-title': 'DevLog & Notas de Engenharia',
@@ -66,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-bio': 'Founder of <strong>Gennisys</strong>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
             'hero-btn-transmissions': 'Read Transmissions',
             'hero-btn-gennisys': 'Access Gennisys Studio ↗',
+            'term-role': 'Systems Architect // Founder @ Gennisys',
+            'term-protocols': '[Zero-Bloat, Local-First, Pure-JS, C, Async-IO]',
+            'term-listening': 'listening for transmissions..._',
             
             'devlog-meta': 'LOGS & TRANSMISSIONS',
             'devlog-title': 'DevLog & Engineering Notes',
