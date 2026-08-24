@@ -1341,3 +1341,19 @@ main {
         display: flex;
     }
 }
+.term-flag {
+    color: var(--accent-emerald-light);
+    font-weight: 700;
+}
+
+.term-brand-link {
+    color: var(--accent-emerald-light);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.term-brand-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}

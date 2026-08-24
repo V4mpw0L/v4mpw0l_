@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-btn-transmissions': 'Ler Notícias',
             'hero-btn-gennisys': 'Acessar Gennisys Studio ↗',
             
-            'term-role': 'Arquiteto de Sistemas // Fundador @ Gennisys',
+            'term-role': 'Arquiteto de Sistemas // Fundador @<a href="https://gennisys.com" target="_blank" rel="noopener" class="term-brand-link">Gennisys</a>',
             'term-protocols': '[Zero-Bloat, Local-First, JS-Puro, C, Async-IO]',
             'term-listening': 'aguardando notícias..._',
 
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-btn-transmissions': 'Read News',
             'hero-btn-gennisys': 'Access Gennisys Studio ↗',
             
-            'term-role': 'Systems Architect // Founder @ Gennisys',
+            'term-role': 'Systems Architect // Founder @<a href="https://gennisys.com" target="_blank" rel="noopener" class="term-brand-link">Gennisys</a>',
             'term-protocols': '[Zero-Bloat, Local-First, Pure-JS, C, Async-IO]',
             'term-listening': 'listening for updates..._',
 
