@@ -340,6 +340,131 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    // ----------------------------------------------------------------------
+    // STEALTH CYBER ETHER PARTICLES & CONSTELLATION ENGINE
+    // ----------------------------------------------------------------------
+    const canvas = document.getElementById('cyber-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        let particles = [];
+        const isMobile = window.innerWidth < 768;
+        const particleCount = isMobile ? 35 : 70;
+
+        class CyberNode {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.35;
+                this.vy = (Math.random() - 0.5) * 0.35;
+                this.radius = Math.random() * 1.5 + 0.6;
+                // Monochrome grey/stealth particles with subtle emerald spark
+                const isEmerald = Math.random() > 0.65;
+                this.color = isEmerald ? 'rgba(0, 255, 136,' : 'rgba(180, 200, 190,';
+                this.alpha = Math.random() * 0.4 + 0.15;
+                this.baseAlpha = this.alpha;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = this.x - mouse.x;
+                    const dy = this.y - mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius) {
+                        const force = (mouse.radius - dist) / mouse.radius;
+                        this.x += (dx / dist) * force * 2.2;
+                        this.y += (dy / dist) * force * 2.2;
+                        this.alpha = Math.min(0.9, this.baseAlpha + 0.45);
+                    } else {
+                        this.alpha = this.baseAlpha;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `${this.color} ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 120
+        };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        }, { passive: true });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initNodes();
+        }, { passive: true });
+
+        function initNodes() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new CyberNode());
+            }
+        }
+
+        function drawConnections() {
+            const maxDistance = isMobile ? 80 : 110;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDistance) {
+                        const alpha = (1 - dist / maxDistance) * 0.12;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 255, 136, ${alpha})`;
+                        ctx.lineWidth = 0.7;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function renderScene() {
+            ctx.clearRect(0, 0, width, height);
+            drawConnections();
+            particles.forEach(node => {
+                node.update();
+                node.draw();
+            });
+            requestAnimationFrame(renderScene);
+        }
+
+        initNodes();
+        renderScene();
+    }
+
     // Initialize Language & Render
     setLanguage(currentLang);
 });
