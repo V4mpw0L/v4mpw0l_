@@ -743,7 +743,7 @@ main {
 .devlog-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 10px;
     border-top: 1px solid var(--border-subtle);
     font-size: 0.74rem;
@@ -1042,7 +1042,7 @@ main {
 .modal-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding-top: 10px;
     margin-top: 6px;
     border-top: 1px solid var(--border-subtle);

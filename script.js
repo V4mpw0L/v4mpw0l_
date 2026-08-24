@@ -165,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="devlog-excerpt">${log.excerpt[currentLang] || log.excerpt.pt}</div>
                 </div>
                 <div class="devlog-footer">
-                    <span class="devlog-tag">${log.tag || ''}</span>
                     <span class="devlog-read-btn">${readMoreText}</span>
                 </div>
             </div>
@@ -244,7 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const lang = currentLang;
         const fullText = (item.texto && item.texto[lang]) ? item.texto[lang] : `<p>${item.excerpt ? item.excerpt[lang] : ''}</p>`;
-        const tagHtml = item.tag ? `<span class="modal-tag">${item.tag}</span>` : '<span></span>';
         const dateHtml = (item.date && item.date[lang]) ? `<span class="modal-date">${formatStyledDate(item.date[lang])}</span>` : '';
 
         modalContent.innerHTML = `
@@ -256,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${fullText}
             </div>
             <div class="modal-footer">
-                ${tagHtml}
                 ${dateHtml}
             </div>
         `;
