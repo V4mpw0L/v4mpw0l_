@@ -249,10 +249,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateHtml = (item.date && item.date[lang]) ? `<span class="modal-date">${formatStyledDate(item.date[lang])}</span>` : '';
 
         modalContent.innerHTML = `
-            <div class="modal-top">
-                <span class="devlog-badge ${item.badgeClass}">${item.badge[lang] || item.badge.pt}</span>
+            <div class="modal-header-card">
+                <div class="modal-top">
+                    <span class="devlog-badge ${item.badgeClass}">${item.badge[lang] || item.badge.pt}</span>
+                </div>
+                <h3 class="modal-title">${item.title[lang] || item.title.pt}</h3>
             </div>
-            <h3 class="modal-title">${item.title[lang] || item.title.pt}</h3>
             <div class="modal-body-card">
                 ${fullText}
             </div>
