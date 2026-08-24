@@ -182,6 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    
+    // Format Date with highlighted day and year numbers
+    function formatStyledDate(dateStr) {
+        if (!dateStr) return '';
+        const parts = String(dateStr).trim().split(' ');
+        if (parts.length === 3) {
+            return `<span class="date-num">${parts[0]}</span> <span class="date-month">${parts[1]}</span> <span class="date-num">${parts[2]}</span>`;
+        }
+        return dateStr;
+    }
+
     // Helper: Get DevLog Data safely
     function getDevlogData() {
         return window.DEVLOG_DATA || [];
@@ -240,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     <div class="devlog-header">
                         <span class="devlog-badge ${log.badgeClass}">${log.badge[currentLang] || log.badge.pt}</span>
-                        <span class="devlog-date">${log.date[currentLang] || log.date.pt}</span>
+                        <span class="devlog-date">${formatStyledDate(log.date[currentLang] || log.date.pt)}</span>
                     </div>
                     <h3 class="devlog-title">${log.title[currentLang] || log.title.pt}</h3>
                     <div class="devlog-excerpt">${log.excerpt[currentLang] || log.excerpt.pt}</div>
@@ -369,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = currentLang;
         const fullText = (item.texto && item.texto[lang]) ? item.texto[lang] : `<p>${item.excerpt ? item.excerpt[lang] : ''}</p>`;
         const tagHtml = item.tag ? `<span class="modal-tag">${item.tag}</span>` : '<span></span>';
-        const dateHtml = (item.date && item.date[lang]) ? `<span class="modal-date">${item.date[lang]}</span>` : '';
+        const dateHtml = (item.date && item.date[lang]) ? `<span class="modal-date">${formatStyledDate(item.date[lang])}</span>` : '';
 
         modalContent.innerHTML = `
             <div class="modal-top">

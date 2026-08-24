@@ -651,11 +651,25 @@ body::before {
     border: 1px solid var(--accent-purple-border);
 }
 
-.devlog-date {
+
+.devlog-date, .modal-date {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.date-num {
+    color: var(--accent-emerald-light);
+    font-weight: 800;
+}
+
+.date-month {
     color: var(--text-muted);
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .devlog-title {
