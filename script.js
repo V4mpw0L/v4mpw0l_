@@ -6,15 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // State
     let currentLang = localStorage.getItem('v4mp_lang') || 'pt';
     let currentDevlogPage = 1;
-    let currentArmoryPage = 1;
     const postsPerPage = 4;
-    const armoryPerPage = 4;
 
     // Translations Dictionary
     const I18N = {
         pt: {
             'nav-transmissions': 'DevLog',
-            'nav-armory': 'Projetos',
             'nav-protocols': 'Protocolos',
             'nav-uplink': 'Contato',
             
@@ -23,20 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-bio': 'Fundador da <strong>Gennisys</strong>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
             'hero-btn-transmissions': 'Ler Transmissões',
             'hero-btn-gennisys': 'Acessar Gennisys Studio ↗',
+            
             'term-role': 'Arquiteto de Sistemas // Fundador @ Gennisys',
             'term-protocols': '[Zero-Bloat, Local-First, JS-Puro, C, Async-IO]',
             'term-listening': 'ouvindo transmissões..._',
-            
+
             'devlog-meta': 'LOGS & TRANSMISSÕES',
             'devlog-title': 'DevLog & Notas de Engenharia',
             'devlog-desc': 'Registros de arquitetura, lançamentos, experimentos de baixo nível e notas de desenvolvimento sem filtros corporativos.',
             'read-more': 'Abrir Transmissão →',
-
-            'armory-meta': 'PROJETOS & REPOSITÓRIOS',
-            'armory-title': 'Projetos Selecionados',
-            'armory-desc': 'Sistemas autorais construídos do zero com foco em velocidade, soberania de dados e zero dependências desnecessárias.',
-            'launch-btn': 'Acessar',
-            'repo-btn': 'Código Fonte',
 
             'protocols-meta': 'DIRETIVAS DE ENGENHARIA',
             'protocols-title': 'Princípios & Protocolos',
@@ -60,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         en: {
             'nav-transmissions': 'DevLog',
-            'nav-armory': 'Projects',
             'nav-protocols': 'Protocols',
             'nav-uplink': 'Contact',
             
@@ -69,20 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'hero-bio': 'Founder of <strong>Gennisys</strong>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
             'hero-btn-transmissions': 'Read Transmissions',
             'hero-btn-gennisys': 'Access Gennisys Studio ↗',
+            
             'term-role': 'Systems Architect // Founder @ Gennisys',
             'term-protocols': '[Zero-Bloat, Local-First, Pure-JS, C, Async-IO]',
             'term-listening': 'listening for transmissions..._',
-            
+
             'devlog-meta': 'LOGS & TRANSMISSIONS',
             'devlog-title': 'DevLog & Engineering Notes',
             'devlog-desc': 'Architecture chronicles, releases, low-level experiments, and technical deep-dives without corporate filters.',
             'read-more': 'Open Transmission →',
-
-            'armory-meta': 'PROJECTS & REPOSITORIES',
-            'armory-title': 'Selected Projects',
-            'armory-desc': 'Proprietary systems built from first principles prioritizing raw speed, user sovereignty, and zero bloat.',
-            'launch-btn': 'Access',
-            'repo-btn': 'Source Code',
 
             'protocols-meta': 'ENGINEERING DIRECTIVES',
             'protocols-title': 'Principles & Protocols',
@@ -106,89 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Armory Projects Dataset
-    const ARMORY_PROJECTS = [
-        {
-            id: 'proj-passmap',
-            icon: '🛡️',
-            status: { pt: 'LIVE // ZERO-KNOWLEDGE', en: 'LIVE // ZERO-KNOWLEDGE' },
-            title: 'PassMap',
-            desc: {
-                pt: 'Cofre de credenciais e senhas com criptografia client-side AES-GCM / PBKDF2. Zero nuvem forçada, zero telemetria invasiva.',
-                en: 'Zero-knowledge credential and password vault with client-side AES-GCM / PBKDF2 encryption. No forced cloud, no invasive telemetry.'
-            },
-            tags: ['WebCrypto', 'AES-GCM', 'Local-First'],
-            launch: 'https://v4mpw0l.github.io/PassMap/',
-            repo: 'https://github.com/v4mpw0l/PassMap'
-        },
-        {
-            id: 'proj-fazendarpg',
-            icon: '🌾',
-            status: { pt: 'v1.4 // 60 FPS', en: 'v1.4 // 60 FPS' },
-            title: 'FazendaRPG',
-            desc: {
-                pt: 'Simulador agrícola e RPG ecológico construído em Vanilla JS sem engines pesadas. Ciclos climáticos e persistência assíncrona.',
-                en: 'Agricultural simulation & ecological RPG engine built in Vanilla JS without heavy runtimes. Dynamic weather and async persistence.'
-            },
-            tags: ['Vanilla JS', 'Procedural Loops', 'Async Storage'],
-            launch: 'https://v4mpw0l.github.io/fazendarpg/',
-            repo: 'https://github.com/v4mpw0l/fazendarpg'
-        },
-        {
-            id: 'proj-hacker0s',
-            icon: '📟',
-            status: { pt: 'BUILD 2.1 // TACTICAL', en: 'BUILD 2.1 // TACTICAL' },
-            title: 'Hacker0s',
-            desc: {
-                pt: 'Simulador cibernético de terminal CRT com nós de invasão lógica, decodificação hash em tempo real e desafios de engenharia reversa.',
-                en: 'Cybernetic CRT terminal simulator featuring logic infiltration nodes, real-time hash deciphering, and reverse-engineering challenges.'
-            },
-            tags: ['Terminal Core', 'CRT Scanlines', 'Crypto Puzzles'],
-            launch: 'https://v4mpw0l.github.io/hacker0S/',
-            repo: 'https://github.com/v4mpw0l/hacker0S'
-        },
-        {
-            id: 'proj-packetclicker',
-            icon: '⚡',
-            status: { pt: 'v2.0 // HIGH-THROUGHPUT', en: 'v2.0 // HIGH-THROUGHPUT' },
-            title: 'PacketClicker',
-            desc: {
-                pt: 'Simulador incremental de tráfego de dados e clusters quânticos com árvores de habilidades e progressão offline precisa.',
-                en: 'Incremental network traffic and quantum cluster simulator featuring progression trees and deterministic offline calculations.'
-            },
-            tags: ['Network Math', 'Automation', 'Petabyte Scaling'],
-            launch: 'https://v4mpw0l.github.io/PacketClicker-MMO/',
-            repo: 'https://github.com/v4mpw0l/PacketClicker-MMO'
-        },
-        {
-            id: 'proj-gencalc',
-            icon: '🧮',
-            status: { pt: 'STABLE // IEEE-754', en: 'STABLE // IEEE-754' },
-            title: 'GenCalc & BudgetBox',
-            desc: {
-                pt: 'Suíte de utilitários rápidos com precisão de ponto flutuante calibrada, ergonomia 100% via teclado e exportação analítica.',
-                en: 'Productivity utility suite with IEEE-754 precision correction, 100% keyboard-driven ergonomics, and cashflow charts.'
-            },
-            tags: ['Financial Engine', 'Keyboard UX', 'Zero Bloat'],
-            launch: 'https://v4mpw0l.github.io/GenCalc/',
-            repo: 'https://github.com/v4mpw0l/GenCalc'
-        },
-        {
-            id: 'proj-gennisys',
-            icon: '🌐',
-            status: { pt: 'STUDIO CORE // LIVE', en: 'STUDIO CORE // LIVE' },
-            title: 'Gennisys Studio',
-            desc: {
-                pt: 'Portal central e design system atmosférico com suporte a auras místicas, catálogo de criações e sistema autoral de transmissões.',
-                en: 'Central portal and atmospheric design system supporting dynamic auras, creations catalog, and proprietary transmissions engine.'
-            },
-            tags: ['Design System', 'Atmospheric Aura', '60 FPS'],
-            launch: 'https://gennisys.com',
-            repo: 'https://github.com/V4mpw0L/Gennisys'
-        }
-    ];
-
-    
     // Format Date with highlighted day and year numbers
     function formatStyledDate(dateStr) {
         if (!dateStr) return '';
@@ -209,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLang = lang;
         localStorage.setItem('v4mp_lang', lang);
 
-        // Update All Toggle Buttons
+        // Update Toggle Buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
@@ -222,9 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Re-render DevLogs & Armory
+        // Re-render DevLogs
         renderDevlogs();
-        renderArmory();
     }
 
     // Language Toggle Click Handlers
@@ -237,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Render DevLogs Grid & Pagination (No tabs, pure clean pagination)
+    // Render DevLogs Grid & Pagination
     function renderDevlogs() {
         const grid = document.getElementById('devlog-grid');
         const pagination = document.getElementById('devlog-pagination');
@@ -282,53 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentDevlogPage = newPage;
             renderDevlogs();
             const sec = document.getElementById('devlog');
-            if (sec) {
-                const y = sec.getBoundingClientRect().top + window.pageYOffset - 80;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
-        });
-    }
-
-    // Render Armory Projects Grid & Pagination
-    function renderArmory() {
-        const grid = document.getElementById('armory-grid');
-        const pagination = document.getElementById('armory-pagination');
-        if (!grid) return;
-
-        const allProjects = ARMORY_PROJECTS;
-        const totalPages = Math.ceil(allProjects.length / armoryPerPage) || 1;
-        if (currentArmoryPage > totalPages) currentArmoryPage = 1;
-
-        const startIdx = (currentArmoryPage - 1) * armoryPerPage;
-        const pageProjects = allProjects.slice(startIdx, startIdx + armoryPerPage);
-
-        const launchText = I18N[currentLang]['launch-btn'] || 'Acessar Demo';
-        const repoText = I18N[currentLang]['repo-btn'] || 'Código Fonte';
-
-        grid.innerHTML = pageProjects.map(proj => `
-            <div class="armory-card">
-                <div class="armory-top">
-                    <div class="armory-meta">
-                        <span class="armory-icon">${proj.icon}</span>
-                        <span class="armory-status">${proj.status[currentLang] || proj.status.pt}</span>
-                    </div>
-                    <h3 class="armory-title">${proj.title}</h3>
-                    <p class="armory-desc">${proj.desc[currentLang] || proj.desc.pt}</p>
-                    <div class="armory-tags">
-                        ${proj.tags.map(t => `<span class="tech-tag">${t}</span>`).join('')}
-                    </div>
-                </div>
-                <div class="armory-actions">
-                    <a href="${proj.launch}" target="_blank" rel="noopener" class="armory-btn armory-btn-launch">${launchText} →</a>
-                </div>
-            </div>
-        `).join('');
-
-        // Render Pagination
-        renderPaginationControls(pagination, currentArmoryPage, totalPages, (newPage) => {
-            currentArmoryPage = newPage;
-            renderArmory();
-            const sec = document.getElementById('armory');
             if (sec) {
                 const y = sec.getBoundingClientRect().top + window.pageYOffset - 80;
                 window.scrollTo({ top: y, behavior: 'smooth' });
@@ -437,6 +292,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Floating Back to Top Logic
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     // Scroll to Top on Brand Logo Click
     const brandLogoBtn = document.getElementById('brand-logo-btn') || document.querySelector('.brand-sigil');
     if (brandLogoBtn) {
@@ -462,30 +333,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    
-    // Floating Back to Top Logic
-    const backToTopBtn = document.getElementById('back-to-top-btn');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        }, { passive: true });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // Initialize Language & Render
-    setLanguage(currentLang);
-});
-
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js').catch(() => {});
         });
     }
+
+    // Initialize Language & Render
+    setLanguage(currentLang);
+});
