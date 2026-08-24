@@ -636,7 +636,6 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
-    min-height: 380px;
 }
 
 .devlog-card {

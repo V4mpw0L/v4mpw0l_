@@ -183,11 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPaginationControls(pagination, currentDevlogPage, totalPages, (newPage) => {
             currentDevlogPage = newPage;
             renderDevlogs();
-            const sec = document.getElementById('devlog');
-            if (sec) {
-                const y = sec.getBoundingClientRect().top + window.pageYOffset - 80;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
         });
     }
 
