@@ -243,6 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const lang = currentLang;
         const fullText = (item.texto && item.texto[lang]) ? item.texto[lang] : `<p>${item.excerpt ? item.excerpt[lang] : ''}</p>`;
+        const authorName = item.author || 'Tiago Cardoso';
+        const authorLabel = lang === 'pt' ? 'AUTOR' : 'AUTHOR';
+        const authorHtml = `<span class="news-date modal-author"><span class="date-month">${authorLabel}</span> <span class="date-num">${authorName}</span></span>`;
         const dateHtml = (item.date && item.date[lang]) ? `<span class="modal-date">${formatStyledDate(item.date[lang])}</span>` : '';
 
         modalContent.innerHTML = `
@@ -254,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${fullText}
             </div>
             <div class="modal-footer">
+                ${authorHtml}
                 ${dateHtml}
             </div>
         `;
