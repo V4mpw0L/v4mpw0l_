@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             'hero-beacon': 'ONLINE',
             'hero-role': 'Engenheiro de Software & Arquiteto de Sistemas',
-            'hero-bio': 'Fundador da <strong>Gennisys</strong>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
+            'hero-bio': 'Fundador da <a href="https://gennisys.com" target="_blank" rel="noopener" class="hero-brand-link">Gennisys</a>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
             'hero-btn-transmissions': 'Ler Transmissões',
             'hero-btn-gennisys': 'Acessar Gennisys Studio ↗',
             
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             'hero-beacon': 'ONLINE',
             'hero-role': 'Software Engineer & Systems Architect',
-            'hero-bio': 'Founder of <strong>Gennisys</strong>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
+            'hero-bio': 'Founder of <a href="https://gennisys.com" target="_blank" rel="noopener" class="hero-brand-link">Gennisys</a>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
             'hero-btn-transmissions': 'Read Transmissions',
             'hero-btn-gennisys': 'Access Gennisys Studio ↗',
             

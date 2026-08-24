@@ -1174,3 +1174,14 @@ body::before {
         height: 40px;
     }
 }
+.hero-brand-link {
+    color: var(--accent-emerald-light);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.hero-brand-link:hover {
+    color: var(--text-pure);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
