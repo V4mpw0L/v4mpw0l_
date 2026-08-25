@@ -346,10 +346,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Register Service Worker for PWA
+    // Register Service Worker for PWA (Stealth Auto-Sync)
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js').catch(() => {});
+            navigator.serviceWorker.register('./sw.js?v=2.1.0', { updateViaCache: 'none' })
+                .then(reg => {
+                    reg.update();
+                    document.addEventListener('visibilitychange', () => {
+                        if (document.visibilityState === 'visible') reg.update();
+                    });
+                })
+                .catch(() => {});
         });
     }
 
