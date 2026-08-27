@@ -3,6 +3,30 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // ----------------------------------------------------------------------
+    // LIGHT / DARK THEME ENGINE (with localStorage persistence)
+    // ----------------------------------------------------------------------
+    (function() {
+        const STORAGE_KEY = 'v4mpw0l_theme_mode';
+        const saved = localStorage.getItem(STORAGE_KEY) || 'dark';
+
+        function applyTheme(mode) {
+            document.body.setAttribute('data-theme-mode', mode);
+            localStorage.setItem(STORAGE_KEY, mode);
+            document.querySelectorAll('.theme-mode-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.id === (mode === 'dark' ? 'v4mp-theme-dark' : 'v4mp-theme-light'));
+            });
+        }
+
+        applyTheme(saved);
+
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'v4mp-theme-dark') applyTheme('dark');
+            else if (e.target.id === 'v4mp-theme-light') applyTheme('light');
+        });
+    })();
+
+
     // State
     let currentLang = localStorage.getItem('v4mp_lang') || 'pt';
     let currentDevlogPage = 1;
