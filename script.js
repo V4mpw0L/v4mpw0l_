@@ -4,6 +4,36 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------------------------
+    // TERMINAL CARD — Close (red) & Minimize (yellow)
+    // State lives in JS memory only — resets on F5 / page refresh
+    // ----------------------------------------------------------------------
+    (function() {
+        const card     = document.querySelector('.hero-terminal-card');
+        const btnClose = document.getElementById('term-btn-close');
+        const btnMin   = document.getElementById('term-btn-min');
+
+        if (!card || !btnClose || !btnMin) return;
+
+        let termState = 'open'; // in-memory only, gone on refresh
+
+        function applyState(state) {
+            termState = state;
+            card.classList.remove('terminal-closed', 'terminal-minimized');
+            if (state === 'closed')    card.classList.add('terminal-closed');
+            if (state === 'minimized') card.classList.add('terminal-minimized');
+        }
+
+        btnClose.addEventListener('click', function() {
+            applyState('closed');
+        });
+
+        btnMin.addEventListener('click', function() {
+            applyState(termState === 'minimized' ? 'open' : 'minimized');
+        });
+    })();
+
+
+    // ----------------------------------------------------------------------
     // LIGHT / DARK THEME ENGINE (with localStorage persistence)
     // ----------------------------------------------------------------------
     (function() {
