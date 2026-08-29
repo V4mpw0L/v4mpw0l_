@@ -306,8 +306,10 @@ main {
 
 .brand-role {
     font-size: 0.72rem;
-    color: var(--text-muted);
+    color: var(--accent-emerald);
     font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .nav-menu {
