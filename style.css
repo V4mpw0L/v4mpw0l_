@@ -703,7 +703,7 @@ main {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    padding: 20px 22px;
+    padding: 26px 28px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -777,11 +777,11 @@ main {
 }
 
 .devlog-title {
-    font-size: 1.05rem;
+    font-size: 1.12rem;
     font-weight: 700;
     color: var(--text-pure);
-    line-height: 1.35;
-    margin-bottom: 10px;
+    line-height: 1.45;
+    margin-bottom: 14px;
     letter-spacing: -0.2px;
     transition: color var(--transition-fast);
 }
@@ -791,14 +791,15 @@ main {
 }
 
 .devlog-excerpt {
-    font-size: 0.84rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    line-height: 1.65;
+    line-height: 1.72;
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
+    border-left: 2px solid var(--accent-emerald-border);
     border-radius: var(--radius-sm);
-    padding: 12px 14px;
-    margin-bottom: 12px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
     flex: 1;
 }
 
@@ -1103,30 +1104,30 @@ main {
 }
 
 .modal-title {
-    font-size: 1.12rem;
+    font-size: 1.22rem;
     font-weight: 800;
     color: var(--text-pure);
-    line-height: 1.35;
+    line-height: 1.38;
     margin-bottom: 0;
-    letter-spacing: -0.2px;
+    letter-spacing: -0.3px;
 }
 
 .modal-body-card {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
-    padding: 14px 16px;
+    padding: 20px 22px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-height: 55vh;
+    gap: 14px;
+    max-height: 58vh;
     overflow-y: auto;
 }
 
 .modal-body-card p {
-    font-size: 0.86rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.8;
     margin: 0;
 }
 
@@ -1634,6 +1635,29 @@ body[data-theme-mode="light"] .devlog-card {
 body[data-theme-mode="light"] .devlog-card:hover {
     border-color: rgba(5, 150, 105, 0.35);
     box-shadow: 0 6px 24px rgba(5, 150, 105, 0.08);
+}
+
+body[data-theme-mode="light"] .devlog-excerpt {
+    border-left-color: rgba(5, 150, 105, 0.35);
+}
+
+body[data-theme-mode="light"] .modal-body-card {
+    background: #f8fafc;
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme-mode="light"] .modal-body-card p {
+    color: #334155;
+}
+
+body[data-theme-mode="light"] .modal-title {
+    color: #0f172a;
+}
+
+body[data-theme-mode="light"] .modal-header-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-color: rgba(0, 0, 0, 0.07);
+    border-left-color: #059669;
 }
 
 body[data-theme-mode="light"] .devlog-title   { color: #0f172a; }
