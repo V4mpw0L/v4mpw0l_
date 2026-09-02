@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // State
-    let currentLang = localStorage.getItem('v4mp_lang') || 'pt';
+    let currentLang = localStorage.getItem('v4mp_lang') || 'en';
     let currentDevlogPage = 1;
     const postsPerPage = 4;
 
@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('v4mp_lang', lang);
+        document.documentElement.setAttribute('lang', lang);
 
         // Update Toggle Buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
