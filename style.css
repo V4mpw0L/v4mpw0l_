@@ -364,6 +364,9 @@ main {
 }
 
 .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     background: transparent;
     border: none;
     color: var(--text-muted);
@@ -374,6 +377,19 @@ main {
     border-radius: var(--radius-full);
     cursor: pointer;
     transition: all var(--transition-fast);
+}
+
+.lang-btn .lang-flag {
+    width: 15px;
+    height: 10px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+}
+
+.lang-btn:hover .lang-flag {
+    transform: scale(1.08);
 }
 
 .lang-btn.active {
