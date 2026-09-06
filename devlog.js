@@ -12,171 +12,113 @@ window.DEVLOG_DATA = [
         badgeClass: 'badge-emerald',
         author: 'Tiago Cardoso',
         category: 'shipped',
-        date: { pt: '24 AGO 2026', en: '24 AUG 2026' },
-        tag: 'FazendaRPG v1.4',
+        date: { pt: '05 SET 2026', en: '05 SEP 2026' },
+        tag: 'PassMap v2.11',
         title: {
-            pt: 'FazendaRPG 1.4: Nova Economia Agrícola e Clima',
-            en: 'FazendaRPG 1.4: Agricultural Economy & Climate Engine'
+            pt: 'PassMap 2.11 no Ar: A Saga dos Mapas Offline e 60 FPS no Celular',
+            en: 'PassMap 2.11 Shipped: Offline Maps & 60 FPS Mobile Polish'
         },
         excerpt: {
-            pt: 'Rebalanceamento total dos <span class="text-hl">ciclos de colheita</span>, eventos dinâmicos de <span class="text-hl">estação</span> e migração para persistência assíncrona a <span class="text-hl">60 FPS</span>.',
-            en: 'Complete rebalance of <span class="text-hl">harvest cycles</span>, dynamic <span class="text-hl">seasonal weather</span>, and asynchronous state storage running at <span class="text-hl">60 FPS</span>.'
+            pt: 'Reconstruí o motor do <span class="text-hl">PassMap</span> nos últimos dias. O maior desafio foi fazer o cache de tiles funcionar 100% offline com renderização lisa e sem engasgos no mobile.',
+            en: 'Overhauled <span class="text-hl">PassMap</span>’s core engine over the past days. The biggest hurdle was seamless tile caching for true offline navigation with 60 FPS mobile panning.'
         },
         texto: {
             pt: `
-                <p>Liberamos hoje a versão <span class="text-hl">v1.4 do FazendaRPG</span>. O foco principal foi reestruturar completamente a matemática de progressão agrícola e a resposta em tempo de execução.</p>
-                <p>Implementei um sistema procedural de clima que calcula variações de chuva, seca e fertilidade do solo sem sobrecarregar a thread principal do navegador. Os testes com milhares de ciclos mantiveram estabilidade total.</p>
-                <p>A camada de persistência local agora opera de forma 100% assíncrona, eliminando qualquer micro-engasgo durante autosaves periódicos.</p>
+                <p>Finalmente liberei a versão <span class="text-hl">v2.11 do PassMap</span>. Esse projeto começou de uma necessidade pessoal minha: eu queria um app de mapas que não engasgasse no smartphone, que não consumisse bateria à toa e que funcionasse mesmo quando estou totalmente sem sinal de internet.</p>
+                <p>Passei horas ajustando o pipeline de renderização da interface cartográfica para garantir 60 FPS estáveis ao rotacionar e dar zoom. Além disso, reestruturei o motor de cache de tiles em IndexedDB, permitindo salvar áreas inteiras para exploração offline sem depender de servidores remotos.</p>
+                <p>Outro detalhe que me deu bastante trabalho (mas valeu a pena) foi calibrar o comportamento edge-to-edge em telas com safe area (como a barra inferior no iOS WebKit e no Android). A experiência agora parece de um app nativo de verdade.</p>
             `,
             en: `
-                <p>Shipped version <span class="text-hl">v1.4 of FazendaRPG</span> today. The core focus was overhauling the agricultural progression math and runtime performance.</p>
-                <p>Engineered a procedural weather loop calculating precipitation, drought, and soil fertility without blocking the main browser thread.</p>
-                <p>The client persistence layer is now completely asynchronous, preventing any frame drops during periodic autosaves.</p>
+                <p>Officially pushed <span class="text-hl">PassMap v2.11</span> live. This tool was born out of my own frustration with mainstream map apps: I wanted lightning-fast panning, zero battery drain, and complete autonomy when cell signal drops to zero.</p>
+                <p>Spent intense sessions tuning the cartographic rendering loop to maintain 60 FPS during pinch, zoom, and dynamic rotation. Re-architected tile caching into local IndexedDB chunks so entire regions can be navigated fully disconnected.</p>
+                <p>Calibrating edge-to-edge viewports across mobile browsers (handling viewport height, home bars, and safe-area insets seamlessly on iOS WebKit and Android) was tricky, but the app now feels indistinguishable from a native build.</p>
             `
         }
     },
     {
         id: 'log-2',
-        badge: { pt: 'SISTEMA', en: 'SYSTEM' },
+        badge: { pt: 'ARQUITETURA', en: 'ARCHITECTURE' },
         badgeClass: 'badge-cyan',
         author: 'Tiago Cardoso',
         category: 'systems',
-        date: { pt: '18 AGO 2026', en: '18 AUG 2026' },
-        tag: 'Hacker0s Build 2.1',
+        date: { pt: '28 AGO 2026', en: '28 AUG 2026' },
+        tag: 'Engenharia & Privacidade',
         title: {
-            pt: 'Hacker0s 2.1: Módulos de Terminal & Desafios Cripto',
-            en: 'Hacker0s 2.1: Terminal Shell & Cryptographic Trials'
+            pt: 'Por Que Decidi Fazer o PassMap 100% Local-First e Sem Telemetria',
+            en: 'Why I Built PassMap Around a Local-First, Zero-Telemetry Ethos'
         },
         excerpt: {
-            pt: 'Novo shell cibernético com ferramentas de <span class="text-hl-cyan">inspeção de pacotes</span>, 12 nós de rede com puzzles de <span class="text-hl-cyan">invasão lógica</span> e renderização CRT.',
-            en: 'New cybernetic shell featuring <span class="text-hl-cyan">packet inspection tools</span>, 12 encrypted nodes with <span class="text-hl-cyan">logic infiltration puzzles</span>, and CRT rendering.'
+            pt: 'Minhas reflexões como desenvolvedor sobre privacidade: seus pontos favoritos, coordenadas e rotas pertencem ao <span class="text-hl-cyan">armazenamento local do seu aparelho</span>, e não a servidores de terceiros.',
+            en: 'My thoughts as an engineer on data privacy: your saved pins, coordinates, and notes belong to your <span class="text-hl-cyan">local device storage</span>, not remote corporate servers.'
         },
         texto: {
             pt: `
-                <p>A build <span class="text-hl-cyan">2.1 do Hacker0s</span> traz um ambiente de linha de comando muito mais tático e responsivo.</p>
-                <p>Adicionei utilitários de inspeção de pacotes simulados e algoritmos de decifração hash em tempo real. Foram criados 12 novos nós de rede criptografados que exigem raciocínio lógico e engenharia reversa para serem ultrapassados.</p>
-                <p>A camada gráfica simula o efeito clássico de fósforo âmbar e fósforo verde com varredura CRT em hardware sem depender de bibliotecas externas.</p>
+                <p>Sempre me incomodou como os grandes serviços de mapas tratam cada passo do usuário como telemetria monetizável. Ao planejar o <span class="text-hl-cyan">PassMap</span>, decidi seguir na contramão: arquitetura <strong>Local-First intransigente</strong>.</p>
+                <p>Todos os marcadores, listas personalizadas de POIs e anotações ficam salvos em IndexedDB com criptografia local. Não temos servidores rastreando por onde você anda, nem rotas enviadas para a nuvem sem você querer.</p>
+                <p>Desenvolver dessa forma dá trabalho porque não posso terceirizar a lógica para um backend centralizado, mas a paz de espírito e a velocidade instantânea de carregamento compensam cada linha de código.</p>
             `,
             en: `
-                <p>Build <span class="text-hl-cyan">2.1 of Hacker0s</span> introduces a much more responsive, tactical command-line simulation.</p>
-                <p>Implemented real-time packet inspection routines and hash cracking modules across 12 newly encrypted network nodes.</p>
-                <p>The visual rendering pipeline delivers authentic CRT amber and emerald phosphor scanlines directly via pure CSS and canvas shaders.</p>
+                <p>It always bothered me how major map providers treat every route and pin as monetizable telemetry. When designing <span class="text-hl-cyan">PassMap</span>, I chose the opposite path: uncompromising <strong>Local-First engineering</strong>.</p>
+                <p>All custom POIs, categorized lists, and geographical annotations live in on-device IndexedDB with local encryption. We maintain zero tracking backends collecting user footsteps or routes.</p>
+                <p>Building this way requires extra discipline because you can’t lean on server-side shortcuts, but the resulting instantaneous load times and true privacy make every refactor worthwhile.</p>
             `
         }
     },
     {
         id: 'log-3',
-        badge: { pt: 'PESQUISA', en: 'RESEARCH' },
+        badge: { pt: 'EXPERIMENTOS', en: 'EXPERIMENTS' },
         badgeClass: 'badge-purple',
         author: 'Tiago Cardoso',
         category: 'research',
-        date: { pt: '10 AGO 2026', en: '10 AUG 2026' },
-        tag: 'The Lab // R&D',
+        date: { pt: '18 AGO 2026', en: '18 AUG 2026' },
+        tag: 'PassMap Telemetria',
         title: {
-            pt: 'Protocolo Aetheria: Testes com Física Procedural',
-            en: 'Protocol Aetheria: Experiments in Procedural Physics'
+            pt: 'Telemetria em Tempo Real: Integrando Clima e Qualidade do Ar (AQI)',
+            en: 'Realtime Telemetry: Integrating Weather & Air Quality (AQI) on Maps'
         },
         excerpt: {
-            pt: 'Primeiros marcos de um motor de <span class="text-hl-purple">física procedural ultraleve</span> e ambiência sonora sintetizada em tempo real via <span class="text-hl-purple">Web Audio Core</span>.',
-            en: 'Early milestones in lightweight <span class="text-hl-purple">procedural physics</span> and dynamic audio synthesis running on <span class="text-hl-purple">Web Audio Core</span>.'
+            pt: 'Implementei um widget ambiental no cabeçalho do PassMap que calcula em tempo real o <span class="text-hl-purple">índice de qualidade do ar (AQI)</span>, temperatura e vento a partir de coordenadas globais.',
+            en: 'Engineered an environmental telemetry widget in PassMap’s header correlating live coordinates with <span class="text-hl-purple">air quality index (AQI)</span>, temperature, and wind.'
         },
         texto: {
             pt: `
-                <p>Tenho dedicado os finais de semana a prototipar um motor de <span class="text-hl-purple">geração procedural ultraleve</span> para os futuros mundos interativos da Gennisys.</p>
-                <p>O foco é gerar relevo, mapas e ecossistemas complexos com zero latência de carregamento e sem carregar bundles pesados de engines tradicionais. A resposta tem sido surpreendentemente rápida.</p>
-                <p>Também comecei a sintetizar paisagens sonoras adaptativas diretamente via Web Audio API, gerando frequências que reagem ao estado da aplicação.</p>
+                <p>Uma funcionalidade que eu queria muito no PassMap era ver de relance as condições atmosféricas do local onde estou ou para onde estou planejando ir. Criei um módulo de <strong>telemetria ambiental hiperlocal</strong>.</p>
+                <p>O widget faz requisições otimizadas para endpoints de dados meteorológicos abertos e correlaciona a latitude e longitude com medições oficiais de <span class="text-hl-purple">AQI (Índice de Qualidade do Ar)</span>, velocidade do vento e temperatura.</p>
+                <p>Para evitar requisições desnecessárias quando o usuário apenas passeia pelo mapa, apliquei um algoritmo de debouncing e cache inteligente com base no raio de deslocamento.</p>
             `,
             en: `
-                <p>Spending my evenings prototyping a lightweight <span class="text-hl-purple">procedural generation engine</span> for upcoming experimental environments.</p>
-                <p>The goal is streaming meshes and ecosystems instantly with zero load times while avoiding heavy external engine runtimes.</p>
-                <p>Also synthesizing adaptive atmospheric audio directly via the Web Audio API, generating soundscapes that respond dynamically to runtime events.</p>
+                <p>A capability I really wanted inside PassMap was glancing at atmospheric conditions right at my target destination. I built an ultra-lightweight <strong>hyperlocal environmental telemetry widget</strong>.</p>
+                <p>The module queries open meteorological endpoints, correlating geographic coordinates with official <span class="text-hl-purple">AQI (Air Quality Index)</span> measurements, wind velocity, and ambient temperature.</p>
+                <p>To preserve network bandwidth while panning, I built a smart debouncing and spatial threshold cache that only refreshes when significant distance thresholds are crossed.</p>
             `
         }
     },
     {
         id: 'log-4',
-        badge: { pt: 'LANÇAMENTO', en: 'SHIPPED' },
+        badge: { pt: 'BASTIDORES', en: 'DEVLOG' },
         badgeClass: 'badge-emerald',
         author: 'Tiago Cardoso',
         category: 'shipped',
-        date: { pt: '02 AGO 2026', en: '02 AUG 2026' },
-        tag: 'PacketClicker v2.0',
+        date: { pt: '08 AGO 2026', en: '08 AUG 2026' },
+        tag: 'Roadmap Mobile',
         title: {
-            pt: 'PacketClicker MMO: Clusters Quânticos & Roteamento',
-            en: 'PacketClicker MMO: Quantum Clusters & Throughput'
+            pt: 'O Próximo Passo: Empacotando o PassMap Nativo para iOS e Android',
+            en: 'The Next Milestone: Packaging PassMap Natively for iOS & Android'
         },
         excerpt: {
-            pt: 'Expansão maciça com nova camada de <span class="text-hl">clusters quânticos</span>, mais de 25 upgrades e algoritmo de <span class="text-hl">cálculo offline determinístico</span>.',
-            en: 'Major expansion adding <span class="text-hl">quantum server clusters</span>, 25+ progression upgrades, and deterministic <span class="text-hl">offline calculation math</span>.'
+            pt: 'Com o PWA rodando redondo, comecei os testes para empacotar o <span class="text-hl">PassMap com casca nativa</span> para as lojas oficiais, aproveitando aceleração de hardware e sensores de bússola.',
+            en: 'With our PWA running smooth, I am preparing the native compilation pipeline for <span class="text-hl">PassMap on the App Store & Google Play</span>, tapping into hardware compass and native acceleration.'
         },
         texto: {
             pt: `
-                <p>Subi a versão 2.0 do <strong>PacketClicker</strong>, nosso simulador incremental de tráfego de redes.</p>
-                <p>Foram implementados novos tiers de hardware capazes de processar Petabytes por segundo de dados de forma autônoma, além de uma árvore de habilidades tecnológicas com mais de 25 upgrades de compressão e balanceamento de carga.</p>
-                <p>O cálculo de rendimento em segundo plano foi recalculado para garantir progressão precisa e sem desvios matemáticos.</p>
+                <p>O ecossistema PWA do PassMap está extremamente sólido, mas há barreiras do ecossistema web móvel (como travas de orientação no WebKit do iOS e limitações de sensores em segundo plano) que só uma compilação nativa resolve de forma definitiva.</p>
+                <p>Comecei a estruturar o pipeline de empacotamento para a <span class="text-hl">Apple App Store</span> e a <span class="text-hl">Google Play Store</span>. A meta é manter a base de código 100% autônoma, adicionando pontes nativas apenas para sensores biométricos, bússola giroscópica e sincronização local offline.</p>
+                <p>Seguimos firmes no compromisso de construir software independente com alma, sem código genérico de template.</p>
             `,
             en: `
-                <p>Shipped version 2.0 of <strong>PacketClicker</strong>, our incremental network simulation project.</p>
-                <p>Deployed new hardware tiers handling multi-petabyte autonomous throughput alongside a 25-node skill progression tree for compression and load balancing.</p>
-                <p>Recalibrated background execution calculations for precise offline mathematical progression.</p>
-            `
-        }
-    },
-    {
-        id: 'log-5',
-        badge: { pt: 'SEGURANÇA', en: 'SECURITY' },
-        badgeClass: 'badge-cyan',
-        author: 'Tiago Cardoso',
-        category: 'systems',
-        date: { pt: '25 JUL 2026', en: '25 JUL 2026' },
-        tag: 'PassMap Core',
-        title: {
-            pt: 'PassMap: Arquitetura Zero-Knowledge & AES-GCM',
-            en: 'PassMap: Zero-Knowledge Architecture & AES-GCM'
-        },
-        excerpt: {
-            pt: 'Aprimoramento do cofre local com <span class="text-hl-cyan">criptografia AES-GCM / PBKDF2</span>, análise de entropia e integridade por <span class="text-hl-cyan">checksum SHA-256</span>.',
-            en: 'Vault security upgrades with client-side <span class="text-hl-cyan">AES-GCM / PBKDF2 encryption</span>, live entropy auditing, and <span class="text-hl-cyan">SHA-256 verification</span>.'
-        },
-        texto: {
-            pt: `
-                <p>Atualizei o núcleo de segurança do <strong>PassMap</strong> com foco em privacidade intransigente e controle soberano de credenciais.</p>
-                <p>A arquitetura opera no modelo <span class="text-hl-cyan">Zero-Knowledge estrito</span>: as chaves e dados nunca saem da memória do dispositivo sem criptografia AES-GCM de 256 bits com derivação por PBKDF2.</p>
-                <p>Adicionei também um analisador de força de senha em tempo real e exportação de backups assinados por hash criptográfico.</p>
-            `,
-            en: `
-                <p>Updated the core security architecture of <strong>PassMap</strong>, emphasizing absolute client-side sovereignty.</p>
-                <p>The vault operates on a strict <span class="text-hl-cyan">Zero-Knowledge model</span>: confidential keys and records never leave local memory without 256-bit AES-GCM encryption derived via PBKDF2.</p>
-                <p>Added real-time credential entropy analysis and master backup export signed with cryptographic checksums.</p>
-            `
-        }
-    },
-    {
-        id: 'log-6',
-        badge: { pt: 'SISTEMA', en: 'SYSTEM' },
-        badgeClass: 'badge-purple',
-        author: 'Tiago Cardoso',
-        category: 'systems',
-        date: { pt: '14 JUL 2026', en: '14 JUL 2026' },
-        tag: 'GenCalc // Utils',
-        title: {
-            pt: 'GenCalc & BudgetBox: Precisão IEEE-754 e Atalhos',
-            en: 'GenCalc & BudgetBox: IEEE-754 Precision & Shortcuts'
-        },
-        excerpt: {
-            pt: 'Tratamento de arredondamento em <span class="text-hl-purple">ponto flutuante</span>, suporte completo a <span class="text-hl-purple">navegação via teclado</span> e visualizadores de caixa.',
-            en: 'Resolved <span class="text-hl-purple">floating-point rounding</span> anomalies, integrated comprehensive <span class="text-hl-purple">keyboard shortcut workflows</span>, and cashflow charts.'
-        },
-        texto: {
-            pt: `
-                <p>Nossos utilitários de produtividade diária receberam uma revisão profunda de algoritmo e ergonomia.</p>
-                <p>Eliminei as clássicas anomalias de arredondamento de <span class="text-hl-purple">ponto flutuante IEEE-754</span>, garantindo precisão absoluta em operações financeiras e contábeis.</p>
-                <p>Toda a navegação agora é acelerada por atalhos de teclado, permitindo operar cálculos complexos sem tocar no mouse.</p>
-            `,
-            en: `
-                <p>Refactored our everyday productivity suite with a focus on mathematical accuracy and keyboard ergonomics.</p>
-                <p>Eliminated standard <span class="text-hl-purple">IEEE-754 floating-point</span> rounding drift to guarantee verified calculation integrity.</p>
-                <p>The entire workflow is now keyboard-accelerated, enabling high-speed calculations without mouse dependency.</p>
+                <p>PassMap’s PWA shell is rock-solid, but mobile web browsers introduce constraints (such as iOS WebKit orientation lock limitations and background sensor throttling) that only a native runtime solves cleanly.</p>
+                <p>I have begun laying out the native deployment pipeline for both the <span class="text-hl">Apple App Store</span> and <span class="text-hl">Google Play Store</span>. The goal is maintaining our lean, autonomous codebase while unlocking native gyrocompass access and biometric unlock.</p>
+                <p>Continuing our philosophy: handcrafted independent software with soul, zero generic boilerplates.</p>
             `
         }
     }
