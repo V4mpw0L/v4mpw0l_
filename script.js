@@ -417,127 +417,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // ----------------------------------------------------------------------
-    // STEALTH CYBER ETHER PARTICLES & CONSTELLATION ENGINE
+    // AAA STUDIO AMBIENT SPOTLIGHT ENGINE
+    // Pure, solid, cinematic interactive lighting without particles or grids
     // ----------------------------------------------------------------------
     const canvas = document.getElementById('cyber-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-        let particles = [];
+        let isVisible = true;
+
+        // Default focal point is upper center hero
+        const targetPos = { x: width * 0.5, y: height * 0.28 };
+        const currentPos = { x: width * 0.5, y: height * 0.28 };
+        let isHovered = false;
+
         const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 35 : 70;
 
-        class CyberNode {
-            constructor() {
-                this.reset();
+        function drawSpotlight() {
+            ctx.clearRect(0, 0, width, height);
+
+            const isLight = document.body.getAttribute('data-theme-mode') === 'light';
+            const spotRadius = isMobile ? 320 : 520;
+            const spotGradient = ctx.createRadialGradient(
+                currentPos.x, currentPos.y, 0,
+                currentPos.x, currentPos.y, spotRadius
+            );
+
+            if (isLight) {
+                spotGradient.addColorStop(0, 'rgba(5, 150, 105, 0.08)');
+                spotGradient.addColorStop(0.5, 'rgba(14, 165, 233, 0.025)');
+                spotGradient.addColorStop(1, 'rgba(248, 250, 252, 0)');
+            } else {
+                spotGradient.addColorStop(0, 'rgba(18, 196, 138, 0.12)');
+                spotGradient.addColorStop(0.5, 'rgba(6, 182, 212, 0.035)');
+                spotGradient.addColorStop(1, 'rgba(11, 13, 16, 0)');
             }
 
-            reset() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.35;
-                this.vy = (Math.random() - 0.5) * 0.35;
-                this.radius = Math.random() * 1.5 + 0.6;
-                // Monochrome grey/stealth particles with subtle emerald spark
-                const isEmerald = Math.random() > 0.65;
-                this.color = isEmerald ? 'rgba(0, 255, 136,' : 'rgba(180, 200, 190,';
-                this.alpha = Math.random() * 0.4 + 0.15;
-                this.baseAlpha = this.alpha;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-
-                if (mouse.x !== null && mouse.y !== null) {
-                    const dx = this.x - mouse.x;
-                    const dy = this.y - mouse.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < mouse.radius) {
-                        const force = (mouse.radius - dist) / mouse.radius;
-                        this.x += (dx / dist) * force * 2.2;
-                        this.y += (dy / dist) * force * 2.2;
-                        this.alpha = Math.min(0.9, this.baseAlpha + 0.45);
-                    } else {
-                        this.alpha = this.baseAlpha;
-                    }
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `${this.color} ${this.alpha})`;
-                ctx.fill();
-            }
+            ctx.fillStyle = spotGradient;
+            ctx.beginPath();
+            ctx.arc(currentPos.x, currentPos.y, spotRadius, 0, Math.PI * 2);
+            ctx.fill();
         }
 
-        const mouse = {
-            x: null,
-            y: null,
-            radius: 120
-        };
+        function renderAtmosphere() {
+            if (!isVisible) {
+                requestAnimationFrame(renderAtmosphere);
+                return;
+            }
+
+            // Smooth spotlight inertia (damped tracking)
+            const dx = targetPos.x - currentPos.x;
+            const dy = targetPos.y - currentPos.y;
+            currentPos.x += dx * 0.06;
+            currentPos.y += dy * 0.06;
+
+            drawSpotlight();
+
+            requestAnimationFrame(renderAtmosphere);
+        }
 
         window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+            isHovered = true;
+            targetPos.x = e.clientX;
+            targetPos.y = e.clientY;
         }, { passive: true });
 
         window.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
+            isHovered = false;
+            targetPos.x = width * 0.5;
+            targetPos.y = height * 0.28;
         });
 
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            initNodes();
+            if (!isHovered) {
+                targetPos.x = width * 0.5;
+                targetPos.y = height * 0.28;
+            }
+            drawSpotlight();
         }, { passive: true });
 
-        function initNodes() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new CyberNode());
-            }
-        }
+        document.addEventListener('visibilitychange', () => {
+            isVisible = !document.hidden;
+            if (isVisible) drawSpotlight();
+        });
 
-        function drawConnections() {
-            const maxDistance = isMobile ? 80 : 110;
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < maxDistance) {
-                        const alpha = (1 - dist / maxDistance) * 0.12;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 255, 136, ${alpha})`;
-                        ctx.lineWidth = 0.7;
-                        ctx.stroke();
-                    }
+        // Instant redraw on theme change
+        const observer = new MutationObserver((mutations) => {
+            for (const m of mutations) {
+                if (m.attributeName === 'data-theme-mode') {
+                    drawSpotlight();
                 }
             }
-        }
+        });
+        observer.observe(document.body, { attributes: true, attributeFilter: ['data-theme-mode'] });
 
-        function renderScene() {
-            ctx.clearRect(0, 0, width, height);
-            drawConnections();
-            particles.forEach(node => {
-                node.update();
-                node.draw();
-            });
-            requestAnimationFrame(renderScene);
-        }
-
-        initNodes();
-        renderScene();
+        renderAtmosphere();
     }
 
     // Initialize Language & Render
