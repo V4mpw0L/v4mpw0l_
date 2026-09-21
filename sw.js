@@ -9,7 +9,7 @@ const PRECACHE_ASSETS = [
   `./script.js?v=${APP_VERSION}`,
   `./devlog.js?v=${APP_VERSION}`,
   `./manifest.json?v=${APP_VERSION}`,
-  'https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png'
+  'assets/tiago-blue.png'
 ];
 
 // Install: Pre-cache shell & activate immediately

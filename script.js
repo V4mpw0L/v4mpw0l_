@@ -71,11 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             'hero-beacon': 'ONLINE',
             'hero-role': 'Engenheiro de Software & Arquiteto de Sistemas',
-            'hero-bio': 'Fundador da <a href="https://gennisys.com" target="_blank" rel="noopener" class="hero-brand-link">Gennisys</a>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
+            'hero-bio': 'Fundador da <a href="https://syscorv.com" target="_blank" rel="noopener" class="hero-brand-link">SYSCORV</a>. Construindo software de alto desempenho, arquiteturas <em>local-first</em>, motores procedurais e ecossistemas digitais independentes.',
             'hero-btn-transmissions': 'Ler Notícias',
-            'hero-btn-gennisys': 'Acessar Gennisys Studio ↗',
+            'hero-btn-syscorv': 'Acessar SYSCORV ↗',
             
-            'term-role': 'Arquiteto de Sistemas // Fundador @<a href="https://gennisys.com" target="_blank" rel="noopener" class="term-brand-link">Gennisys</a>',
+            'term-role': 'Arquiteto de Sistemas // Fundador @<a href="https://syscorv.com" target="_blank" rel="noopener" class="term-brand-link">SYSCORV</a>',
             'term-protocols': '[Zero-Bloat, Local-First, JS-Puro, C, Async-IO]',
             'term-listening': 'aguardando notícias..._',
 
@@ -97,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'uplink-meta': 'CONTATO & CANAIS',
             'uplink-title': 'Contato Direto',
             'uplink-desc': 'Canais diretos para contato profissional, segurança, colaborações técnicas e trocas de ideias.',
-            'studio-box-title': 'Gennisys Studio',
-            'studio-box-desc': 'Nosso estúdio independente dedicado a criar jogos autorais, ferramentas de produtividade e experiências interativas.',
-            'studio-btn': 'Explorar Estúdio Gennisys →',
+            'studio-box-title': 'SYSCORV',
+            'studio-box-desc': 'Nosso estúdio corporativo independente de engenharia de software, sistemas espaciais e aplicações resilientes.',
+            'studio-btn': 'Explorar SYSCORV →',
             
             'footer-status': 'SISTEMAS ONLINE',
             'footer-copy': '© 2026 Tiago Cardoso (v4mpw0l). Todos os direitos reservados.'
@@ -111,11 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             'hero-beacon': 'ONLINE',
             'hero-role': 'Software Engineer & Systems Architect',
-            'hero-bio': 'Founder of <a href="https://gennisys.com" target="_blank" rel="noopener" class="hero-brand-link">Gennisys</a>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
+            'hero-bio': 'Founder of <a href="https://syscorv.com" target="_blank" rel="noopener" class="hero-brand-link">SYSCORV</a>. Engineering high-performance software, <em>local-first</em> architectures, procedural engines, and independent digital worlds.',
             'hero-btn-transmissions': 'Read News',
-            'hero-btn-gennisys': 'Access Gennisys Studio ↗',
+            'hero-btn-syscorv': 'Access SYSCORV ↗',
             
-            'term-role': 'Systems Architect // Founder @<a href="https://gennisys.com" target="_blank" rel="noopener" class="term-brand-link">Gennisys</a>',
+            'term-role': 'Systems Architect // Founder @<a href="https://syscorv.com" target="_blank" rel="noopener" class="term-brand-link">SYSCORV</a>',
             'term-protocols': '[Zero-Bloat, Local-First, Pure-JS, C, Async-IO]',
             'term-listening': 'listening for updates..._',
 
@@ -137,9 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'uplink-meta': 'CONTACT & CHANNELS',
             'uplink-title': 'Direct Contact',
             'uplink-desc': 'Direct communication channels for professional inquiries, security reports, and technical exchanges.',
-            'studio-box-title': 'Gennisys Studio',
+            'studio-box-title': 'SYSCORV',
             'studio-box-desc': 'Our independent studio crafting proprietary games, productivity tools, and interactive digital worlds.',
-            'studio-btn': 'Explore Gennisys Studio →',
+            'studio-btn': 'Explore SYSCORV →',
             
             'footer-status': 'SYSTEMS ONLINE',
             'footer-copy': '© 2026 Tiago Cardoso (v4mpw0l). All rights reserved.'
@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mobile Drawer Navigation (Matching Gennisys Studio)
+    // Mobile Drawer Navigation (Matching SYSCORV)
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileDrawer = document.getElementById('mobileDrawer');
     if (mobileBtn && mobileDrawer) {
@@ -445,11 +445,11 @@ document.addEventListener('DOMContentLoaded', () => {
             );
 
             if (isLight) {
-                spotGradient.addColorStop(0, 'rgba(5, 150, 105, 0.08)');
+                spotGradient.addColorStop(0, 'rgba(2, 132, 199, 0.09)');
                 spotGradient.addColorStop(0.5, 'rgba(14, 165, 233, 0.025)');
                 spotGradient.addColorStop(1, 'rgba(248, 250, 252, 0)');
             } else {
-                spotGradient.addColorStop(0, 'rgba(18, 196, 138, 0.12)');
+                spotGradient.addColorStop(0, 'rgba(0, 229, 255, 0.12)');
                 spotGradient.addColorStop(0.5, 'rgba(6, 182, 212, 0.035)');
                 spotGradient.addColorStop(1, 'rgba(11, 13, 16, 0)');
             }

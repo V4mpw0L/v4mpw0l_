@@ -1,7 +1,7 @@
 {
   "name": "Tiago Cardoso — Systems Architect",
   "short_name": "v4mpw0l",
-  "description": "Personal portal and engineering devlogs of Tiago Cardoso (v4mpw0l) — Systems Architect & Founder @ Gennisys",
+  "description": "Personal portal and engineering devlogs of Tiago Cardoso (v4mpw0l) — Systems Architect & Founder @ Syscorv",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -10,13 +10,13 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png",
+      "src": "assets/tiago-blue.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://i.postimg.cc/dqLLj7KL/file-0000000040e86230b2fb6a71cedf9375.png",
+      "src": "assets/tiago-blue.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

@@ -1,6 +1,6 @@
 # 🚀 Tiago Cardoso - CEO Portfolio
 
-> **Professional Portfolio Website** for Tiago Cardoso, CEO & Founder of Gennisys  
+> **Professional Portfolio Website** for Tiago Cardoso, CEO & Founder of Syscorv  
 > Modern, responsive, and installable as a Progressive Web App (PWA)
 
 <div align="center">
@@ -15,7 +15,7 @@
 ## ✨ **Features**
 
 ### 🎨 **Design & UI**
-- **Gennisys-inspired** color palette (#4a9eff, #8b5cf6, #1a1a2e)
+- **Syscorv-inspired** color palette (#4a9eff, #8b5cf6, #1a1a2e)
 - **Glassmorphism effects** with backdrop blur
 - **Smooth animations** and hover effects  
 - **Dark theme** with gradient backgrounds
