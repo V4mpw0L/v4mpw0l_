@@ -1,15 +1,23 @@
 // V4MPW0L // TIAGO CARDOSO — Stealth PWA Core Service Worker
-const APP_VERSION = '2.1.2';
+const APP_VERSION = '2.2.0';
 const CACHE_NAME = `v4mpw0l-core-v${APP_VERSION}`;
 
 const PRECACHE_ASSETS = [
-  './',
-  './index.html',
+  '.' + /,
+  '.' + /index.html,
   `./style.css?v=${APP_VERSION}`,
   `./script.js?v=${APP_VERSION}`,
   `./devlog.js?v=${APP_VERSION}`,
   `./manifest.json?v=${APP_VERSION}`,
-  'assets/tiago-blue.png'
+  '.' + /assets/icon-192.png,
+  '.' + /assets/icon-512.png,
+  '.' + /assets/icon-maskable-192.png,
+  '.' + /assets/icon-maskable-512.png,
+  '.' + /assets/apple-touch-icon.png,
+  '.' + /assets/tiago-blue.png,
+  '.' + /favicon.png,
+  '.' + /favicon-32x32.png,
+  '.' + /favicon.ico
 ];
 
 // Install: Pre-cache shell & activate immediately
@@ -31,6 +39,7 @@ self.addEventListener('activate', event => {
       return Promise.all(
         cacheNames.map(cache => {
           if (cache !== CACHE_NAME) {
+            console.log('[SW] Purging old cache:', cache);
             return caches.delete(cache);
           }
         })

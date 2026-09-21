@@ -1,25 +1,75 @@
 {
-  "name": "Tiago Cardoso — Systems Architect",
+  "name": "Tiago Cardoso \u2014 Systems Architect",
   "short_name": "v4mpw0l",
-  "description": "Personal portal and engineering devlogs of Tiago Cardoso (v4mpw0l) — Systems Architect & Founder @ Syscorv",
+  "description": "Personal portal and engineering devlogs of Tiago Cardoso (v4mpw0l) \u2014 Systems Architect & Founder @ Syscorv",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#050807",
-  "theme_color": "#050807",
   "orientation": "portrait-primary",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
   "icons": [
     {
-      "src": "assets/tiago-blue.png",
+      "src": "assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "assets/tiago-blue.png",
+      "src": "assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "DevLog & Transmissions",
+      "short_name": "DevLog",
+      "description": "Read engineering dispatches and system devlogs",
+      "url": "./#devlog",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "System Protocols",
+      "short_name": "Protocols",
+      "description": "Explore architecture principles and protocols",
+      "url": "./#protocols",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Establish Contact",
+      "short_name": "Contact",
+      "description": "Send encrypted signal to Tiago Cardoso",
+      "url": "./#contact",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
   "categories": [
@@ -27,8 +77,8 @@
     "developer",
     "productivity"
   ],
-  "lang": "pt-BR",
+  "lang": "en",
   "dir": "ltr",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "id": "v4mpw0l-portal-pwa"
 }
