@@ -1,5 +1,5 @@
 // V4MPW0L // TIAGO CARDOSO — Stealth PWA Core Service Worker
-const APP_VERSION = '2.2.0';
+const APP_VERSION = '3.2.2';
 const CACHE_NAME = `v4mpw0l-core-v${APP_VERSION}`;
 
 const PRECACHE_ASSETS = [

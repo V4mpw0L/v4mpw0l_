@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register Service Worker for PWA (Stealth Auto-Sync)
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js?v=2.2.0', { updateViaCache: 'none' })
+            navigator.serviceWorker.register('./sw.js?v=3.2.2', { updateViaCache: 'none' })
                 .then(reg => {
                     reg.update();
                     document.addEventListener('visibilitychange', () => {

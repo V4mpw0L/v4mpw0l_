@@ -529,16 +529,16 @@ main {
     background: linear-gradient(135deg, #00e5ff 0%, #0284c7 100%);
     color: #050b14;
     border: 1px solid transparent;
-    box-shadow: 0 4px 18px rgba(0, 229, 255, 0.28);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+    background: linear-gradient(135deg, #00e5ff 0%, #0284c7 100%);
     color: #050b14;
     border-color: transparent;
-    box-shadow: 0 8px 28px rgba(0, 229, 255, 0.45);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
     transform: translateY(-2px);
-    filter: brightness(1.08);
+    filter: none;
 }
 
 .btn-secondary {
@@ -698,7 +698,6 @@ main {
     color: var(--accent-emerald-light);
     border-color: var(--accent-emerald-border);
     font-weight: 700;
-    box-shadow: 0 0 12px var(--accent-emerald-glow);
 }
 
 /* DevLog Grid */
@@ -1813,19 +1812,19 @@ body[data-theme-mode="light"] .status-dot { background: #0284c7; }
 body[data-theme-mode="light"] .btn-primary {
     background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
     color: #ffffff;
-    box-shadow: 0 4px 16px rgba(2, 132, 199, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 body[data-theme-mode="light"] .btn-primary:hover {
     background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
     color: #ffffff;
-    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);
-    filter: brightness(1.05);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    filter: none;
 }
 
 body[data-theme-mode="light"] .back-to-top-btn:hover {
     background: #0284c7;
     border-color: #0284c7;
     color: #ffffff;
-    box-shadow: 0 0 20px rgba(2, 132, 199, 0.35);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
