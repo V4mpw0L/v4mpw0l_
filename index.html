@@ -70,31 +70,35 @@
             </nav>
 
             <div class="nav-controls">
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Alternar Navegação">
-                    <span class="bar-top"></span>
-                    <span class="bar-bottom"></span>
+                <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Alternar Navegação" aria-expanded="false">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Drawer Navigation (Matching SYSCORV) -->
+    <!-- Mobile Drawer Navigation (Matching Syscorv Lateral Drawer) -->
     <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-        <div class="drawer-inner">
-            <div class="drawer-sigil">
-                <img src="assets/tiago-blue.png" alt="Tiago Cardoso" class="drawer-avatar-img">
-                <div class="drawer-brand-name">v4mpw0l</div>
+        <div class="drawer-backdrop" id="drawerBackdrop"></div>
+        <div class="drawer-panel">
+            <div class="drawer-header">
+                <a href="#" class="brand-sigil" title="Ir para o topo">
+                    <img src="assets/tiago-blue.png" alt="Tiago Cardoso" class="brand-avatar-img" />
+                    <div>
+                        <div class="brand-name">v4mpw0l</div>
+                        <div class="brand-role">Tiago Cardoso</div>
+                    </div>
+                </a>
+                <button type="button" id="drawerCloseBtn" class="control-btn" aria-label="Fechar Menu">&times;</button>
             </div>
-            <nav class="mobile-nav-links">
-                <a href="#devlog" class="mobile-link" data-i18n="nav-transmissions">DevLog</a>
-                <a href="#protocols" class="mobile-link" data-i18n="nav-protocols">Protocolos</a>
-                <a href="#uplink" class="mobile-link" data-i18n="nav-uplink">Contato</a>
+            <nav class="drawer-nav">
+                <a href="#devlog" class="drawer-link" data-i18n="nav-transmissions">DevLog</a>
+                <a href="#protocols" class="drawer-link" data-i18n="nav-protocols">Protocolos</a>
+                <a href="#uplink" class="drawer-link" data-i18n="nav-uplink">Contato</a>
             </nav>
             <div class="drawer-footer">
-                <span class="drawer-status-indicator">
-                    <span class="status-dot"></span>
-                    <span data-i18n="hero-beacon">ONLINE</span>
-                </span>
+                <a href="https://syscorv.com" target="_blank" rel="noopener" class="btn btn-primary full-width" data-i18n="hero-btn-syscorv">Acessar SYSCORV ↗</a>
             </div>
         </div>
     </div>
@@ -275,7 +279,19 @@
     <!-- Reading Modal (DevLog Transmissions) -->
     <div class="modal-overlay" id="transmission-modal" role="dialog" aria-modal="true">
         <div class="modal-card">
-            <button class="modal-close-btn" id="modal-close-btn" aria-label="Fechar Modal">✕</button>
+            <div class="modal-top-bar">
+                <div class="modal-breadcrumbs">
+                    <span class="modal-sigil">v4mpw0l</span>
+                    <span class="modal-sigil-sep">//</span>
+                    <span class="modal-sigil-label">DEVLOG ARCHIVE</span>
+                </div>
+                <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Fechar Modal">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
             <div id="modal-content-area">
                 <!-- Injected via script.js -->
             </div>
