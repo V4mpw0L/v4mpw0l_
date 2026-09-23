@@ -3,21 +3,21 @@ const APP_VERSION = '3.2.2';
 const CACHE_NAME = `v4mpw0l-core-v${APP_VERSION}`;
 
 const PRECACHE_ASSETS = [
-  '.' + /,
-  '.' + /index.html,
+  './',
+  './index.html',
   `./style.css?v=${APP_VERSION}`,
   `./script.js?v=${APP_VERSION}`,
   `./devlog.js?v=${APP_VERSION}`,
   `./manifest.json?v=${APP_VERSION}`,
-  '.' + /assets/icon-192.png,
-  '.' + /assets/icon-512.png,
-  '.' + /assets/icon-maskable-192.png,
-  '.' + /assets/icon-maskable-512.png,
-  '.' + /assets/apple-touch-icon.png,
-  '.' + /assets/tiago-blue.png,
-  '.' + /favicon.png,
-  '.' + /favicon-32x32.png,
-  '.' + /favicon.ico
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './assets/icon-maskable-192.png',
+  './assets/icon-maskable-512.png',
+  './assets/apple-touch-icon.png',
+  './assets/tiago-blue.png',
+  './favicon.png',
+  './favicon-32x32.png',
+  './favicon.ico'
 ];
 
 // Install: Pre-cache shell & activate immediately
